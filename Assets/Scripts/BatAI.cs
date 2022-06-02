@@ -13,14 +13,16 @@ public class BatAI : MonoBehaviour
     private Transform _transform;
     private Vector3 _focalPosition;
     private Quaternion lookOnLook;
+    private Bezier myBezier;
+    private float t = 0f;
 
     void Awake() {
         _transform = transform;
-        _transform.position = focalPoint.position;
+        _focalPosition = focalPoint.position;
+        _transform.position = _focalPosition;
     }
 
     void Start() {
-        _focalPosition = focalPoint.position;
         GenerateRandomWaypoints();
         UpdateDestination();
     }
@@ -30,9 +32,14 @@ public class BatAI : MonoBehaviour
             IterateWaypointIndex();
             UpdateDestination();
         } else {
-            _transform.rotation = Quaternion.Slerp(_transform.rotation, lookOnLook, speed * Time.deltaTime);
-            _transform.position = Vector3.MoveTowards(_transform.position, target, speed * Time.deltaTime);
-        }
+            Vector3 vec = myBezier.GetPointAtTime( t );
+            _transform.rotation = Quaternion.Slerp(_transform.rotation, lookOnLook, speed * Time.deltaTime * 10f);
+            _transform.position = vec;
+
+            t += speed / 1000f;
+            if( t > 1f )
+                t = 0f;
+            }
     }
 
     void OnTriggerEnter(Collider other) {
@@ -45,6 +52,8 @@ public class BatAI : MonoBehaviour
     void UpdateDestination() {
         target = waypoints[waypointIndex];
         lookOnLook = Quaternion.LookRotation(target - transform.position);
+        t = 0f;
+        myBezier = new Bezier( _transform.position, Random.insideUnitSphere * 2f, Random.insideUnitSphere * 2f, target );
     }
 
     void IterateWaypointIndex() {

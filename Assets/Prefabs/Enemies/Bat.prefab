@@ -555,9 +555,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d119fc5978eb042894653a42dfd8ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfWaypoints: 10
-  speed: 10
   focalPoint: {fileID: 0}
+  numberOfWaypoints: 10
+  speed: 4
+  radius: 5
 --- !u!1 &8085203589490181143
 GameObject:
   m_ObjectHideFlags: 0
