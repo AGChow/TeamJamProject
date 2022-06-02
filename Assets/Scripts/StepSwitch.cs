@@ -8,6 +8,8 @@ public class StepSwitch : MonoBehaviour
     private Vector3 _currentPosition;
     private Vector3 _newPosition;
 
+    public bool on;
+
     void Start() {
         _player = GameObject.FindObjectOfType<Player>();
         _transform = transform;
@@ -33,5 +35,6 @@ public class StepSwitch : MonoBehaviour
         }
 
         _transform.position = _newPosition;
+        on = true;
     }
 }
