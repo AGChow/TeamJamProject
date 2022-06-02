@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class BatAI : MonoBehaviour
 {
+    public Transform focalPoint;
     public int numberOfWaypoints = 10;
     public float speed = 10f;
-    public Transform focalPoint;
+    public float radius = 5f;
 
     private Vector3[] waypoints;
     private int waypointIndex;
@@ -53,9 +54,9 @@ public class BatAI : MonoBehaviour
     void GenerateRandomWaypoints() {
         waypoints = new Vector3[numberOfWaypoints];
         for(int i = 0; i < numberOfWaypoints; i++) {
-            float x = Random.Range(_focalPosition.x - 5f, _focalPosition.x + 5f);
+            float x = Random.Range(_focalPosition.x - radius, _focalPosition.x + radius);
             float y = Random.Range(1.5f, 2.5f);
-            float z = Random.Range(_focalPosition.z - 5f, _focalPosition.z + 5f);
+            float z = Random.Range(_focalPosition.z - radius, _focalPosition.z + radius);
             waypoints[i] = new Vector3(x, y, z);
         }
     }
