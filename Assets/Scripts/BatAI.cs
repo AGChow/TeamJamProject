@@ -12,6 +12,7 @@ public class BatAI : MonoBehaviour
     private Vector3 target;
     private Transform _transform;
     private Vector3 _focalPosition;
+    private Quaternion lookOnLook;
 
     void Awake() {
         _transform = transform;
@@ -29,6 +30,7 @@ public class BatAI : MonoBehaviour
             IterateWaypointIndex();
             UpdateDestination();
         } else {
+            _transform.rotation = Quaternion.Slerp(_transform.rotation, lookOnLook, speed * Time.deltaTime);
             _transform.position = Vector3.MoveTowards(_transform.position, target, speed * Time.deltaTime);
         }
     }
@@ -42,6 +44,7 @@ public class BatAI : MonoBehaviour
 
     void UpdateDestination() {
         target = waypoints[waypointIndex];
+        lookOnLook = Quaternion.LookRotation(target - transform.position);
     }
 
     void IterateWaypointIndex() {
