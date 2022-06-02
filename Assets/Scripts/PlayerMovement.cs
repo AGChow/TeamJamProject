@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10f;
     public float turnSpeed = 90f;
     public float gravity = 9.8f;
+    public List<GameObject> activeTriggers = new();
 
     private float _horizontal;
     private float _vertical;
@@ -25,8 +27,27 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update() {
+        HandleInput();
         HandleMovement();
         HandleRotation();
+    }
+
+    void HandleInput() {
+        if(activeTriggers.Count > 0) {
+            foreach(GameObject trigger in activeTriggers) {
+                if(Input.GetButtonUp("Fire1") || Input.GetButtonUp("Submit")) {
+                    if(trigger.CompareTag("Torch")) {
+                        Vector3 directionToTorch = (trigger.transform.position - _transform.position).normalized;
+                        float dotProd = Vector3.Dot(directionToTorch, _transform.forward);
+                        print(dotProd);
+                        
+                        if(dotProd > 0.5f) { // Player is looking in direction of torch
+                            trigger.GetComponent<Torch>().ToggleTorch();
+                        }
+                    }
+                }
+            }
+        }
     }
 
     void HandleMovement() {
