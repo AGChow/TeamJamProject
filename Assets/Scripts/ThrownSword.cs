@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class ThrownSword : MonoBehaviour
 {
-    public Transform parentRotationAnchor;
-
     private bool _isRecalling = false;
     private bool _isSpinning = true;
     private float _rotationSpeed = 900;
@@ -41,7 +39,7 @@ public class ThrownSword : MonoBehaviour
     private void UpdatePosition()
     {
         float step = _speed * Time.deltaTime;
-        parentRotationAnchor.transform.position = Vector3.MoveTowards(parentRotationAnchor.transform.position, _target.position, step);
+        transform.position = Vector3.MoveTowards(transform.position, _target.position, step);
     }
 
     public void SetIsSpinning(bool active)
@@ -51,8 +49,8 @@ public class ThrownSword : MonoBehaviour
 
     private void Spin()
     {
-        float currentY = parentRotationAnchor.rotation.y;
-        parentRotationAnchor.Rotate(0, _rotationSpeed * Time.deltaTime, 0);
+        float currentY = transform.rotation.y;
+        transform.Rotate(0, _rotationSpeed * Time.deltaTime, 0);
     }
 
     void OnTriggerEnter(Collider other)
