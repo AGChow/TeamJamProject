@@ -27,7 +27,7 @@ public class ThrownSword : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-            HandlePlayerCollision();
+            HandlePlayerCollision(other.GetComponent<PlayerAttack>());
         else if (other.CompareTag("Environment"))
             HandleEnvironmentCollision();
         else if (other.CompareTag("Torch"))
@@ -36,9 +36,10 @@ public class ThrownSword : MonoBehaviour
             HandleEnemyCollision();
     }
 
-    private void HandlePlayerCollision()
+    private void HandlePlayerCollision(PlayerAttack playerAttackScript)
     {
-        print("hit player");
+        if (!playerAttackScript.IsRecalling()) return;
+        playerAttackScript.CatchWeapon();
     }
 
     private void HandleEnvironmentCollision()

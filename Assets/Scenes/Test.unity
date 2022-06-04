@@ -40040,7 +40040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heldWeapon: {fileID: 2370721235425592619}
-  thrownWeapon: {fileID: 669422345580885298}
+  thrownWeapon: {fileID: 1311215996}
 --- !u!1 &889488664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 59f4524407b4b7e4294f9c4652a4212f, type: 3}
@@ -50252,7 +50252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1311215998
 Transform:
   m_ObjectHideFlags: 0
