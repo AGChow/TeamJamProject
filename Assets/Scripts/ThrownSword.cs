@@ -4,13 +4,44 @@ public class ThrownSword : MonoBehaviour
 {
     public Transform parentRotationAnchor;
 
+    private bool _isRecalling = false;
     private bool _isSpinning = true;
     private float _rotationSpeed = 900;
+    private float _speed = 10;
+    private Transform _target;
+    private bool _isMoving;
 
     private void Update()
     {
         if (_isSpinning)
             Spin();
+        if (_isMoving)
+            UpdatePosition();
+    }
+
+    public void SetIsRecalling(bool active)
+    {
+        _isRecalling = active;
+    }
+
+    public void MoveTo(Transform target)
+    {
+        _target = target;
+        _isMoving = true;
+        _isSpinning = true;
+    }
+
+    private void StopMovement()
+    {
+        _target = null;
+        _isMoving = false;
+        _isSpinning = false;
+    }
+
+    private void UpdatePosition()
+    {
+        float step = _speed * Time.deltaTime;
+        parentRotationAnchor.transform.position = Vector3.MoveTowards(parentRotationAnchor.transform.position, _target.position, step);
     }
 
     public void SetIsSpinning(bool active)
@@ -38,22 +69,28 @@ public class ThrownSword : MonoBehaviour
 
     private void HandlePlayerCollision(PlayerAttack playerAttackScript)
     {
-        if (!playerAttackScript.IsRecalling()) return;
+        if (!_isRecalling) return;
         playerAttackScript.CatchWeapon();
     }
 
     private void HandleEnvironmentCollision()
     {
         print("hit environment");
+        if (!_isRecalling)
+            StopMovement();
     }
 
     private void HandleTorchCollision()
     {
         print("hit torch");
+        if (!_isRecalling)
+            StopMovement();
     }
 
     private void HandleEnemyCollision()
     {
         print("hit enemy");
+        if (!_isRecalling)
+            StopMovement();
     }
 }
