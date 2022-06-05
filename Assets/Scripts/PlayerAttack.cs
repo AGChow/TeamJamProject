@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
 
 
     private bool _hasWeapon = true;
+    [SerializeField]
     private float _throwDistance = 17f;
 
     private void Awake()
@@ -40,6 +41,9 @@ public class PlayerAttack : MonoBehaviour
         thrownWeaponObj.SetActive(true);
         _swordScript.SetIsRecalling(false);
         thrownWeaponObj.transform.position = transform.position;
+       
+
+        thrownWeaponObj.GetComponent<ThrownSword>().throwSpeedChange();
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, _throwDistance))
@@ -59,6 +63,7 @@ public class PlayerAttack : MonoBehaviour
     private void RecallWeapon()
     {
         print("recall!");
+        thrownWeaponObj.GetComponent<ThrownSword>().returnSpeedChange();
         _swordScript.SetIsRecalling(true);
         _swordScript.MoveTo(transform);
     }
