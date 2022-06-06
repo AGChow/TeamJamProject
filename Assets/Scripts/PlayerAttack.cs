@@ -18,7 +18,6 @@ public class PlayerAttack : MonoBehaviour
         _swordScript = thrownWeaponObj.GetComponentInChildren<ThrownSword>();
     }
 
-
     void Update()
     {
         HandleMouseInput();
@@ -26,7 +25,14 @@ public class PlayerAttack : MonoBehaviour
 
     private void HandleMouseInput()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (_hasWeapon)
+                SwingSword();
+            else
+                RecallWeapon();
+        }
+        else if (Input.GetButtonDown("Fire2"))
         {
             if (_hasWeapon)
                 ThrowWeapon();
@@ -74,5 +80,10 @@ public class PlayerAttack : MonoBehaviour
         thrownWeaponObj.SetActive(false);
         _swordScript.SetIsRecalling(false);
         _hasWeapon = true;
+    }
+
+    public void SwingSword()
+    {
+        heldWeaponObj.GetComponent<Sword>().SwordSwing();
     }
 }
