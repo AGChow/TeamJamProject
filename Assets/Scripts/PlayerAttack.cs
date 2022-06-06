@@ -84,6 +84,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void SwingSword()
     {
-        heldWeaponObj.GetComponent<Sword>().enabled = true;
+        heldWeaponObj.GetComponent<Sword>().SwordSwing();
     }
 }

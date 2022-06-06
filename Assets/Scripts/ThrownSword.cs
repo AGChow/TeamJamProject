@@ -17,8 +17,14 @@ public class ThrownSword : MonoBehaviour
     // variable to adjust swordHeight(Ari)
     private float _height = 1f;
 
+    private Transform _transform;
     private Transform _target;
     private bool _isMoving;
+
+    private void Awake()
+    {
+        _transform = transform;
+    }
 
     private void Update()
     {
@@ -50,8 +56,12 @@ public class ThrownSword : MonoBehaviour
 
     private void UpdatePosition()
     {
+        if(Vector3.Distance(_transform.position, _target.position) < 1f)
+        {
+            HandlePlayerCollision(GameObject.FindObjectOfType<PlayerAttack>());
+        }
         float step = _speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, _target.position + new Vector3(0,_height,0), step);
+        _transform.position = Vector3.MoveTowards(_transform.position, _target.position + new Vector3(0,_height,0), step);
     }
 
     public void SetIsSpinning(bool active)
@@ -62,8 +72,8 @@ public class ThrownSword : MonoBehaviour
 
     private void Spin()
     {
-        float currentY = transform.rotation.y;
-        transform.Rotate(0, _rotationSpeed * Time.deltaTime, 0);
+        float currentY = _transform.rotation.y;
+        _transform.Rotate(0, _rotationSpeed * Time.deltaTime, 0);
     }
 
     //Added ways to change speed in two stages for gamefeel(Ari)
