@@ -10,13 +10,13 @@ public class PlayerAttack : MonoBehaviour
 
 
     private bool _hasWeapon = true;
+    [SerializeField]
     private float _throwDistance = 17f;
 
     private void Awake()
     {
         _swordScript = thrownWeaponObj.GetComponentInChildren<ThrownSword>();
     }
-
 
     void Update()
     {
@@ -25,7 +25,14 @@ public class PlayerAttack : MonoBehaviour
 
     private void HandleMouseInput()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (_hasWeapon)
+                SwingSword();
+            else
+                RecallWeapon();
+        }
+        else if (Input.GetButtonDown("Fire2"))
         {
             if (_hasWeapon)
                 ThrowWeapon();
@@ -40,6 +47,9 @@ public class PlayerAttack : MonoBehaviour
         thrownWeaponObj.SetActive(true);
         _swordScript.SetIsRecalling(false);
         thrownWeaponObj.transform.position = transform.position;
+       
+
+        thrownWeaponObj.GetComponent<ThrownSword>().throwSpeedChange();
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, _throwDistance))
@@ -59,6 +69,7 @@ public class PlayerAttack : MonoBehaviour
     private void RecallWeapon()
     {
         print("recall!");
+        thrownWeaponObj.GetComponent<ThrownSword>().returnSpeedChange();
         _swordScript.SetIsRecalling(true);
         _swordScript.MoveTo(transform);
     }
@@ -69,5 +80,10 @@ public class PlayerAttack : MonoBehaviour
         thrownWeaponObj.SetActive(false);
         _swordScript.SetIsRecalling(false);
         _hasWeapon = true;
+    }
+
+    public void SwingSword()
+    {
+        heldWeaponObj.GetComponent<Sword>().SwordSwing();
     }
 }

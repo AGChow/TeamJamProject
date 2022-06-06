@@ -1,17 +1,36 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class Torch : MonoBehaviour
 {
     public ParticleSystem torchLight;
     private PlayerMovement _player;
+
+    [SerializeField]
     private bool _isLit = false;
+    public bool timerTorch = false;
+
+
+    public GameObject fireParticles;
+
+    [SerializeField]
+    private float torchTimer = 4;
     public bool isLit {
         get { return _isLit; }
         set {
+            //Turn the torch on
             if(_isLit == false && value == true) {
+                fireParticles.SetActive(true);
                 torchLight.Play();
+                if(timerTorch == true)
+                {
+                    StartCoroutine(TorchTurnOffCounter());
+                }
             }
+            //Turn the torch off
             else if(_isLit == true && value == false) {
+                fireParticles.SetActive(false);
                 torchLight.Stop();
             }
             _isLit = value;
@@ -19,7 +38,7 @@ public class Torch : MonoBehaviour
     }
 
     void Start() {
-        isLit = true;
+        isLit = false;
         _player = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
@@ -35,14 +54,13 @@ public class Torch : MonoBehaviour
         isLit = !isLit;
     }
 
-    void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Player")) {
-            _player.activeTriggers.Add(gameObject);
-        }
-    }
-    void OnTriggerExit(Collider other) {
-        if(other.CompareTag("Player")) {
-            _player.activeTriggers.Remove(gameObject);
+    //trying to turn torch off on timer dependent on bool but not working :/ (Ari)
+    IEnumerator TorchTurnOffCounter()
+    {
+        yield return new WaitForSeconds(torchTimer);
+        if (isLit == true)
+        {
+            ExtinguishTorch();
         }
     }
 }
