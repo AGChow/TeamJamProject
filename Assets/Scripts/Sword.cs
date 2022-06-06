@@ -7,6 +7,7 @@ public class Sword : MonoBehaviour
     private PlayerAttack _playerAttack;
     [SerializeField]
     private Animator _playerAnimator;
+    private bool _swungAtShield = false;
 
     private Collider _collider;
 
@@ -24,18 +25,21 @@ public class Sword : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Shield"))
-        {
-            print("Swung at shield. Nothing happens.");
-            //TODO: Check if the sword hit an enemy before the shield, which would indicate being hit from behind
-            return;
-        }
+            _swungAtShield = true;
         if(other.CompareTag("Torch"))
-        {
             other.GetComponent<Torch>().ToggleTorch();
-        }
         if(other.CompareTag("Enemy"))
         {
-            print("Damaged enemy: " + other.name);
+            
+            if(other.GetComponent<ShieldEnemy>()) {
+                ShieldEnemy _shieldEnemy = other.GetComponent<ShieldEnemy>();
+                if(_shieldEnemy.IsShielded() && _swungAtShield)
+                    print("Hit shield");
+                else
+                    print("Damaged enemy: " + other.name);
+
+                _swungAtShield = false;
+            }
         }
     }
 
