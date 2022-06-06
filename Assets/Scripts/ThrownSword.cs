@@ -80,7 +80,7 @@ public class ThrownSword : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             HandlePlayerCollision(other.GetComponent<PlayerAttack>());
-        else if (other.CompareTag("Environment"))
+        else if (other.CompareTag("Environment") || other.CompareTag("Shield"))
             HandleEnvironmentCollision();
         else if (other.CompareTag("Torch"))
             HandleTorchCollision(other.gameObject);
