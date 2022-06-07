@@ -5158,7 +5158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableType: 0
   watchers:
-  - {fileID: 0}
+  - {fileID: 1409679269}
 --- !u!114 &27779393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5172,6 +5172,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torchLight: {fileID: 1918139485}
+  _isLit: 0
+  timerTorch: 0
+  fireParticles: {fileID: 799037959}
+  torchTimer: 4
 --- !u!65 &27779394
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49425,6 +49429,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torchLight: {fileID: 496756193}
+  _isLit: 0
+  timerTorch: 0
+  fireParticles: {fileID: 293570001}
+  torchTimer: 4
 --- !u!65 &694675598
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59611,6 +59619,7 @@ MonoBehaviour:
   heldWeaponObj: {fileID: 2370721235425592619}
   thrownWeaponObj: {fileID: 1311215996}
   throwTarget: {fileID: 632105376}
+  _throwDistance: 17
 --- !u!1 &889488664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 59f4524407b4b7e4294f9c4652a4212f, type: 3}
@@ -59746,6 +59755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   on: 0
+  _affectedPuzzleObj: {fileID: 0}
 --- !u!54 &911260414
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -59867,7 +59877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableType: 0
   watchers:
-  - {fileID: 0}
+  - {fileID: 88682024}
 --- !u!114 &976329648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59881,6 +59891,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torchLight: {fileID: 856898010}
+  _isLit: 0
+  timerTorch: 0
+  fireParticles: {fileID: 22380716}
+  torchTimer: 4
 --- !u!65 &976329649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -79639,6 +79653,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168b9a8b6437bfe4a872bd8073e2c4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 10
+  _throwSpeed: 15
+  _returnSpeed: 25
 --- !u!1 &1409679268
 GameObject:
   m_ObjectHideFlags: 0
@@ -100756,6 +100773,9 @@ GameObject:
   - component: {fileID: 5617506944080597838}
   - component: {fileID: 1614664655033990424}
   - component: {fileID: 2275816048867186733}
+  - component: {fileID: 5617506944080597839}
+  - component: {fileID: 5617506944080597840}
+  - component: {fileID: 5617506944080597841}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Sword
@@ -110886,6 +110906,49 @@ Transform:
   m_Father: {fileID: 7366564464938588571}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 80.596, z: 0}
+--- !u!114 &5617506944080597839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370721235425592619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de055038caf29d1468e5a22ebd069c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerAttack: {fileID: 882034215}
+  _playerAnimator: {fileID: 1856491927516585302}
+--- !u!65 &5617506944080597840
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370721235425592619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.012362931, y: 0.0026174919, z: 0.040825732}
+  m_Center: {x: 0.000000027570017, y: -0.00000009609357, z: 0.012073745}
+--- !u!54 &5617506944080597841
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370721235425592619}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5748242540322555702
 GameObject:
   m_ObjectHideFlags: 0
@@ -111229,7 +111292,7 @@ PrefabInstance:
     - target: {fileID: 7560535537355430986, guid: 660a84df3cd8a924382bca1ecc81c7de, type: 3}
       propertyPath: focalPoint
       value: 
-      objectReference: {fileID: 882034209}
+      objectReference: {fileID: 376968382}
     - target: {fileID: 7560535537355430986, guid: 660a84df3cd8a924382bca1ecc81c7de, type: 3}
       propertyPath: lightSource
       value: 
