@@ -57,7 +57,7 @@ public class Torch : MonoBehaviour
     IEnumerator TorchTurnOffCounter()
     {
         PlayerAttack playerAttack = GameObject.FindObjectOfType<PlayerAttack>();
-        while(!playerAttack._hasWeapon) {
+        while(!playerAttack.HasWeapon()) {
             yield return null;
         }
         yield return new WaitForSeconds(torchTimer);
