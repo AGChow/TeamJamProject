@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     private ThrownSword _swordScript;
 
 
-    private bool _hasWeapon = true;
+    public bool _hasWeapon = true;
     [SerializeField]
     private float _throwDistance = 17f;
 
