@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StartScreen : MonoBehaviour
 {
-    public GameObject settingsMenu;
+    public Animator settingsMenuAnimator;
+    private bool _isSettingsMenuActive = false;
 
     public void StartGame()
     {
@@ -12,7 +14,15 @@ public class StartScreen : MonoBehaviour
 
     public void Settings()
     {
-        settingsMenu.SetActive(!settingsMenu.activeSelf);
+        if(_isSettingsMenuActive)
+        {
+            settingsMenuAnimator.SetTrigger("SettingsExit");
+        }
+        else
+        {
+            settingsMenuAnimator.SetTrigger("SettingsEnter");
+        }
+        _isSettingsMenuActive = !_isSettingsMenuActive;
     }
 
     public void Quit()
