@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-using System;
 
 public enum WatcherType {
     Door,
@@ -16,6 +13,7 @@ public class Watcher : MonoBehaviour
 
     [Header("Platform Settings")]
     public Vector3 moveToLocation;
+    public float moveTime = 1f;
     private Vector3 originalLocation;
 
     private Transform _transform;
@@ -84,14 +82,12 @@ public class Watcher : MonoBehaviour
     // Platform handling
     void ActivatePlatform()
     {
-        // TODO: Lerp
-        _transform.position = moveToLocation;
+        StartCoroutine(LerpPosition(moveToLocation, moveTime));
     }
 
     void DeactivatePlatform()
     {
-        // TODO: Lerp
-        _transform.position = originalLocation;
+        StartCoroutine(LerpPosition(originalLocation, moveTime));
     }
 
     // Bridge handling
@@ -105,5 +101,18 @@ public class Watcher : MonoBehaviour
     {
         // TODO: Animate bridge?
         GetComponent<Renderer>().enabled = false;
+    }
+
+    IEnumerator LerpPosition(Vector3 targetPosition, float duration)
+    {
+        float time = 0;
+        Vector3 startPosition = _transform.position;
+        while (time < duration)
+        {
+            _transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        _transform.position = targetPosition;
     }
 }
