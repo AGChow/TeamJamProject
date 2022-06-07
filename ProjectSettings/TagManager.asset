@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Breakable
   - Switch
+  - Shield
   layers:
   - Default
   - TransparentFX

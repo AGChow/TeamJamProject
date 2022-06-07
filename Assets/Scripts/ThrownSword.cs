@@ -96,6 +96,10 @@ public class ThrownSword : MonoBehaviour
             HandleTorchCollision(other.gameObject);
         else if (other.CompareTag("Enemy"))
             HandleEnemyCollision();
+        else if (other.CompareTag("Breakable"))
+        {
+            HandleBreakableCollision(other.gameObject);
+        }
     }
 
     private void HandlePlayerCollision(PlayerAttack playerAttackScript)
@@ -125,5 +129,14 @@ public class ThrownSword : MonoBehaviour
         print("hit enemy");
         if (!_isRecalling)
             StopMovement();
+
+        FindObjectOfType<AudioManager>().Play("placeholder");
+    }
+
+    private void HandleBreakableCollision(GameObject breakableObj)
+    {
+        Debug.Log("Break");
+        breakableObj.GetComponent<BreakableObject>().ObjectDestruction();
+
     }
 }

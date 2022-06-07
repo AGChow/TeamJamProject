@@ -21,6 +21,12 @@ public class Torch : MonoBehaviour
         set {
             //Turn the torch on
             if(_isLit == false && value == true) {
+
+                //Checks to see if all other torches are lit to complete the puzzles
+                FindObjectOfType<PuzzleManager>().CheckCompleteConditions();
+
+
+
                 fireParticles.SetActive(true);
                 torchLight.Play();
                 if(timerTorch == true)
