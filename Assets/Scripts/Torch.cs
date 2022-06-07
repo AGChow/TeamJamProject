@@ -54,9 +54,12 @@ public class Torch : MonoBehaviour
         isLit = !isLit;
     }
 
-    //trying to turn torch off on timer dependent on bool but not working :/ (Ari)
     IEnumerator TorchTurnOffCounter()
     {
+        PlayerAttack playerAttack = GameObject.FindObjectOfType<PlayerAttack>();
+        while(!playerAttack.HasWeapon()) {
+            yield return null;
+        }
         yield return new WaitForSeconds(torchTimer);
         if (isLit == true)
         {

@@ -86,4 +86,8 @@ public class PlayerAttack : MonoBehaviour
     {
         heldWeaponObj.GetComponent<Sword>().SwordSwing();
     }
+
+    public bool HasWeapon() {
+        return _hasWeapon;
+    }
 }
