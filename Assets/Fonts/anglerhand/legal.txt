@@ -1,0 +1,35 @@
+-Readme: License Information (7/7/2019)-
+
+Doggybag
+http://doggybag.xyz, http://dbg.pw
+Contact: doggybagcomics@gmail.com
+
+The font(s) included in this zip were created by Doggybag. This readme serves as a license. By using my fonts, you agree to it. 
+I'm not willing to freely give out my personal information at the time of creation of this license.
+On the rare occasion I feel the need to pursue legal action, I will make my information available on my website.
+I want the use of my fonts to be as unrestrictive as possible, so the information provided here will be sparse and I may be willing to provide further wiggle room if contacted.
+
+1. Distribution restrictions
+-You may NOT resell my font files, whether as part of a font pack or by itself, without my express permission.
+-You may not claim that you made my fonts or distribute them without credit. (this readme will suffice)
+-You may not modify the font files to remove my credit.
+-You may not adapt my fonts into your own publicly distributed typeface without crediting me.
+-You may not distribute my fonts with a modified readme.
+
+2. Distribution exceptions
+-You MAY distribute my font files to friends.
+-You may include my fonts in your font pack as long as a profit isn't being made off of it.
+-You may distribute my fonts on your website, as long as this readme is included with them and you don't pretend to have created them.
+-You may distribute my fonts with your free software if they are implemented in it. All I ask is that you include this readme in the folder they are kept in, but this isn't required.
+	+If you want to include my fonts with your paid software, such as a design suite or operating system, seek my permission first.
+	+If your software is donationware or ad-supported there is no need to contact me.
+
+3. Conditions of use
+-You MAY use my fonts in design work, paid or otherwise.
+-You may use my fonts in your personal or commercial website. All I ask is you credit me somewhere, if possible, but it isn't required.
+-You may use my fonts in any publication, whether it be small or large.
+-You may use my fonts on physical commercial products. 
+
+If your use case doesn't fall into any of these or you aren't sure, contact me. If you're using my font, I'd love to see a picture of what it's being used for!
+
+Thanks!
