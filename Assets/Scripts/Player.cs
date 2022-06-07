@@ -1,18 +1,52 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private int _playerMaxHealth = 3;
+    private int _playerCurrentHealth = 3;
+    private bool _isInvincible = false;
+
+    void Awake()
     {
-        
+        Heal(_playerMaxHealth);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Damage(int dmg)
     {
-        
+        if(_isInvincible) return;
+
+        _playerCurrentHealth -= dmg;
+        print("Player took damage! New health: " + _playerCurrentHealth);
+        if(_playerCurrentHealth <= 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            StartCoroutine(Invincible());
+        }
+    }
+
+    public void Heal(int heal)
+    {
+        _playerCurrentHealth += heal;
+        if(_playerCurrentHealth > _playerMaxHealth)
+        {
+            _playerCurrentHealth = _playerMaxHealth;
+        }
+    }
+
+    public void GameOver()
+    {
+        print("Game over!");
+    }
+
+    IEnumerator Invincible()
+    {
+        _isInvincible = true;
+        yield return new WaitForSeconds(3f);
+        _isInvincible = false;
     }
 }
