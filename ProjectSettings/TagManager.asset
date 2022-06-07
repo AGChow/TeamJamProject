@@ -7,7 +7,7 @@ TagManager:
   - Torch
   - Environment
   - Enemy
-  - FxTemporaire
+  - Sword
   - Shield
   layers:
   - Default
