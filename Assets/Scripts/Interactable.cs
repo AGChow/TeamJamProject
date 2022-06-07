@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +11,12 @@ public class Interactable : MonoBehaviour
     public List<Watcher> watchers = new();
     private bool _isActivated = false;
     public bool isActivated {
-        get { return _isActivated; }
-        set {
+        get
+        {
+            return _isActivated;
+        }
+        set
+        {
             // Switch is activated
             if(_isActivated == false && value == true)
             {
@@ -34,13 +37,16 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other) {
-        if(other.CompareTag(interactableType.ToString())) {
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag(interactableType.ToString()))
+        {
             ToggleIsActivated();
         }
     }
 
-    void ToggleIsActivated() {
+    void ToggleIsActivated()
+    {
         isActivated = !isActivated;
     }
 }
