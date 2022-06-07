@@ -10,6 +10,8 @@ public class StepSwitch : MonoBehaviour
 
     public bool on;
 
+    public GameObject _affectedPuzzleObj;
+
     void Start() {
         _player = GameObject.FindObjectOfType<Player>();
         _transform = transform;
