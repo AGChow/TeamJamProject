@@ -53,8 +53,7 @@ public class BatAI : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Player")) {
-            //TODO: Damage player on hit
-            print("Bat damaged player!");
+            other.GetComponent<Player>().Damage(1);
         }
     }
 
