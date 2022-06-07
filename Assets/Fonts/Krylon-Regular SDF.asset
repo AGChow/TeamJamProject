@@ -135,7 +135,7 @@ MonoBehaviour:
     m_AscentLine: 76
     m_CapLine: 54
     m_MeanLine: 39
-    m_Baseline: 0
+    m_Baseline: 5
     m_DescentLine: -15.2
     m_SuperscriptOffset: 76
     m_SuperscriptSize: 0.5
