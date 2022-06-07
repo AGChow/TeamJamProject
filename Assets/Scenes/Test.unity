@@ -5156,7 +5156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b972ed0a8f237144eab8eef12c69f2c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableType: 0
+  interactableTypes: 00000000
   watchers:
   - {fileID: 1409679269}
 --- !u!114 &27779393
@@ -44680,7 +44680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b972ed0a8f237144eab8eef12c69f2c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableType: 0
+  interactableTypes: 00000000
   watchers:
   - {fileID: 2133269098}
 --- !u!1 &700929536
@@ -54880,6 +54880,7 @@ GameObject:
   - component: {fileID: 911260409}
   - component: {fileID: 911260413}
   - component: {fileID: 911260414}
+  - component: {fileID: 911260415}
   m_Layer: 0
   m_Name: StepSwitch
   m_TagString: Untagged
@@ -54995,6 +54996,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &911260415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911260408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b972ed0a8f237144eab8eef12c69f2c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableTypes: 0100000002000000
+  watchers: []
 --- !u!1001 &976329644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55098,7 +55113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b972ed0a8f237144eab8eef12c69f2c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableType: 0
+  interactableTypes: 00000000
   watchers:
   - {fileID: 88682024}
 --- !u!114 &976329648

@@ -2,13 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum InteractableType {
-    Sword
+    Sword,
+    Player,
+    Enemy
 }
 
 public class Interactable : MonoBehaviour
 {
-    public InteractableType interactableType;
+    public List<InteractableType> interactableTypes = new();
     public List<Watcher> watchers = new();
+    private List<string> interactableNames = new();
     private bool _isActivated = false;
     public bool isActivated {
         get
@@ -37,9 +40,14 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        interactableNames = interactableTypes.ConvertAll(f => f.ToString());
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(interactableType.ToString()))
+        if(interactableNames.Contains(other.tag))
         {
             ToggleIsActivated();
         }
