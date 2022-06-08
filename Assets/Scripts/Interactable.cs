@@ -13,6 +13,7 @@ public class Interactable : MonoBehaviour
     public List<Watcher> watchers = new();
     private List<string> interactableNames = new();
     private bool _isActivated = false;
+
     public bool isActivated {
         get
         {
@@ -33,7 +34,11 @@ public class Interactable : MonoBehaviour
             {
                 foreach(Watcher watcher in watchers)
                 {
-                    watcher.Deactivate();
+                    if(watcher.canToggle)
+                    {
+                        if(watcher.canToggle)
+                            watcher.Deactivate();
+                    }
                 }
             }
             _isActivated = value;
@@ -47,6 +52,16 @@ public class Interactable : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        print(other.name);
+        if(interactableNames.Contains(other.tag))
+        {
+            ToggleIsActivated();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        print(other.name);
         if(interactableNames.Contains(other.tag))
         {
             ToggleIsActivated();

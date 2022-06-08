@@ -14,6 +14,7 @@ public class Watcher : MonoBehaviour
     [Header("Platform Settings")]
     public Vector3 moveToLocation;
     public float moveTime = 1f;
+    public bool canToggle = false;
     private Vector3 originalLocation;
 
     private Transform _transform;
@@ -82,11 +83,13 @@ public class Watcher : MonoBehaviour
     // Platform handling
     void ActivatePlatform()
     {
+        print("Activate");
         StartCoroutine(LerpPosition(moveToLocation, moveTime));
     }
 
     void DeactivatePlatform()
     {
+        print("Deactivate");
         StartCoroutine(LerpPosition(originalLocation, moveTime));
     }
 
@@ -94,13 +97,11 @@ public class Watcher : MonoBehaviour
     void ActivateBridge()
     {
         // TODO: Animate bridge?
-        GetComponent<Renderer>().enabled = true;
     }
 
     void DeactivateBridge()
     {
         // TODO: Animate bridge?
-        GetComponent<Renderer>().enabled = false;
     }
 
     IEnumerator LerpPosition(Vector3 targetPosition, float duration)

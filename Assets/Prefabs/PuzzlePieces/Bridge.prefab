@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7183753458839975235}
   - component: {fileID: 7183753458839975234}
   - component: {fileID: 7183753458839975261}
+  - component: {fileID: 599902357}
   m_Layer: 0
   m_Name: Bridge
   m_TagString: Environment
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a773f8b3bccc6c44496d5c6a95d3d5ff, type: 2}
+  - {fileID: 2100000, guid: 874b2a2f3e7ff2b458d7d71e7caf2bdf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,6 +100,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &599902357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7183753458839975260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e536e521ab285e44aa2da0fcbc8c6d73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  watcherType: 1
+  moveToLocation: {x: 12, y: -0.55, z: 4.4}
+  moveTime: 1
 --- !u!1001 &7183753459950753463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f022be5cfe637c148a543b1045dac6d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.42536402
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f022be5cfe637c148a543b1045dac6d5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -216,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f022be5cfe637c148a543b1045dac6d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.004089594
+      value: -0.004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f022be5cfe637c148a543b1045dac6d5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -224,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f022be5cfe637c148a543b1045dac6d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.40916747
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f022be5cfe637c148a543b1045dac6d5, type: 3}
       propertyPath: m_LocalRotation.w
