@@ -29801,7 +29801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e716884ef430cf543b2238d006306393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseMenu: {fileID: 385774696}
 --- !u!4 &252482967
 Transform:
   m_ObjectHideFlags: 0
@@ -35301,6 +35300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b45cb165085d364d8372228166fe5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingsMenuAnimator: {fileID: 1885462529}
 --- !u!95 &385774697
 Animator:
   serializedVersion: 4
@@ -35544,8 +35544,8 @@ RectTransform:
   m_Father: {fileID: 667696840}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -56447,7 +56447,6 @@ MonoBehaviour:
   turnSpeed: 90
   gravity: 9.8
   activeTriggers: []
-  _pauseMenu: {fileID: 385774696}
 --- !u!114 &882034212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77497,8 +77496,8 @@ RectTransform:
   m_Father: {fileID: 2112680565}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -88451,7 +88450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1885462528
 RectTransform:
   m_ObjectHideFlags: 0
@@ -88477,11 +88476,11 @@ RectTransform:
   m_Father: {fileID: 1375995454}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -227.49373, y: -42.490025}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -1120, y: 0}
   m_SizeDelta: {x: 1100, y: 780}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!95 &1885462529
 Animator:
   serializedVersion: 4
@@ -88494,7 +88493,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 234dfced3fb0ed14aaa11717a498a59c, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -93467,7 +93466,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -94394,7 +94393,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

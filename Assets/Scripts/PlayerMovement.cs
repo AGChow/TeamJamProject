@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     private Ray _cameraRay;
     private float vSpeed = 0f; // current vertical velocity
     private bool _isPaused;
-    [SerializeField]
     private PauseMenu _pauseMenu;
    
 
@@ -27,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         _mainCamera = Camera.main;
         _transform = transform;
         _ground = new Plane(Vector3.up, Vector3.zero);
+        _pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
     }
 
     void Update() {

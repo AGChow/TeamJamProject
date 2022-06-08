@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField]
     private PauseMenu _pauseMenu;
-    private Animator _animator;
+    private Animator _pauseAnimator;
 
     void Start()
     {
-        _animator = _pauseMenu.GetComponent<Animator>();
+        _pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
+        _pauseAnimator = _pauseMenu.GetComponent<Animator>();
     }
 
     void Update()
@@ -17,12 +17,12 @@ public class InputManager : MonoBehaviour
         {
             if(_pauseMenu.IsPaused())
             {
-                _animator.SetTrigger("PauseMenuExit");
+                _pauseAnimator.SetTrigger("PauseMenuExit");
                 Time.timeScale = 1f;
             }
             else
             {
-                _animator.SetTrigger("PauseMenuEnter");
+                _pauseAnimator.SetTrigger("PauseMenuEnter");
                 Time.timeScale = 0f;
             }
 

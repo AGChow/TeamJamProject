@@ -1,12 +1,13 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public Animator settingsMenuAnimator;
     private bool _isPaused = false;
     private PlayerMovement _playerMovement;
     private Animator _animator;
+    private bool _isSettingsMenuActive = false;
 
     void Awake()
     {
@@ -17,12 +18,26 @@ public class PauseMenu : MonoBehaviour
     {
         _isPaused = false;
         _animator.SetTrigger("PauseMenuExit");
+        if(_isSettingsMenuActive)
+        {
+            settingsMenuAnimator.SetTrigger("SettingsExit");
+            _isSettingsMenuActive = false;
+        }
         Time.timeScale = 1f;
     }
 
     public void Settings()
     {
+        if(_isSettingsMenuActive)
+        {
+            settingsMenuAnimator.SetTrigger("SettingsExit");
+        }
+        else
+        {
+            settingsMenuAnimator.SetTrigger("SettingsEnter");
+        }
 
+        _isSettingsMenuActive = !_isSettingsMenuActive;
     }
 
     public void ResetLevel()
@@ -48,14 +63,5 @@ public class PauseMenu : MonoBehaviour
     public void IsPaused(bool val)
     {
         _isPaused = val;
-    }
-
-    public IEnumerator EnableButtonAnimation(bool val)
-    {
-        yield return new WaitForSeconds(.3f);
-        foreach(Transform child in transform)
-        {
-            child.gameObject.GetComponent<Animator>().enabled = val;
-        }
     }
 }
