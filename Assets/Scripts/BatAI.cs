@@ -22,7 +22,7 @@ public class BatAI : MonoBehaviour
     void Awake() {
         _transform = transform;
         _focalPosition = focalPoint.position;
-        _transform.position = new Vector3(_focalPosition.x, _focalPosition.y + 3f, _focalPosition.z);
+        _transform.position = new Vector3(_focalPosition.x, _focalPosition.y + 2f, _focalPosition.z);
         _startPosition = _transform.position;
     }
 
@@ -75,7 +75,7 @@ public class BatAI : MonoBehaviour
         waypoints = new Vector3[numberOfWaypoints];
         for(int i = 0; i < numberOfWaypoints; i++) {
             float x = Random.Range(_focalPosition.x - radius, _focalPosition.x + radius);
-            float y = Random.Range(1.5f, 2.5f);
+            float y = Random.Range(1.2f, 2f);
             float z = Random.Range(_focalPosition.z - radius, _focalPosition.z + radius);
             waypoints[i] = new Vector3(x, y, z);
         }
