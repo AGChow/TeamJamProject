@@ -5111,7 +5111,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7818182, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -15966,6 +15966,7 @@ MonoBehaviour:
   watcherType: 0
   moveToLocation: {x: 0, y: 0, z: 0}
   moveTime: 1
+  canToggle: 0
 --- !u!1 &827952988
 GameObject:
   m_ObjectHideFlags: 0
@@ -21118,9 +21119,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.8687463
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 1.2505653, z: 0}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!143 &882034214
 CharacterController:
   m_ObjectHideFlags: 0
@@ -39959,6 +39960,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 599902357, guid: b7d64e003a3749345b05e969bfea1026, type: 3}
+      propertyPath: canToggle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7183753458839975232, guid: b7d64e003a3749345b05e969bfea1026, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -40006,6 +40011,14 @@ PrefabInstance:
     - target: {fileID: 7183753458839975260, guid: b7d64e003a3749345b05e969bfea1026, type: 3}
       propertyPath: m_Name
       value: Bridge
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183753458839975261, guid: b7d64e003a3749345b05e969bfea1026, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183753458839975261, guid: b7d64e003a3749345b05e969bfea1026, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7d64e003a3749345b05e969bfea1026, type: 3}

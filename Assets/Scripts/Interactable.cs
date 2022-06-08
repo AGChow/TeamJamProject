@@ -34,7 +34,10 @@ public class Interactable : MonoBehaviour
             {
                 foreach(Watcher watcher in watchers)
                 {
-                    watcher.Deactivate();
+                    if(watcher.canToggle)
+                    {
+                        watcher.Deactivate();
+                    }
                 }
             }
             _isActivated = value;
@@ -47,6 +50,15 @@ public class Interactable : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other)
+    {
+        print(other.name);
+        if(interactableNames.Contains(other.tag))
+        {
+            ToggleIsActivated();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
     {
         if(interactableNames.Contains(other.tag))
         {
