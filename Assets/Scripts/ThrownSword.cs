@@ -92,11 +92,11 @@ public class ThrownSword : MonoBehaviour
         if (other.CompareTag("Player"))
             HandlePlayerCollision(other.GetComponent<PlayerAttack>());
         else if (other.CompareTag("Environment") || other.CompareTag("Shield"))
-            HandleEnvironmentCollision();
+            HandleEnvironmentCollision(other.gameObject);
         else if (other.CompareTag("Torch"))
             HandleTorchCollision(other.gameObject);
         else if (other.CompareTag("Enemy"))
-            HandleEnemyCollision();
+            HandleEnemyCollision(other.gameObject);
         else if (other.CompareTag("Breakable"))
         {
             HandleBreakableCollision(other.gameObject);
@@ -110,8 +110,10 @@ public class ThrownSword : MonoBehaviour
         playerAttackScript.CatchWeapon();
     }
 
-    private void HandleEnvironmentCollision()
+    private void HandleEnvironmentCollision(GameObject enviroObj)
     {
+        //parent sword to it's collision surface
+        transform.parent = enviroObj.transform;
         print("hit environment");
         if (!_isRecalling)
             StopMovement();
@@ -125,9 +127,11 @@ public class ThrownSword : MonoBehaviour
         torch.GetComponent<Torch>().ToggleTorch();
     }
 
-    private void HandleEnemyCollision()
+    private void HandleEnemyCollision(GameObject enemyHit)
     {
         print("hit enemy");
+
+        enemyHit.GetComponent<EnemyHealth>().takeDamage();
         if (!_isRecalling)
             StopMovement();
 

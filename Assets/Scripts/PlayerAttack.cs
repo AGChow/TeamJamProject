@@ -91,6 +91,7 @@ public class PlayerAttack : MonoBehaviour
     {
         print("recall!");
         thrownWeaponObj.GetComponent<ThrownSword>().returnSpeedChange();
+        thrownWeaponObj.GetComponent<ThrownSword>().transform.parent = null;
         _swordScript.SetIsRecalling(true);
         _swordScript.MoveTo(transform);
     }
