@@ -72,6 +72,7 @@ public class Watcher : MonoBehaviour
     {
         // TODO: Replace with open door animation
         GetComponent<Renderer>().enabled = false;
+        
     }
     void DeactivateDoor()
     {
