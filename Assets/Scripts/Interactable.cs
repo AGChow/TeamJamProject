@@ -13,6 +13,7 @@ public class Interactable : MonoBehaviour
     public List<Watcher> watchers = new();
     private List<string> interactableNames = new();
     private bool _isActivated = false;
+
     public bool isActivated {
         get
         {
