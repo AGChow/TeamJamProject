@@ -9,6 +9,9 @@ TagManager:
   - Enemy
   - Sword
   - Shield
+  - Switch
+  - Breakable
+  - FloorSwitch
   layers:
   - Default
   - TransparentFX

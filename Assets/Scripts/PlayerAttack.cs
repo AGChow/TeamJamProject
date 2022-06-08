@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -55,11 +57,26 @@ public class PlayerAttack : MonoBehaviour
 
         thrownWeaponObj.GetComponent<ThrownSword>().throwSpeedChange();
 
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, _throwDistance))
+        List<RaycastHit> hits = new();
+        hits = Physics.RaycastAll(transform.position, transform.forward, _throwDistance).ToList();
+
+        if (hits.Count > 0)
         {
-            if (hit.collider != null)
+            bool foundTarget = false;
+
+            for (int i = 0; i < hits.Count; i++)
+            {
+                RaycastHit hit = hits[i];
+                if (hit.collider == null) continue;
+                if (hit.collider.CompareTag("FloorSwitch")) continue;
+                
                 throwTarget.transform.position = hit.point;
+                foundTarget = true;
+                break;
+            }
+
+            if(!foundTarget)
+                throwTarget.transform.position = transform.position + transform.forward * _throwDistance;
         }
         else
         {
