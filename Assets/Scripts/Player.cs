@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
         print("Player took damage! New health: " + _playerCurrentHealth);
         if(_playerCurrentHealth <= 0)
         {
+            GetComponent<Collider>().enabled = false;
             GameOver();
         }
         else
