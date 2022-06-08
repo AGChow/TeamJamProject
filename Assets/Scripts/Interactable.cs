@@ -52,7 +52,7 @@ public class Interactable : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print(other.name);
+        FindObjectOfType<CameraShake>().ScreenShake();
         if(interactableNames.Contains(other.tag))
         {
             ToggleIsActivated();
@@ -61,7 +61,6 @@ public class Interactable : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        print(other.name);
         if(interactableNames.Contains(other.tag))
         {
             ToggleIsActivated();
