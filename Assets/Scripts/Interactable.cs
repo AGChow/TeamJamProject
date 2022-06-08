@@ -36,7 +36,8 @@ public class Interactable : MonoBehaviour
                 {
                     if(watcher.canToggle)
                     {
-                        watcher.Deactivate();
+                        if(watcher.canToggle)
+                            watcher.Deactivate();
                     }
                 }
             }
@@ -60,6 +61,7 @@ public class Interactable : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+        print(other.name);
         if(interactableNames.Contains(other.tag))
         {
             ToggleIsActivated();
