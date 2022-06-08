@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject thrownWeaponObj;
     public Transform throwTarget;
     private ThrownSword _swordScript;
+    private PauseMenu _pauseMenu;
 
 
     private bool _hasWeapon = true;
@@ -16,10 +17,13 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         _swordScript = thrownWeaponObj.GetComponentInChildren<ThrownSword>();
+        _pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
     }
 
     void Update()
     {
+        if(_pauseMenu.IsPaused()) return;
+        
         HandleMouseInput();
     }
 

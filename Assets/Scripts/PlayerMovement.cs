@@ -18,15 +18,20 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _lookDirection;
     private Ray _cameraRay;
     private float vSpeed = 0f; // current vertical velocity
+    private bool _isPaused;
+    private PauseMenu _pauseMenu;
    
 
     void Awake() {
         _mainCamera = Camera.main;
         _transform = transform;
         _ground = new Plane(Vector3.up, Vector3.zero);
+        _pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
     }
 
     void Update() {
+        if(_pauseMenu.IsPaused()) return;
+
         HandleInput();
         HandleMovement();
         HandleRotation();
@@ -71,5 +76,10 @@ public class PlayerMovement : MonoBehaviour
             _lookDirection = _cameraRay.GetPoint(rayLength);
             _transform.LookAt(new Vector3(_lookDirection.x, _transform.position.y, _lookDirection.z));
         }
+    }
+
+    public void IsPaused(bool val)
+    {
+        _isPaused = val;
     }
 }
