@@ -11,6 +11,5 @@ public class GameOver : MonoBehaviour
     {
         int r = Random.Range(0, gameOverMessages.Count);
         gameOverText.text = gameOverMessages[r];
-        GetComponent<Animator>().SetTrigger("ShowGameOver");
     }
 }
