@@ -68,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 RaycastHit hit = hits[i];
                 if (hit.collider == null) continue;
-                if (hit.collider.CompareTag("FloorSwitch")) continue;
+                if (hit.collider.CompareTag("FloorSwitch") || hit.collider.CompareTag("Breakable")) continue;
                 
                 throwTarget.transform.position = hit.point;
                 foundTarget = true;
