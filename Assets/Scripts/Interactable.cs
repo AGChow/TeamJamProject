@@ -47,6 +47,7 @@ public class Interactable : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        FindObjectOfType<CameraShake>().ScreenShake();
         if(interactableNames.Contains(other.tag))
         {
             ToggleIsActivated();
