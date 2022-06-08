@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     private int _playerCurrentHealth = 3;
     private bool _isInvincible = false;
 
+    [SerializeField]
+    private GameObject gameOver;
+
     void Awake()
     {
         Heal(_playerMaxHealth);
@@ -40,7 +43,7 @@ public class Player : MonoBehaviour
 
     public void GameOver()
     {
-        print("Game over!");
+        gameOver.SetActive(true);
     }
 
     IEnumerator Invincible()
