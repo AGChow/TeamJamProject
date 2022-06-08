@@ -3,12 +3,10 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     private PauseMenu _pauseMenu;
-    private Animator _pauseAnimator;
 
     void Start()
     {
         _pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
-        _pauseAnimator = _pauseMenu.GetComponent<Animator>();
     }
 
     void Update()
@@ -17,16 +15,14 @@ public class InputManager : MonoBehaviour
         {
             if(_pauseMenu.IsPaused())
             {
-                _pauseAnimator.SetTrigger("PauseMenuExit");
-                Time.timeScale = 1f;
+                _pauseMenu.UnPause();
             }
             else
             {
-                _pauseAnimator.SetTrigger("PauseMenuEnter");
-                Time.timeScale = 0f;
+                _pauseMenu.Pause();
             }
 
-            _pauseMenu.IsPaused(!_pauseMenu.IsPaused());
+            _pauseMenu.TogglePause();
         }
     }
 }

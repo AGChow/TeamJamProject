@@ -18,11 +18,7 @@ public class PauseMenu : MonoBehaviour
     {
         _isPaused = false;
         _animator.SetTrigger("PauseMenuExit");
-        if(_isSettingsMenuActive)
-        {
-            settingsMenuAnimator.SetTrigger("SettingsExit");
-            _isSettingsMenuActive = false;
-        }
+        CheckSettingsMenuClose();
         Time.timeScale = 1f;
     }
 
@@ -42,11 +38,13 @@ public class PauseMenu : MonoBehaviour
 
     public void ResetLevel()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("StartScreen");
     }
 
@@ -60,8 +58,30 @@ public class PauseMenu : MonoBehaviour
         return _isPaused;
     }
 
-    public void IsPaused(bool val)
+    public void Pause()
     {
-        _isPaused = val;
+        _animator.SetTrigger("PauseMenuEnter");
+        Time.timeScale = 0f;
+    }
+
+    public void UnPause()
+    {
+        _animator.SetTrigger("PauseMenuExit");
+        CheckSettingsMenuClose();
+        Time.timeScale = 1f;
+    }
+
+    public void TogglePause()
+    {
+        _isPaused = !_isPaused;
+    }
+
+    void CheckSettingsMenuClose()
+    {
+        if(_isSettingsMenuActive)
+        {
+            settingsMenuAnimator.SetTrigger("SettingsExit");
+            _isSettingsMenuActive = false;
+        }
     }
 }
