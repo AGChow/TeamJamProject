@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class BatAI : MonoBehaviour
 {
-    public Transform focalPoint;
+    //public Transform focalPoint;
     public Torch torch;
+    public GameObject eyesGraphics;
     public int numberOfWaypoints = 10;
     public float speed = 10f;
     public float radius = 5f;
@@ -21,7 +22,8 @@ public class BatAI : MonoBehaviour
 
     void Awake() {
         _transform = transform;
-        _focalPosition = focalPoint.position;
+        //_focalPosition = focalPoint.position;
+        _focalPosition = transform.position;    
         _transform.position = new Vector3(_focalPosition.x, _focalPosition.y + 2f, _focalPosition.z);
         _startPosition = _transform.position;
     }
@@ -32,14 +34,21 @@ public class BatAI : MonoBehaviour
     }
 
     void Update() {
+
+        //behavior when torch is off(AGC)
         if(!torch.isLit) {
                 _transform.position = _startPosition; // TODO: Convert into flying away
+                eyesGraphics.SetActive(false);
                 return;
             }
         if(Vector3.Distance(_transform.position, target) < 1) {
             IterateWaypointIndex();
             UpdateDestination();
-        } else {
+        } 
+        //behavior when torch is on(AGC)
+        else {
+            eyesGraphics.SetActive(true);
+
             Vector3 vec = myBezier.GetPointAtTime(t);
             _transform.rotation = Quaternion.Slerp(_transform.rotation, lookOnLook, speed * Time.deltaTime * 10f);
             _transform.position = vec;

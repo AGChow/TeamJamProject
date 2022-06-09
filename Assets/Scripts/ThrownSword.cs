@@ -130,12 +130,14 @@ public class ThrownSword : MonoBehaviour
     private void HandleEnemyCollision(GameObject enemyHit)
     {
         print("hit enemy");
+        FindObjectOfType<AudioManager>().Play("placeholder");
+        FindObjectOfType<CameraShake>().ScreenShake(.3f, .8f, 1);
 
         enemyHit.GetComponent<EnemyHealth>().takeDamage();
         if (!_isRecalling)
             StopMovement();
 
-        FindObjectOfType<AudioManager>().Play("placeholder");
+
     }
 
     private void HandleBreakableCollision(GameObject breakableObj)

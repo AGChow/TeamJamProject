@@ -5,18 +5,10 @@ public class PuzzleManager : MonoBehaviour
 {
 
     public GameObject[] puzzleElements;
+
+    [SerializeField]
+    private GameObject mainLight;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void CheckCompleteConditions()
     {
@@ -24,6 +16,8 @@ public class PuzzleManager : MonoBehaviour
 
         if(AllTorchesLit() == true)
         {
+            Debug.Log("CheckCheckCheck");
+
             StartCoroutine(FinishPuzzleEvent());
         }
     }
@@ -32,6 +26,7 @@ public class PuzzleManager : MonoBehaviour
     {
         bool[] lit = new bool[puzzleElements.Length];
 
+        //iterates through array of torches to make sure they are on. Fails if one is false
         for (int i = 0; i < puzzleElements.Length; i++)
         {
             if (puzzleElements[i].GetComponent<Torch>().isLit == false)
@@ -48,8 +43,12 @@ public class PuzzleManager : MonoBehaviour
     {
         Debug.Log("You did it");
         yield return new WaitForSeconds(1f);
+
+        //turn on light and maybe lerp intensity to 1
+        mainLight.SetActive(true);
+        mainLight.GetComponent<Light>().intensity = 1;
+
         //unlock door
-        //turn on lights in room
         //play complete sound
     }
 }

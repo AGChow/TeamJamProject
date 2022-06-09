@@ -40,6 +40,10 @@ public class Sword : MonoBehaviour
 
                 _swungAtShield = false;
             }
+            else
+            {
+                HandleEnemyCollision(other.gameObject);
+            }
         }
     }
 
@@ -54,5 +58,17 @@ public class Sword : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         _collider.enabled = false;
+    }
+
+
+    private void HandleEnemyCollision(GameObject enemyHit)
+    {
+        print("hit enemy");
+        FindObjectOfType<AudioManager>().Play("placeholder");
+        FindObjectOfType<CameraShake>().ScreenShake(.3f, .8f, 1);
+
+        enemyHit.GetComponent<EnemyHealth>().takeDamage();
+
+
     }
 }

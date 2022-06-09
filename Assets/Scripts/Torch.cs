@@ -6,6 +6,7 @@ public class Torch : MonoBehaviour
 {
     public ParticleSystem torchLight;
     private PlayerMovement _player;
+    [SerializeField]
     private PuzzleManager _puzzleManager;
 
     [SerializeField]
@@ -21,15 +22,6 @@ public class Torch : MonoBehaviour
         set {
             //Turn the torch on
             if(_isLit == false && value == true) {
-
-                //Checks to see if all other torches are lit to complete the puzzles
-                if(_puzzleManager)
-                {
-                    _puzzleManager.CheckCompleteConditions();
-                }
-                
-
-
 
                 fireParticles.SetActive(true);
                 torchLight.Play();
@@ -47,7 +39,7 @@ public class Torch : MonoBehaviour
         }
     }
 
-    void Start() {
+    void Awake() {
         isLit = false;
         _player = GameObject.FindObjectOfType<PlayerMovement>();
         _puzzleManager = FindObjectOfType<PuzzleManager>();
@@ -63,14 +55,22 @@ public class Torch : MonoBehaviour
 
     public void ToggleTorch() {
         isLit = !isLit;
+        //Checks to see if all other torches are lit to complete the puzzles
+        if (_puzzleManager != null)
+        {
+            _puzzleManager.CheckCompleteConditions();
+        }
     }
 
     IEnumerator TorchTurnOffCounter()
     {
+        //what does this do?(Ari)
         PlayerAttack playerAttack = GameObject.FindObjectOfType<PlayerAttack>();
         while(!playerAttack.HasWeapon()) {
             yield return null;
         }
+
+
         yield return new WaitForSeconds(torchTimer);
         if (isLit == true)
         {
