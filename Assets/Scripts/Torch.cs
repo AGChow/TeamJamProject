@@ -27,12 +27,12 @@ public class Torch : MonoBehaviour
                 torchLight.Play();
                 if(_isTimerTorch == true)
                 {
+                    StopAllCoroutines();
                     StartCoroutine(TorchTurnOffCounter());
                 }
             }
             //Turn the torch off
             else if(_isLit == true && value == false) {
-                torchTimer = 0;
                 fireParticles.SetActive(false);
                 torchLight.Stop();
             }
@@ -51,7 +51,6 @@ public class Torch : MonoBehaviour
     }
 
     public void ExtinguishTorch() {
-        torchTimer = 0;
         isLit = false;
     }
 
@@ -72,7 +71,7 @@ public class Torch : MonoBehaviour
             yield return null;
         }
 
-
+        
         yield return new WaitForSeconds(torchTimer);
         if (isLit == true)
         {

@@ -24,16 +24,16 @@ public class Sword : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Shield"))
+        if (other.CompareTag("Shield"))
             _swungAtShield = true;
-        if(other.CompareTag("Torch"))
+        else if (other.CompareTag("Torch"))
             other.GetComponent<Torch>().ToggleTorch();
-        if(other.CompareTag("Enemy"))
+        else if (other.CompareTag("Enemy"))
         {
-            
-            if(other.GetComponent<ShieldEnemy>()) {
+
+            if (other.GetComponent<ShieldEnemy>()) {
                 ShieldEnemy _shieldEnemy = other.GetComponent<ShieldEnemy>();
-                if(_shieldEnemy.IsShielded() && _swungAtShield)
+                if (_shieldEnemy.IsShielded() && _swungAtShield)
                     print("Hit shield");
                 else
                     print("Damaged enemy: " + other.name);
@@ -45,6 +45,9 @@ public class Sword : MonoBehaviour
                 HandleEnemyCollision(other.gameObject);
             }
         }
+
+        else if (other.CompareTag("Breakable"))
+            HandleBreakableCollision(other.gameObject);
     }
 
     IEnumerator Swing()
@@ -68,7 +71,12 @@ public class Sword : MonoBehaviour
         FindObjectOfType<CameraShake>().ScreenShake(.2f, .5f, 1);
 
         enemyHit.GetComponent<EnemyHealth>().takeDamage();
+    }
 
 
+    private void HandleBreakableCollision(GameObject breakableObj)
+    {
+        Debug.Log("Break");
+        breakableObj.GetComponent<BreakableObject>().ObjectDestruction();
     }
 }

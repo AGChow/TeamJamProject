@@ -50,5 +50,6 @@ public class PuzzleManager : MonoBehaviour
 
         //unlock door
         //play complete sound
+        //keep timed torches on
     }
 }

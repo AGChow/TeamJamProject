@@ -12,6 +12,8 @@ TagManager:
   - Switch
   - Breakable
   - FloorSwitch
+  - FxTemporaire
+  - BounceBack
   layers:
   - Default
   - TransparentFX

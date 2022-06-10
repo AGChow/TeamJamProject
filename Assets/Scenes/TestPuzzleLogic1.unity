@@ -455,7 +455,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7767857, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2504,7 +2504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1073776648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14838,6 +14838,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 599902357, guid: b7d64e003a3749345b05e969bfea1026, type: 3}
+      propertyPath: canToggle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 599902357, guid: b7d64e003a3749345b05e969bfea1026, type: 3}
+      propertyPath: watcherType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 599902357, guid: b7d64e003a3749345b05e969bfea1026, type: 3}
       propertyPath: moveToLocation.x
       value: 9

@@ -59,7 +59,7 @@ public class ThrownSword : MonoBehaviour
 
     private void UpdatePosition()
     {
-        if(Vector3.Distance(_transform.position, _target.position) < 1f)
+        if(Vector3.Distance(_transform.position, _target.position) <= 1f)
         {
             HandlePlayerCollision(GameObject.FindObjectOfType<PlayerAttack>());
         }
@@ -101,9 +101,9 @@ public class ThrownSword : MonoBehaviour
         else if (other.CompareTag("Enemy"))
             HandleEnemyCollision(other.gameObject);
         else if (other.CompareTag("Breakable"))
-        {
             HandleBreakableCollision(other.gameObject);
-        }
+        else if (other.CompareTag("BounceBack"))
+            HandleBounceBackCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>());
     }
 
     private void HandlePlayerCollision(PlayerAttack playerAttackScript)
@@ -117,6 +117,9 @@ public class ThrownSword : MonoBehaviour
     {
         //parent sword to it's collision surface
         transform.parent = enviroObj.transform;
+
+
+
         print("hit environment");
         if (!_isRecalling)
             StopMovement();
@@ -146,7 +149,15 @@ public class ThrownSword : MonoBehaviour
     private void HandleBreakableCollision(GameObject breakableObj)
     {
         Debug.Log("Break");
+        if (!_isRecalling)
+            StopMovement();
         breakableObj.GetComponent<BreakableObject>().ObjectDestruction();
+
+    }
+
+    private void HandleBounceBackCollision(PlayerAttack playerAttackScript)
+    {
+        playerAttackScript.RecallWeapon();
 
     }
 }

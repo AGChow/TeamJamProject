@@ -93,7 +93,7 @@ public class PlayerAttack : MonoBehaviour
         _hasWeapon = false;
     }
 
-    private void RecallWeapon()
+    public void RecallWeapon()
     {
         print("recall!");
         thrownWeaponObj.GetComponent<ThrownSword>().returnSpeedChange();
