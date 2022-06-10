@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2180399767950378557
+--- !u!1 &1248436478508650142
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1515890797104766087}
-  - component: {fileID: 2496785507279278882}
-  - component: {fileID: 379052756723918824}
-  - component: {fileID: 1333980114292342354}
-  - component: {fileID: 1185935857619841736}
+  - component: {fileID: 6423438113365086875}
+  - component: {fileID: 3437911961308855171}
+  - component: {fileID: 8990789743305983397}
+  - component: {fileID: 6776108947047322789}
   m_Layer: 0
-  m_Name: JarBreak
-  m_TagString: Breakable
+  m_Name: Platform
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1515890797104766087
+--- !u!4 &6423438113365086875
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2180399767950378557}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.3518515, y: -0.0000009536743, z: 2.0102472}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_GameObject: {fileID: 1248436478508650142}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 14.98, y: 0, z: 11.04}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2496785507279278882
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!33 &3437911961308855171
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2180399767950378557}
-  m_Mesh: {fileID: -1877909025172052599, guid: 8137e76e02f2e8a4a8e9d91d25546f38, type: 3}
---- !u!23 &379052756723918824
+  m_GameObject: {fileID: 1248436478508650142}
+  m_Mesh: {fileID: 1149973307703454695, guid: bcc1aafeda7ec2341b89b80dc5d625f0, type: 3}
+--- !u!23 &8990789743305983397
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2180399767950378557}
+  m_GameObject: {fileID: 1248436478508650142}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,8 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 38d0fd7ef0922c2448218e959ee81b2f, type: 2}
-  - {fileID: 2100000, guid: 388ecd622540d3246bb5530661075fa8, type: 2}
+  - {fileID: 2100000, guid: c92c8568826f7064c89981dc85801d32, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,29 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1333980114292342354
+--- !u!65 &6776108947047322789
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2180399767950378557}
+  m_GameObject: {fileID: 1248436478508650142}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.68762857, y: 1.8645405, z: 0.6876286}
-  m_Center: {x: 0, y: 0.9207006, z: -0.00000011920929}
---- !u!114 &1185935857619841736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2180399767950378557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93a4422e798a24d4bb511574c209d661, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _debrisParticles: {fileID: 7880065394888652437, guid: 4590829d3bde76b4b9886d2032d71446, type: 3}
+  m_Size: {x: 0.02, y: 0.020000005, z: 0.010263037}
+  m_Center: {x: 0, y: 0, z: 0.0050933072}

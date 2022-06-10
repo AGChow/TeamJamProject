@@ -15,7 +15,7 @@ public class ThrownSword : MonoBehaviour
     private float _returnSpeed = 25f;
 
     // variable to adjust swordHeight(Ari)
-    private float _height = 1f;
+    private float _height = 1.5f;
 
     private Transform _transform;
     private Transform _target;
@@ -131,7 +131,7 @@ public class ThrownSword : MonoBehaviour
     {
         print("hit enemy");
         FindObjectOfType<AudioManager>().Play("placeholder");
-        FindObjectOfType<CameraShake>().ScreenShake(.3f, .8f, 1);
+        FindObjectOfType<CameraShake>().ScreenShake(.3f, .5f, 1);
 
         enemyHit.GetComponent<EnemyHealth>().takeDamage();
         if (!_isRecalling)

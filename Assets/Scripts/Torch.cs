@@ -11,7 +11,7 @@ public class Torch : MonoBehaviour
 
     [SerializeField]
     private bool _isLit = false;
-    public bool timerTorch = false;
+    public bool _isTimerTorch = false;
 
     public GameObject fireParticles;
 
@@ -25,13 +25,14 @@ public class Torch : MonoBehaviour
 
                 fireParticles.SetActive(true);
                 torchLight.Play();
-                if(timerTorch == true)
+                if(_isTimerTorch == true)
                 {
                     StartCoroutine(TorchTurnOffCounter());
                 }
             }
             //Turn the torch off
             else if(_isLit == true && value == false) {
+                torchTimer = 0;
                 fireParticles.SetActive(false);
                 torchLight.Stop();
             }
@@ -50,6 +51,7 @@ public class Torch : MonoBehaviour
     }
 
     public void ExtinguishTorch() {
+        torchTimer = 0;
         isLit = false;
     }
 

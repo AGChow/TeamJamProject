@@ -9,6 +9,10 @@ public class BatAI : MonoBehaviour
     public float speed = 10f;
     public float radius = 5f;
 
+
+    //animation
+    private Animator anim;
+
     private Vector3[] waypoints;
     private int waypointIndex;
     private Vector3 target;
@@ -21,6 +25,9 @@ public class BatAI : MonoBehaviour
     private float t = 0f;
 
     void Awake() {
+
+        anim = GetComponentInChildren<Animator>();
+
         _transform = transform;
         //_focalPosition = focalPoint.position;
         _focalPosition = transform.position;    
@@ -37,8 +44,11 @@ public class BatAI : MonoBehaviour
 
         //behavior when torch is off(AGC)
         if(!torch.isLit) {
+
+
                 _transform.position = _startPosition; // TODO: Convert into flying away
                 eyesGraphics.SetActive(false);
+                anim.SetBool("Awake", false);
                 return;
             }
         if(Vector3.Distance(_transform.position, target) < 1) {
@@ -47,6 +57,8 @@ public class BatAI : MonoBehaviour
         } 
         //behavior when torch is on(AGC)
         else {
+            anim.SetBool("Awake", true);
+
             eyesGraphics.SetActive(true);
 
             Vector3 vec = myBezier.GetPointAtTime(t);

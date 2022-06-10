@@ -55,7 +55,7 @@ public class Sword : MonoBehaviour
         //yield return new WaitForSeconds(_playerAnimator.GetCurrentAnimatorStateInfo(0).length
         //    + _playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime
         //);
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.3f);
 
         _collider.enabled = false;
     }

@@ -12,12 +12,18 @@ public class PlayerAttack : MonoBehaviour
     private PauseMenu _pauseMenu;
 
 
+    //animation
+    private Animator _playerAnimator;
+
+
+
     private bool _hasWeapon = true;
     [SerializeField]
     private float _throwDistance = 17f;
 
     private void Awake()
     {
+        _playerAnimator = GetComponentInChildren<Animator>();
         _swordScript = thrownWeaponObj.GetComponentInChildren<ThrownSword>();
         _pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
     }
