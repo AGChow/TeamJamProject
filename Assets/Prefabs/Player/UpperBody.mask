@@ -37,6 +37,8 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Paladin/spine/spine.001/spine.002/spine.003/Cape/Cape.001/Cape.002/Cape.003/Cape.004/Cape.005
     m_Weight: 1
+  - m_Path: Paladin/spine/spine.001/spine.002/spine.003/Cape/Cape.001/Cape.002/Cape.003/Cape.004/Cape.005/Cape.005_end
+    m_Weight: 1
   - m_Path: Paladin/spine/spine.001/spine.002/spine.003/shoulder.L
     m_Weight: 1
   - m_Path: Paladin/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L
@@ -44,6 +46,8 @@ AvatarMask:
   - m_Path: Paladin/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L
     m_Weight: 1
   - m_Path: Paladin/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L
+    m_Weight: 1
+  - m_Path: Paladin/spine/spine.001/spine.002/spine.003/shoulder.L/upper_arm.L/forearm.L/hand.L/hand.L_end
     m_Weight: 1
   - m_Path: Paladin/spine/spine.001/spine.002/spine.003/shoulder.R
     m_Weight: 1
@@ -53,6 +57,8 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Paladin/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R
     m_Weight: 1
+  - m_Path: Paladin/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R/hand.R_end
+    m_Weight: 1
   - m_Path: Paladin/spine/spine.001/spine.002/spine.003/spine.004
     m_Weight: 1
   - m_Path: Paladin/spine/spine.001/spine.002/spine.003/spine.004/spine.005
@@ -60,6 +66,8 @@ AvatarMask:
   - m_Path: Paladin/spine/spine.001/spine.002/spine.003/spine.004/spine.005/spine.006
     m_Weight: 1
   - m_Path: Paladin/spine/spine.001/spine.002/spine.003/spine.004/spine.005/spine.006/face
+    m_Weight: 1
+  - m_Path: Paladin/spine/spine.001/spine.002/spine.003/spine.004/spine.005/spine.006/face/face_end
     m_Weight: 1
   - m_Path: Paladin/spine/thigh.L
     m_Weight: 1
@@ -69,6 +77,8 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Paladin/spine/thigh.L/shin.L/foot.L/toe.L
     m_Weight: 1
+  - m_Path: Paladin/spine/thigh.L/shin.L/foot.L/toe.L/toe.L_end
+    m_Weight: 1
   - m_Path: Paladin/spine/thigh.R
     m_Weight: 1
   - m_Path: Paladin/spine/thigh.R/shin.R
@@ -77,5 +87,5 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Paladin/spine/thigh.R/shin.R/foot.R/toe.R
     m_Weight: 1
-  - m_Path: Sword
+  - m_Path: Paladin/spine/thigh.R/shin.R/foot.R/toe.R/toe.R_end
     m_Weight: 1

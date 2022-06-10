@@ -32,6 +32,9 @@ public class ThrownSword : MonoBehaviour
             Spin();
         if (_isMoving)
             UpdatePosition();
+
+
+
     }
 
     public void SetIsRecalling(bool active)
@@ -131,7 +134,7 @@ public class ThrownSword : MonoBehaviour
     {
         print("hit enemy");
         FindObjectOfType<AudioManager>().Play("placeholder");
-        FindObjectOfType<CameraShake>().ScreenShake(.3f, .5f, 1);
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .5f, 1);
 
         enemyHit.GetComponent<EnemyHealth>().takeDamage();
         if (!_isRecalling)

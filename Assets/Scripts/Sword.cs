@@ -65,7 +65,7 @@ public class Sword : MonoBehaviour
     {
         print("hit enemy");
         FindObjectOfType<AudioManager>().Play("placeholder");
-        FindObjectOfType<CameraShake>().ScreenShake(.3f, .8f, 1);
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .5f, 1);
 
         enemyHit.GetComponent<EnemyHealth>().takeDamage();
 

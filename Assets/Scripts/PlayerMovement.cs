@@ -20,13 +20,28 @@ public class PlayerMovement : MonoBehaviour
     private float vSpeed = 0f; // current vertical velocity
     private bool _isPaused;
     private PauseMenu _pauseMenu;
+
+    //animation
+    private Animator anim;
+    [SerializeField]
+    private float velocity;
+    private Vector3 previousPos;
+
    
 
     void Awake() {
+
+        anim = GetComponentInChildren<Animator>();
+
         _mainCamera = Camera.main;
         _transform = transform;
         _ground = new Plane(Vector3.up, Vector3.zero);
         _pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
+    }
+
+    private void Start()
+    {
+        
     }
 
     void Update() {
@@ -58,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
     void HandleMovement() {
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
+        previousPos = transform.position;
         if (characterController.isGrounded){
             vSpeed = 0;
         }
@@ -66,6 +82,21 @@ public class PlayerMovement : MonoBehaviour
         
         if(_moveDirection.magnitude >= 0.1f) {
             characterController.Move(_moveDirection * speed * Time.deltaTime);
+        }
+
+
+        //animation logic
+        velocity = (transform.position - previousPos).magnitude / Time.deltaTime;
+
+        if (velocity >= .5f)
+        {
+            //going to add direction animations eventually(Ari)
+            anim.SetBool("Running", true);
+            Debug.Log("should be running");
+        }
+        else
+        {
+            anim.SetBool("Running", false);
         }
     }
 
