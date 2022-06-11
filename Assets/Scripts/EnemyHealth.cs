@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -11,7 +10,6 @@ public class EnemyHealth : MonoBehaviour
 
     public void takeDamage()
     {
-
         Health = Health - 1;
         Instantiate(_hitParticles, transform.position, transform.rotation);
         //below code means this script requires a material change componenet in the object with the renderer
@@ -22,7 +20,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public void CheckHealth()
     {
-        if(Health <= 0)
+        if (Health <= 0)
         {
             StartCoroutine(Death());
         }
@@ -44,6 +42,5 @@ public class EnemyHealth : MonoBehaviour
         Time.timeScale = .1f;
         yield return new WaitForSeconds(.04f);
         Time.timeScale = 1;
-
     }
 }

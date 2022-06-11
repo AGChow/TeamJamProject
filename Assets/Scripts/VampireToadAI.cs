@@ -17,6 +17,8 @@ public class VampireToadAI : MonoBehaviour
     {
         // anim = GetComponentInChildren<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent.speed = speed / 3;
+        _navMeshAgent.acceleration = speed / 3;
     }
 
     [System.Obsolete]

@@ -847,6 +847,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3544793350222597336, guid: 390d8640f99e4394b92a8ae0347824b1, type: 3}
   m_PrefabInstance: {fileID: 440986436}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &462996725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7152557751692259239, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
+  m_PrefabInstance: {fileID: 1733787133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &462996730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462996725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 343c1700f2d04af4198119f233e6c84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: b9df19207dd93bc4597502d328aebb15, type: 2}
+  - {fileID: 2100000, guid: 5bfd4f66cf29a274a8bb0774b3b5f36b, type: 2}
 --- !u!1001 &558576935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2948,6 +2968,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 115713637960379302, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
+      propertyPath: Health
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 115713637960379306, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
+      propertyPath: m_Height
+      value: 12.867722
+      objectReference: {fileID: 0}
+    - target: {fileID: 115713637960379306, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 115713637960379306, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 115713637960379306, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
+      propertyPath: m_Center.y
+      value: 1.4338608
+      objectReference: {fileID: 0}
+    - target: {fileID: 115713637960379306, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7152557751692259236, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b9df19207dd93bc4597502d328aebb15, type: 2}
     - target: {fileID: 7329074179195349523, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
       propertyPath: m_Name
       value: VampireToad
@@ -2997,6 +3045,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9210987330148458423, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210987330148458423, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
       propertyPath: torch
       value: 
       objectReference: {fileID: 8142927729119441429}
@@ -3004,7 +3056,8 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 372276505}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7152557751692259237, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
 --- !u!1 &1856553122 stripped
 GameObject:
