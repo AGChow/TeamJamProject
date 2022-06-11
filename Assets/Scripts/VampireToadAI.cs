@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.AI;
 public class VampireToadAI : MonoBehaviour
 {
     public Torch torch;
@@ -8,34 +8,32 @@ public class VampireToadAI : MonoBehaviour
 
 
     //animation
-    private Animator anim;
-    private Vector3 target;
-    private Transform _transform;
+    // private Animator anim;
+
+    [SerializeField] private Transform target;
+    private NavMeshAgent _navMeshAgent;
 
     void Awake()
     {
-        anim = GetComponentInChildren<Animator>();
-        _transform = transform;
+        // anim = GetComponentInChildren<Animator>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    void Start()
-    {
-
-    }
-
+    [System.Obsolete]
     void Update()
     {
         //behavior when torch is on
         if (torch.isLit)
         {
             eyesGraphics.SetActive(false);
-            anim.SetBool("Awake", false);
-            return;
+            // anim.SetBool("Awake", false);
+            _navMeshAgent.destination = transform.position;
         }
         //behavior when torch is off
         else
         {
-            anim.SetBool("Awake", true);
+            _navMeshAgent.destination = target.position;
+            // anim.SetBool("Awake", true);
             eyesGraphics.SetActive(true);
         }
     }
