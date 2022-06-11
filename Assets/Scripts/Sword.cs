@@ -9,6 +9,9 @@ public class Sword : MonoBehaviour
     private Animator _playerAnimator;
     private bool _swungAtShield = false;
 
+    [SerializeField]
+    private TrailRenderer swingTrail;
+
     private Collider _collider;
 
     void Start()
@@ -53,14 +56,17 @@ public class Sword : MonoBehaviour
     IEnumerator Swing()
     {
         _playerAnimator.SetTrigger("SwingSword");
+        swingTrail.emitting = true;
 
         // Wait until end of sword-swinging animation - can be uncommented and replace the hard-coded value below when animation is implemented
         //yield return new WaitForSeconds(_playerAnimator.GetCurrentAnimatorStateInfo(0).length
         //    + _playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime
         //);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
 
         _collider.enabled = false;
+        swingTrail.emitting = false;
+
     }
 
 
