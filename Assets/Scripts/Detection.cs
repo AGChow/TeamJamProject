@@ -8,9 +8,18 @@ public class Detection : MonoBehaviour
     //enemy behavior needs trigger collider as child to detect
     public bool agro;
     public bool torchReaction;
+    public GameObject torchInRange;
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
+        if(torchInRange == null)
+        {
+            return;
+        }
+        else
+        {
+            torchReaction = torchInRange.GetComponent<Torch>().isLit;
+        }
         
     }
 
@@ -22,7 +31,7 @@ public class Detection : MonoBehaviour
         }
         else if(other.CompareTag("Torch"))
         {
-            HandleTorchDetect(other.gameObject.GetComponent<Torch>());
+            HandleTorchDetect(other.gameObject);
         }
     }
 
@@ -46,16 +55,13 @@ public class Detection : MonoBehaviour
     {
         agro = false;
     }
-    public void HandleTorchDetect(Torch torch)
+    public void HandleTorchDetect(GameObject torch)
     {
-        if (torch.isLit == true)
-        {
-            torchReaction = true;
-        }
+        torchInRange = torch;
         
     }
     public void HandleTorchLoss()
     {
-        torchReaction = false;
+        torchInRange = null;
     }
 }

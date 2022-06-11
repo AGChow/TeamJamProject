@@ -36,12 +36,13 @@ public class StoneEnemy : MonoBehaviour
         {
             unfreeze();
         }
-        if (detectBools.agro == true && frozen == false)
+
+        if (detectBools.agro == true && detectBools.torchReaction == false)
         {
             moveToPlayer();
         }
 
-        else
+        else if (detectBools.agro == false && detectBools.torchReaction == false)
         {
             rest(); 
         }

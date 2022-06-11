@@ -24156,6 +24156,7 @@ GameObject:
   - component: {fileID: 9081873231209716353}
   - component: {fileID: 5865499273081289560}
   - component: {fileID: 5865499273081289563}
+  - component: {fileID: -7579772797909124006}
   m_Layer: 0
   m_Name: TorchStone
   m_TagString: Torch
@@ -24260,3 +24261,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.021569543, y: 0.022498041, z: 0.07395888}
   m_Center: {x: -0.00026251248, y: 0.0012490012, z: 0.036976814}
+--- !u!54 &-7579772797909124006
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5865499273081289561}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

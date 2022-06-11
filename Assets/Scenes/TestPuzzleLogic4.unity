@@ -563,7 +563,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.78, y: 1}
+    m_SensorSize: {x: 1.7769029, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -988,6 +988,7 @@ GameObject:
   - component: {fileID: 378898901}
   - component: {fileID: 378898905}
   - component: {fileID: 378898906}
+  - component: {fileID: 378898907}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1106,6 +1107,22 @@ MonoBehaviour:
   enemySpeed: 3
   frozen: 0
   attack1Range: 2
+--- !u!54 &378898907
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378898900}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1001 &405398272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1445,8 +1462,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536548321}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.17}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalPosition: {x: 0, y: 0, z: 2.6}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 378898904}
@@ -1466,6 +1483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agro: 0
   torchReaction: 0
+  torchInRange: {fileID: 0}
 --- !u!135 &536548324
 SphereCollider:
   m_ObjectHideFlags: 0
