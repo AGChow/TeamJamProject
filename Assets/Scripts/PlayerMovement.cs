@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float turnSpeed = 90f;
     public float gravity = 9.8f;
     public List<GameObject> activeTriggers = new();
+    public ParticleSystem dustParticles;
 
     private float _horizontal;
     private float _vertical;
@@ -92,11 +93,14 @@ public class PlayerMovement : MonoBehaviour
         {
             //going to add direction animations eventually(Ari)
             anim.SetBool("Running", true);
+            dustParticles.Play();
             Debug.Log("should be running");
         }
         else
         {
             anim.SetBool("Running", false);
+            dustParticles.Stop();
+
         }
     }
 
