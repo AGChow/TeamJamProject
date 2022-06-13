@@ -96,7 +96,6 @@ public class PlayerMovement : MonoBehaviour
             //going to add direction animations eventually(Ari)
             anim.SetBool("Running", true);
             dustParticles.Play();
-            Debug.Log("should be running");
         }
         else
         {
