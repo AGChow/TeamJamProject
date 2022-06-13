@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 public class VampireToadAI : MonoBehaviour
@@ -5,6 +6,7 @@ public class VampireToadAI : MonoBehaviour
     public Torch torch;
     public GameObject eyesGraphics;
     public float speed = 10f;
+    public Rigidbody rb;
 
 
     //animation
@@ -19,6 +21,7 @@ public class VampireToadAI : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.speed = speed / 3;
         _navMeshAgent.acceleration = speed / 3;
+        rb = GetComponent<Rigidbody>();
     }
 
     [System.Obsolete]
@@ -38,13 +41,24 @@ public class VampireToadAI : MonoBehaviour
             // anim.SetBool("Awake", true);
             eyesGraphics.SetActive(true);
         }
+
+        
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().Damage(5);
+            if(!torch.isLit)
+                other.GetComponent<Player>().Damage(5);
+        }
+    }
+    public IEnumerator DecreaseVelocity()
+    {
+        yield return new WaitForSeconds(.5f);
+        while(rb.velocity != Vector3.zero)
+        {
+            rb.velocity = rb.velocity * Mathf.Pow(.99f, 2f) * Time.deltaTime;
         }
     }
 }

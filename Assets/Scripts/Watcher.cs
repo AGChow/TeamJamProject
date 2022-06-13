@@ -18,6 +18,7 @@ public class Watcher : MonoBehaviour
     private Vector3 originalLocation;
 
     private Transform _transform;
+    private IEnumerator _co;
 
     void Awake()
     {
@@ -84,14 +85,18 @@ public class Watcher : MonoBehaviour
     // Platform handling
     void ActivatePlatform()
     {
-        print("Activate");
-        StartCoroutine(LerpPosition(moveToLocation, moveTime));
+        if(_co != null)
+            StopCoroutine(_co);
+        _co = LerpPosition(moveToLocation, moveTime);
+        StartCoroutine(_co);
     }
 
     void DeactivatePlatform()
     {
-        print("Deactivate");
-        StartCoroutine(LerpPosition(originalLocation, moveTime));
+        if(_co != null)
+            StopCoroutine(_co);
+        _co = LerpPosition(originalLocation, moveTime);
+        StartCoroutine(_co);
     }
 
     // Bridge handling

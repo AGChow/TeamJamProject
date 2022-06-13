@@ -53,6 +53,22 @@ public class PlayerMovement : MonoBehaviour
         HandleRotation();
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        // Push stone vampire
+        Rigidbody body = hit.collider.attachedRigidbody;
+        float pushPower = 8f;
+
+        if(hit.gameObject.CompareTag("Enemy") && hit.gameObject.GetComponent<VampireToadAI>() && hit.gameObject.GetComponent<VampireToadAI>().torch.isLit) {
+            if (body == null || body.isKinematic) return;
+            if (hit.moveDirection.y < -0.3) return;
+
+            var pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+            body.velocity = pushDir * pushPower;
+            StartCoroutine(hit.gameObject.GetComponent<VampireToadAI>().DecreaseVelocity());
+        }
+    }
+
     void HandleInput() {
         if(activeTriggers.Count > 0) {
             foreach(GameObject trigger in activeTriggers) {
