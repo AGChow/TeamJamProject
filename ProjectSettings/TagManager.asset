@@ -14,6 +14,7 @@ TagManager:
   - FloorSwitch
   - FxTemporaire
   - BounceBack
+  - Hole
   layers:
   - Default
   - TransparentFX
