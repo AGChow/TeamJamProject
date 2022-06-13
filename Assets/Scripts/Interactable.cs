@@ -26,7 +26,8 @@ public class Interactable : MonoBehaviour
             {
                 foreach(Watcher watcher in watchers)
                 {
-                    watcher.Activate();
+                    if(!watcher.GetComponent<BatAI>())
+                        watcher.Activate();
                 }
             }
             // Switch is deactivated
