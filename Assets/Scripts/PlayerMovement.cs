@@ -75,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
         previousPos = transform.position;
+        if(!characterController) return;
+        
         if (characterController.isGrounded){
             vSpeed = 0;
         }
