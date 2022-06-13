@@ -25,40 +25,39 @@ public class BatAI : MonoBehaviour
     private float t = 0f;
 
     void Awake() {
-
         anim = GetComponentInChildren<Animator>();
-
         _transform = transform;
-        //_focalPosition = focalPoint.position;
-        _focalPosition = transform.position;    
+        _focalPosition = _transform.position;    
         _transform.position = new Vector3(_focalPosition.x, _focalPosition.y + 2f, _focalPosition.z);
         _startPosition = _transform.position;
     }
 
-    void Start() {
+    void Start()
+    {
         GenerateRandomWaypoints();
         UpdateDestination();
     }
 
-    void Update() {
+    void Update()
+    {
 
         //behavior when torch is off(AGC)
-        if(!torch.isLit) {
-
-
-                _transform.position = _startPosition; // TODO: Convert into flying away
-                eyesGraphics.SetActive(false);
-                anim.SetBool("Awake", false);
-                return;
-            }
-        if(Vector3.Distance(_transform.position, target) < 1) {
+        if(!torch.isLit)
+        {
+            _transform.position = _startPosition; // TODO: Convert into flying away
+            eyesGraphics.SetActive(false);
+            anim.SetBool("Awake", false);
+            return;
+        }
+        if(Vector3.Distance(_transform.position, target) < 1)
+        {
             IterateWaypointIndex();
             UpdateDestination();
         } 
         //behavior when torch is on(AGC)
-        else {
+        else
+        {
             anim.SetBool("Awake", true);
-
             eyesGraphics.SetActive(true);
 
             Vector3 vec = myBezier.GetPointAtTime(t);
@@ -66,9 +65,8 @@ public class BatAI : MonoBehaviour
             _transform.position = vec;
 
             t += speed / 1000f;
-            if(t > 1f) {
+            if(t > 1f)
                 t = 0f;
-            }
         }
     }
 
@@ -80,7 +78,7 @@ public class BatAI : MonoBehaviour
 
     void UpdateDestination() {
         target = waypoints[waypointIndex];
-        lookOnLook = Quaternion.LookRotation(target - transform.position);
+        lookOnLook = Quaternion.LookRotation(target - _transform.position);
         t = 0f;
         myBezier = new Bezier( _transform.position, Random.insideUnitSphere * 2f, Random.insideUnitSphere * 2f, target );
     }
