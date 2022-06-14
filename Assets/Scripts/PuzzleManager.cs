@@ -45,8 +45,11 @@ public class PuzzleManager : MonoBehaviour
 
     private IEnumerator FinishPuzzleEvent()
     {
+        yield return new WaitForSeconds(.5f);
         //play complete sound
-        Debug.Log("You did it");
+        FindObjectOfType<AudioManager>().Play("PuzzleComplete");
+
+        //Debug.Log("You did it");
 
         //turn on light and maybe lerp intensity to 1
         StartCoroutine(DimTheLightsOn());

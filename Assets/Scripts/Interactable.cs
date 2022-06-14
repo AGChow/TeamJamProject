@@ -54,8 +54,10 @@ public class Interactable : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         //FindObjectOfType<CameraShake>().ScreenShake();
-        if(interactableNames.Contains(other.tag))
+
+        if (interactableNames.Contains(other.tag))
         {
+            FindObjectOfType<AudioManager>().Play("ButtonandSwitch");
             ToggleIsActivated();
         }
     }
@@ -64,6 +66,8 @@ public class Interactable : MonoBehaviour
     {
         if(interactableNames.Contains(other.tag))
         {
+            FindObjectOfType<AudioManager>().Play("ButtonandSwitch");
+
             ToggleIsActivated();
         }
     }

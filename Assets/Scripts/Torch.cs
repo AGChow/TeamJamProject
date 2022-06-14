@@ -23,6 +23,8 @@ public class Torch : MonoBehaviour
             //Turn the torch on
             if(_isLit == false && value == true) {
 
+                FindObjectOfType<AudioManager>().Play("FireOn");
+
                 fireParticles.SetActive(true);
                 torchLight.Play();
                 if(_isTimerTorch == true)
@@ -33,6 +35,8 @@ public class Torch : MonoBehaviour
             }
             //Turn the torch off
             else if(_isLit == true && value == false) {
+                FindObjectOfType<AudioManager>().Play("FireOff");
+
                 fireParticles.SetActive(false);
                 torchLight.Stop();
             }

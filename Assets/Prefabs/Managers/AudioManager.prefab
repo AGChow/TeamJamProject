@@ -61,6 +61,62 @@ MonoBehaviour:
     source: {fileID: 0}
     audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
     loop: 0
+  - name: SwordSwing
+    clip: {fileID: 8300000, guid: d063312b181c9124296723c6b122de52, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
+  - name: Throw
+    clip: {fileID: 8300000, guid: 1d13003452f49ee4689b9fb266cb5e8f, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
+  - name: FireOn
+    clip: {fileID: 8300000, guid: 00c7998aae8d6dc478e507e807151a50, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
+  - name: FireOff
+    clip: {fileID: 8300000, guid: 479557b1c0235b349aed1afa56e35c22, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
+  - name: ButtonandSwitch
+    clip: {fileID: 8300000, guid: d1ed8c5a8b3909949b250111a9dbcc35, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
+  - name: Door
+    clip: {fileID: 8300000, guid: dcb752abe605f5f4fac4ecbe811d1df3, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
+  - name: PuzzleComplete
+    clip: {fileID: 8300000, guid: 8592263a645c23e4492bba30b4c7c27a, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
+  - name: GameOver
+    clip: {fileID: 8300000, guid: 893e337d8b4d58c4e8b23d0eef9bf7b3, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
 --- !u!82 &2123727835590495316
 AudioSource:
   m_ObjectHideFlags: 0
@@ -71,9 +127,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2722085873786591194, guid: bd4280770864db04189cf270961b017a, type: 2}
-  m_audioClip: {fileID: 8300000, guid: bda81708019b5c947a1dcb69ed40c7c8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d5e7a30d1a1a5e743b262fd36b3d47a5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0

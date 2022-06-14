@@ -40,6 +40,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             if (_hasWeapon)
+
                 SwingSword();
             else
                 RecallWeapon();
@@ -57,6 +58,8 @@ public class PlayerAttack : MonoBehaviour
     {
         heldWeaponObj.SetActive(false);
         thrownWeaponObj.SetActive(true);
+        FindObjectOfType<AudioManager>().Play("Throw");
+
         _swordScript.SetIsRecalling(false);
         thrownWeaponObj.transform.position = transform.position;
        
@@ -95,7 +98,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void RecallWeapon()
     {
-        print("recall!");
+        //print("recall!");
+        FindObjectOfType<AudioManager>().Play("Throw");
+
         thrownWeaponObj.GetComponent<ThrownSword>().returnSpeedChange();
         thrownWeaponObj.GetComponent<ThrownSword>().transform.parent = null;
         _swordScript.SetIsRecalling(true);

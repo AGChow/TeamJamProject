@@ -18,7 +18,9 @@ public class MainDoor : MonoBehaviour
     public IEnumerator MoveDoor()
     {
         dustParticles.Play();
-        
+        FindObjectOfType<AudioManager>().Play("Door");
+
+
         float startTime = Time.time;
         while (Time.time < startTime + overTime)
         {

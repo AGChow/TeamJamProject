@@ -118,8 +118,6 @@ public class ThrownSword : MonoBehaviour
         //parent sword to it's collision surface
         transform.parent = enviroObj.transform;
 
-
-
         print("hit environment");
         if (!_isRecalling)
             StopMovement();

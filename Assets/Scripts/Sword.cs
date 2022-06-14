@@ -55,6 +55,8 @@ public class Sword : MonoBehaviour
 
     IEnumerator Swing()
     {
+        FindObjectOfType<AudioManager>().Play("SwordSwing");
+
         _playerAnimator.SetTrigger("SwingSword");
         swingTrail.emitting = true;
 
@@ -83,6 +85,8 @@ public class Sword : MonoBehaviour
     private void HandleBreakableCollision(GameObject breakableObj)
     {
         Debug.Log("Break");
+        FindObjectOfType<AudioManager>().Play("placeholder");
+
         breakableObj.GetComponent<BreakableObject>().ObjectDestruction();
     }
 }
