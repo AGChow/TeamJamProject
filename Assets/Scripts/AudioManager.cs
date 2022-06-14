@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 using System;
 
 public class AudioManager : MonoBehaviour
@@ -27,6 +24,7 @@ public class AudioManager : MonoBehaviour
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
+            s.source.outputAudioMixerGroup = s.audioMixerGroup;
             s.source.clip = s.clip;
 
             s.source.volume = s.volume;

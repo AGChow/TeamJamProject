@@ -21,8 +21,6 @@ public class InputManager : MonoBehaviour
             {
                 _pauseMenu.Pause();
             }
-
-            _pauseMenu.TogglePause();
         }
     }
 }

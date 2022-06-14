@@ -55,10 +55,10 @@ public class VampireToadAI : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player") && !torch.isLit)
-            other.GetComponent<Player>().Damage(1);
+        if (collision.gameObject.CompareTag("Player") && !torch.isLit)
+            collision.gameObject.GetComponent<Player>().Damage(1);
     }
     public IEnumerator DecreaseVelocity()
     {

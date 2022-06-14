@@ -130,4 +130,9 @@ public class PlayerMovement : MonoBehaviour
     {
         _isPaused = val;
     }
+
+    public bool IsPaused()
+    {
+        return _isPaused;
+    }
 }

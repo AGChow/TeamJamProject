@@ -23,6 +23,7 @@ public class BatAI : MonoBehaviour
     private Quaternion lookOnLook;
     private Bezier myBezier;
     private float t = 0f;
+    private PlayerMovement _player;
 
     void Awake() {
         anim = GetComponentInChildren<Animator>();
@@ -30,6 +31,7 @@ public class BatAI : MonoBehaviour
         _focalPosition = _transform.position;    
         _transform.position = new Vector3(_focalPosition.x, _focalPosition.y + 2f, _focalPosition.z);
         _startPosition = _transform.position;
+        _player = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
     void Start()
@@ -40,7 +42,7 @@ public class BatAI : MonoBehaviour
 
     void Update()
     {
-
+        if(_player.IsPaused()) return;
         //behavior when torch is off(AGC)
         if(!torch.isLit)
         {
