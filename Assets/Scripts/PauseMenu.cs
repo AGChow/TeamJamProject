@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     void Awake()
     {
         _animator = GetComponent<Animator>();
+        _playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
     public void Resume()
@@ -74,6 +75,7 @@ public class PauseMenu : MonoBehaviour
     public void TogglePause()
     {
         _isPaused = !_isPaused;
+        _playerMovement.IsPaused(_isPaused);
     }
 
     void CheckSettingsMenuClose()
