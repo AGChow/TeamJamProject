@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        _isPaused = false;
+        TogglePause(false);
         _animator.SetTrigger("PauseMenuExit");
         CheckSettingsMenuClose();
         Time.timeScale = 1f;
@@ -61,6 +61,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        TogglePause(true);
         _animator.SetTrigger("PauseMenuEnter");
         Time.timeScale = 0f;
     }
@@ -70,11 +71,18 @@ public class PauseMenu : MonoBehaviour
         _animator.SetTrigger("PauseMenuExit");
         CheckSettingsMenuClose();
         Time.timeScale = 1f;
+        TogglePause(false);
     }
 
     public void TogglePause()
     {
         _isPaused = !_isPaused;
+        _playerMovement.IsPaused(_isPaused);
+    }
+
+    public void TogglePause(bool val)
+    {
+        _isPaused = val;
         _playerMovement.IsPaused(_isPaused);
     }
 

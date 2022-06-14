@@ -43,7 +43,7 @@ public class EnemyHealth : MonoBehaviour
         Time.timeScale = .1f;
         yield return new WaitForSeconds(.04f);
         Time.timeScale = 1;
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(.3f);
         GetComponent<Collider>().enabled = true;
     }
 }
