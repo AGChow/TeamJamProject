@@ -58,7 +58,7 @@ public class VampireToadAI : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !torch.isLit)
-            other.GetComponent<Player>().Damage(5);
+            other.GetComponent<Player>().Damage(1);
     }
     public IEnumerator DecreaseVelocity()
     {

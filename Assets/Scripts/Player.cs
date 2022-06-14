@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -11,9 +13,16 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject gameOver;
 
+    private Transform hearts;
+    [SerializeField]
+    private Sprite fullHeart;
+    [SerializeField]
+    private Sprite emptyHeart;
+
     void Awake()
     {
         Heal(_playerMaxHealth);
+        hearts = GameObject.Find("HealthUI").transform;
     }
 
     public void Damage(int dmg)
@@ -21,7 +30,24 @@ public class Player : MonoBehaviour
         if(_isInvincible) return;
 
         _playerCurrentHealth -= dmg;
-        print("Player took damage! New health: " + _playerCurrentHealth);
+
+        // Update UI hearts
+        bool shakenHeart = false;
+        for(int i = 0; i < _playerMaxHealth; i++)
+        {
+            if(i < _playerCurrentHealth)
+                hearts.GetChild(i).GetComponent<Image>().sprite = fullHeart;
+            else
+            {
+                if(!shakenHeart)
+                {
+                    hearts.GetChild(i).GetComponent<Animator>().SetTrigger("HeartShake");
+                    shakenHeart = true;
+                }
+                hearts.GetChild(i).GetComponent<Image>().sprite = emptyHeart;
+            }
+        }
+
         if(_playerCurrentHealth <= 0)
         {
             GetComponent<Collider>().enabled = false;
@@ -44,6 +70,7 @@ public class Player : MonoBehaviour
 
     public void GameOver()
     {
+        GetComponent<CharacterController>().enabled = false;
         gameOver.SetActive(true);
     }
 
