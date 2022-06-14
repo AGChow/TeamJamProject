@@ -8,6 +8,10 @@ public class PuzzleManager : MonoBehaviour
 
     [SerializeField]
     private GameObject mainLight;
+    private float overTime = 20;
+
+    public GameObject Exit;
+
     
 
     public void CheckCompleteConditions()
@@ -41,15 +45,28 @@ public class PuzzleManager : MonoBehaviour
 
     private IEnumerator FinishPuzzleEvent()
     {
+        //play complete sound
         Debug.Log("You did it");
-        yield return new WaitForSeconds(1f);
 
         //turn on light and maybe lerp intensity to 1
-        mainLight.SetActive(true);
-        mainLight.GetComponent<Light>().intensity = 1;
-
+        StartCoroutine(DimTheLightsOn());
+        yield return new WaitForSeconds(1f);
         //unlock door
-        //play complete sound
+        StartCoroutine(Exit.GetComponent<MainDoor>().MoveDoor());
+
         //keep timed torches on
+
+    }
+
+    IEnumerator DimTheLightsOn()
+    {
+        mainLight.SetActive(true);
+        float startTime = Time.time;
+        while (Time.time < startTime + overTime)
+        {
+            mainLight.GetComponent<Light>().intensity = Mathf.Lerp(mainLight.GetComponent<Light>().intensity, 1, (Time.time - startTime) / overTime);
+            yield return null;
+        }
+        mainLight.GetComponent<Light>().intensity = 1;
     }
 }
