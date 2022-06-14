@@ -563,7 +563,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7753847, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2851,7 +2851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1073776648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2884,7 +2884,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.8746497, b: 0.7122642, a: 1}
-  m_Intensity: 0
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3466,7 +3466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7997771225015087273, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7997771225015087273, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
       propertyPath: m_LocalPosition.z

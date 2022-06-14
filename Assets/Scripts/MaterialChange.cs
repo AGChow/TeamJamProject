@@ -20,7 +20,16 @@ public class MaterialChange : MonoBehaviour
         rend.sharedMaterial = material[1];
         yield return new WaitForSeconds(.2f);
         rend.sharedMaterial = material[0];
+    }
 
+    public void ChangeToAltMaterial()
+    {
+        rend.sharedMaterial = material[2];
+    }
+    public void ChangeBackToOrigingalMaterial()
+    {
+        rend.sharedMaterial = material[0];
 
     }
+
 }
