@@ -31,18 +31,12 @@ public class PlayerMovement : MonoBehaviour
    
 
     void Awake() {
-
         anim = GetComponentInChildren<Animator>();
 
         _mainCamera = Camera.main;
         _transform = transform;
         _ground = new Plane(Vector3.up, Vector3.zero);
         _pauseMenu = GameObject.FindObjectOfType<PauseMenu>();
-    }
-
-    private void Start()
-    {
-        
     }
 
     void Update() {
@@ -55,17 +49,19 @@ public class PlayerMovement : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        VampireToadAI vamp = hit.gameObject.GetComponent<VampireToadAI>();
+        
         // Push stone vampire
         Rigidbody body = hit.collider.attachedRigidbody;
         float pushPower = 8f;
 
-        if(hit.gameObject.CompareTag("Enemy") && hit.gameObject.GetComponent<VampireToadAI>() && hit.gameObject.GetComponent<VampireToadAI>().torch.isLit) {
+        if(hit.gameObject.CompareTag("Enemy") && vamp && vamp.torch.isLit) {
             if (body == null || body.isKinematic) return;
             if (hit.moveDirection.y < -0.3) return;
 
             var pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
             body.velocity = pushDir * pushPower;
-            StartCoroutine(hit.gameObject.GetComponent<VampireToadAI>().DecreaseVelocity());
+            StartCoroutine(vamp.DecreaseVelocity());
         }
     }
 
@@ -90,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     void HandleMovement() {
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
-        previousPos = transform.position;
+        previousPos = _transform.position;
         if(!characterController) return;
         
         if (characterController.isGrounded){
@@ -105,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         //animation logic
-        velocity = (transform.position - previousPos).magnitude / Time.deltaTime;
+        velocity = (_transform.position - previousPos).magnitude / Time.deltaTime;
 
         if (velocity >= .5f)
         {
