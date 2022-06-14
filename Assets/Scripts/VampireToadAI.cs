@@ -8,7 +8,6 @@ public class VampireToadAI : MonoBehaviour
     public float speed = 10f;
     public Rigidbody rb;
 
-
     //animation
     // private Animator anim;
 
@@ -24,12 +23,25 @@ public class VampireToadAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    void Start()
+    {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+    }
+
     [System.Obsolete]
     void Update()
     {
+        rb.angularVelocity = Vector3.zero;
         //behavior when torch is on
         if (torch.isLit)
         {
+            if(eyesGraphics.activeSelf)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+
             eyesGraphics.SetActive(false);
             // anim.SetBool("Awake", false);
             _navMeshAgent.destination = transform.position;
@@ -41,24 +53,23 @@ public class VampireToadAI : MonoBehaviour
             // anim.SetBool("Awake", true);
             eyesGraphics.SetActive(true);
         }
-
-        
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            if(!torch.isLit)
-                other.GetComponent<Player>().Damage(5);
-        }
+        if (other.CompareTag("Player") && !torch.isLit)
+            other.GetComponent<Player>().Damage(5);
     }
     public IEnumerator DecreaseVelocity()
     {
         yield return new WaitForSeconds(.5f);
+
         while(rb.velocity != Vector3.zero)
         {
             rb.velocity = rb.velocity * Mathf.Pow(.99f, 2f) * Time.deltaTime;
         }
+
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 }

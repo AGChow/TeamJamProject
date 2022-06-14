@@ -39,8 +39,10 @@ public class EnemyHealth : MonoBehaviour
 
     IEnumerator HitTimePause()
     {
+        GetComponent<Collider>().enabled = false;
         Time.timeScale = .1f;
         yield return new WaitForSeconds(.04f);
         Time.timeScale = 1;
+        GetComponent<Collider>().enabled = true;
     }
 }
