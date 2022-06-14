@@ -4390,6 +4390,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4623414955185220594, guid: d53d76c37a5ddba4bbe777d4bc6efc34, type: 3}
+      propertyPath: sounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623414955185220594, guid: d53d76c37a5ddba4bbe777d4bc6efc34, type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c6b0751e32b8e054ca818b69e3d45469, type: 3}
+    - target: {fileID: 4623414955185220594, guid: d53d76c37a5ddba4bbe777d4bc6efc34, type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: placeholder
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623414955185220594, guid: d53d76c37a5ddba4bbe777d4bc6efc34, type: 3}
+      propertyPath: sounds.Array.data[2].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623414955185220594, guid: d53d76c37a5ddba4bbe777d4bc6efc34, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4623414955185220595, guid: d53d76c37a5ddba4bbe777d4bc6efc34, type: 3}
       propertyPath: m_Name
       value: AudioManager
