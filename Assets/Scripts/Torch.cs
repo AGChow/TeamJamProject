@@ -20,6 +20,7 @@ public class Torch : MonoBehaviour
     public bool isLit {
         get { return _isLit; }
         set {
+            print("Set torch");
             //Turn the torch on
             if(_isLit == false && value == true) {
 
@@ -45,9 +46,22 @@ public class Torch : MonoBehaviour
     }
 
     void Awake() {
-        isLit = false;
         _player = GameObject.FindObjectOfType<PlayerMovement>();
         _puzzleManager = FindObjectOfType<PuzzleManager>();
+    }
+
+    void Start() {
+        if(isLit) {
+            FindObjectOfType<AudioManager>().Play("FireOn");
+
+            fireParticles.SetActive(true);
+            torchLight.Play();
+            if(_isTimerTorch == true)
+            {
+                StopAllCoroutines();
+                StartCoroutine(TorchTurnOffCounter());
+            }
+        }
     }
 
     public void LightTorch() {
