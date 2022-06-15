@@ -20,7 +20,7 @@ public class PuzzleManager : MonoBehaviour
 
         if(AllTorchesLit() == true)
         {
-            Debug.Log("CheckCheckCheck");
+            //Debug.Log("FinishedPuzzle");
 
             StartCoroutine(FinishPuzzleEvent());
         }
