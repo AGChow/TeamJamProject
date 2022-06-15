@@ -462,7 +462,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7792494, y: 1}
+    m_SensorSize: {x: 1.7775891, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4357,13 +4357,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorchWood
       objectReference: {fileID: 0}
+    - target: {fileID: 4270852930045689244, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
+      propertyPath: m_Size.x
+      value: 0.035012722
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270852930045689244, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
+      propertyPath: m_Size.y
+      value: 0.03682357
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270852930045689244, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0003805168
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270852930045689244, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
+      propertyPath: m_Center.y
+      value: -0.00005912281
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270852930045689244, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
+      propertyPath: m_Center.z
+      value: 0.03445589
+      objectReference: {fileID: 0}
     - target: {fileID: 5490232969606384008, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5490232969606384008, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.65
+      value: -9.3
       objectReference: {fileID: 0}
     - target: {fileID: 5490232969606384008, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: m_LocalPosition.y
