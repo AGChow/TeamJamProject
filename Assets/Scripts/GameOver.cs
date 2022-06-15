@@ -9,6 +9,7 @@ public class GameOver : MonoBehaviour
 
     void OnEnable()
     {
+        // select one game over message randomly
         int r = Random.Range(0, gameOverMessages.Count);
         gameOverText.text = gameOverMessages[r];
     }

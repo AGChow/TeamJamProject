@@ -28,8 +28,6 @@ public class PlayerMovement : MonoBehaviour
     private float velocity;
     private Vector3 previousPos;
 
-   
-
     void Awake() {
         anim = GetComponentInChildren<Animator>();
 
@@ -68,11 +66,11 @@ public class PlayerMovement : MonoBehaviour
     void HandleInput() {
         if(activeTriggers.Count > 0) {
             foreach(GameObject trigger in activeTriggers) {
+                // Handle swinging at a torch
                 if(Input.GetButtonUp("Fire1") || Input.GetButtonUp("Submit")) {
                     if(trigger.CompareTag("Torch")) {
                         Vector3 directionToTorch = (trigger.transform.position - _transform.position).normalized;
                         float dotProd = Vector3.Dot(directionToTorch, _transform.forward);
-                        print(dotProd);
                         
                         if(dotProd > 0.5f) { // Player is looking in direction of torch
                             trigger.GetComponent<Torch>().ToggleTorch();

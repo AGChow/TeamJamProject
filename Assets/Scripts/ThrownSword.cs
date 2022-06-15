@@ -32,9 +32,6 @@ public class ThrownSword : MonoBehaviour
             Spin();
         if (_isMoving)
             UpdatePosition();
-
-
-
     }
 
     public void SetIsRecalling(bool active)
@@ -54,7 +51,6 @@ public class ThrownSword : MonoBehaviour
         _target = null;
         _isMoving = false;
         _isSpinning = false;
-
     }
 
     private void UpdatePosition()
@@ -69,7 +65,6 @@ public class ThrownSword : MonoBehaviour
 
     public void SetIsSpinning(bool active)
     {
-
         _isSpinning = active;
     }
 
@@ -140,8 +135,6 @@ public class ThrownSword : MonoBehaviour
         enemyHit.GetComponent<EnemyHealth>().takeDamage();
         if (!_isRecalling)
             StopMovement();
-
-
     }
 
     private void HandleBreakableCollision(GameObject breakableObj)
@@ -150,12 +143,10 @@ public class ThrownSword : MonoBehaviour
         if (!_isRecalling)
             StopMovement();
         breakableObj.GetComponent<BreakableObject>().ObjectDestruction();
-
     }
 
     private void HandleBounceBackCollision(PlayerAttack playerAttackScript)
     {
         playerAttackScript.RecallWeapon();
-
     }
 }

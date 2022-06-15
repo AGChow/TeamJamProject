@@ -85,6 +85,7 @@ public class Watcher : MonoBehaviour
     // Platform handling
     void ActivatePlatform()
     {
+        // assigning to _co makes the platform smoothly lerp from its current position if it is interrupted mid-move
         if(_co != null)
             StopCoroutine(_co);
         _co = LerpPosition(moveToLocation, moveTime);

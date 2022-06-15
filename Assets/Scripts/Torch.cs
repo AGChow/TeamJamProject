@@ -51,6 +51,7 @@ public class Torch : MonoBehaviour
     }
 
     void Start() {
+        // turn torch on right away if it is checked in unity inspector
         if(isLit) {
             FindObjectOfType<AudioManager>().Play("FireOn");
 

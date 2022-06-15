@@ -18,6 +18,7 @@ public class CameraShake : MonoBehaviour
         _transform = transform;
     }
 
+    // if this is called, default values (or values assigned in Unity inspector) are used
     public void ScreenShake()
     {
         if(!CheckScreenshake()) return;
@@ -25,6 +26,7 @@ public class CameraShake : MonoBehaviour
         StartCoroutine(Shake());
     }
 
+    // if this is called, the values supplied via code are used
     public void ScreenShake(float duration, float amount, float decrease)
     {
         if(!CheckScreenshake()) return;
@@ -35,10 +37,9 @@ public class CameraShake : MonoBehaviour
         StartCoroutine(Shake());
     }
 
+    // the shake magic
     IEnumerator Shake()
     {
-        
-
         _originalPos = _transform.position;
         float timer = 0f;
 
@@ -53,6 +54,7 @@ public class CameraShake : MonoBehaviour
         _transform.position = _originalPos;
     }
 
+    // Only use screenshake if it's enabled in settings
     bool CheckScreenshake()
     {
         if(PlayerPrefs.HasKey("EnableScreenshake"))
