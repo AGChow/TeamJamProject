@@ -44,6 +44,7 @@ public class EnemyHealth : MonoBehaviour
 
     IEnumerator HitTimePause()
     {
+        // disable the collider during hit so that it doesn't keep getting triggered as it passes through
         GetComponent<Collider>().enabled = false;
         Time.timeScale = .1f;
         yield return new WaitForSeconds(.04f);

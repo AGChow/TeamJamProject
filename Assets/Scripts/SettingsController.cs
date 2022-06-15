@@ -20,6 +20,8 @@ public class SettingsController : MonoBehaviour
 
     void Awake()
     {
+        // doing this makes it so we don't have to manually assign these functions to each input element in unity
+        // each function will be called when the corresponding slider or toggle is changed
         musicSlider.onValueChanged.AddListener(MusicVolume);
         sfxSlider.onValueChanged.AddListener(SFXVolume);
         screenshakeToggle.onValueChanged.AddListener(ToggleScreenshake);
@@ -49,6 +51,8 @@ public class SettingsController : MonoBehaviour
 
     public void MusicVolume(float val)
     {
+        // volume sliders shouldn't be linear - this log function is the standard formula for calculating volume based on the 0.0001 - 1 input
+        // ^ 0.0001 and not 0 because log(0) is undefined
         musicMixer.audioMixer.SetFloat("Music", Mathf.Log10(val) * 20f);
         PlayerPrefs.SetFloat("MusicVolume", val);
     }
@@ -61,6 +65,7 @@ public class SettingsController : MonoBehaviour
 
     public void SampleSFX()
     {
+        // plays when the user finishes sliding the SFX slider to demonstrate the new volume
         FindObjectOfType<AudioManager>().Play("placeholder");
     }
 }

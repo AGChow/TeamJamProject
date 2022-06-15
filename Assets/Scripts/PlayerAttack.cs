@@ -66,6 +66,7 @@ public class PlayerAttack : MonoBehaviour
 
         thrownWeaponObj.GetComponent<ThrownSword>().throwSpeedChange();
 
+        // RaycastAll gets all of the objects in the sword's line of sight. Then, it iterates one by one to determine if it will stop at any of the objects it saw
         List<RaycastHit> hits = new();
         hits = Physics.RaycastAll(transform.position, transform.forward, _throwDistance).ToList();
 
@@ -87,6 +88,7 @@ public class PlayerAttack : MonoBehaviour
             if(!foundTarget)
                 throwTarget.transform.position = transform.position + transform.forward * _throwDistance;
         }
+        // If RaycastAll didn't find any objects in the path, it travels for the full throw distance, then stops
         else
         {
             throwTarget.transform.position = transform.position + transform.forward * _throwDistance;

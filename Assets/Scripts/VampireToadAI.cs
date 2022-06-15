@@ -13,6 +13,7 @@ public class VampireToadAI : MonoBehaviour
 
     [SerializeField] private Transform target;
     private NavMeshAgent _navMeshAgent;
+    private bool _isPushing;
 
     void Awake()
     {
@@ -25,21 +26,23 @@ public class VampireToadAI : MonoBehaviour
 
     void Start()
     {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
+        StartCoroutine(Freeze());
     }
 
     [System.Obsolete]
     void Update()
     {
+        // also helps prevent drifting bugs
         rb.angularVelocity = Vector3.zero;
+        if(!_isPushing)
+            rb.velocity = Vector3.zero;
+
         //behavior when torch is on
         if (torch.isLit)
         {
             if(eyesGraphics.activeSelf)
             {
-                rb.velocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
+                StartCoroutine(Freeze(true));
             }
 
             eyesGraphics.SetActive(false);
@@ -48,6 +51,7 @@ public class VampireToadAI : MonoBehaviour
             //feedbackresponse to being frozen
             GetComponentInChildren<MaterialChange>().ChangeToAltMaterial();
             GetComponentInChildren<Animator>().SetBool("Frozen", true);
+            
 
             _navMeshAgent.destination = transform.position;
         }
@@ -69,15 +73,22 @@ public class VampireToadAI : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !torch.isLit)
             collision.gameObject.GetComponent<Player>().Damage(1);
     }
+
+    // pause for a bit after pushing for the stone vampire to slide a short distance
     public IEnumerator DecreaseVelocity()
     {
-        yield return new WaitForSeconds(.5f);
+        _isPushing = true;
+        yield return new WaitForSeconds(.4f);
 
-        while(rb.velocity != Vector3.zero)
-        {
-            rb.velocity = rb.velocity * Mathf.Pow(.99f, 2f) * Time.deltaTime;
-        }
+        StartCoroutine(Freeze());
+        _isPushing = false;
+    }
 
+    // stop velocities, this helps fix drifting bugs
+    public IEnumerator Freeze(bool wait = false)
+    {
+        if(wait)
+            yield return new WaitForEndOfFrame();
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     }

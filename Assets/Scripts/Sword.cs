@@ -59,11 +59,7 @@ public class Sword : MonoBehaviour
 
         _playerAnimator.SetTrigger("SwingSword");
         swingTrail.emitting = true;
-
-        // Wait until end of sword-swinging animation - can be uncommented and replace the hard-coded value below when animation is implemented
-        //yield return new WaitForSeconds(_playerAnimator.GetCurrentAnimatorStateInfo(0).length
-        //    + _playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime
-        //);
+        
         yield return new WaitForSeconds(0.2f);
 
         _collider.enabled = false;
