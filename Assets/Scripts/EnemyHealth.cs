@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     private float Health = 1f;
     public GameObject _poofParticles;
     public GameObject _hitParticles;
+    public bool dead;
 
     public void takeDamage()
     {
@@ -20,7 +21,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public void CheckHealth()
     {
-        if (Health <= 0)
+        if (Health <= 0 && dead == false)
         {
             StartCoroutine(Death());
         }
@@ -29,8 +30,12 @@ public class EnemyHealth : MonoBehaviour
 
     IEnumerator Death()
     {
+        dead = true;
         //change to death animation
-        yield return new WaitForSeconds(.3f);
+        //add death sound
+        GetComponentInChildren<Animator>().SetTrigger("Death");
+
+        yield return new WaitForSeconds(1.5f);
 
         Instantiate(_poofParticles, transform.position, transform.rotation);
         Destroy(this.gameObject);

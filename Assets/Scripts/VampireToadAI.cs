@@ -44,13 +44,22 @@ public class VampireToadAI : MonoBehaviour
 
             eyesGraphics.SetActive(false);
             // anim.SetBool("Awake", false);
+            
+            //feedbackresponse to being frozen
+            GetComponentInChildren<MaterialChange>().ChangeToAltMaterial();
+            GetComponentInChildren<Animator>().SetBool("Frozen", true);
+
             _navMeshAgent.destination = transform.position;
         }
         //behavior when torch is off
         else
         {
+
             _navMeshAgent.destination = target.position;
             // anim.SetBool("Awake", true);
+            GetComponentInChildren<Animator>().SetBool("Frozen", false);
+
+            GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
             eyesGraphics.SetActive(true);
         }
     }
