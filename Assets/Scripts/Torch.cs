@@ -11,6 +11,8 @@ public class Torch : MonoBehaviour
 
     [SerializeField]
     private bool _isLit = false;
+    [SerializeField]
+    private bool cantBeTurnedOff;
     public bool _isTimerTorch = false;
 
     public GameObject fireParticles;
@@ -45,7 +47,7 @@ public class Torch : MonoBehaviour
     }
 
     void Awake() {
-        isLit = false;
+        //isLit = false;
         _player = GameObject.FindObjectOfType<PlayerMovement>();
         _puzzleManager = FindObjectOfType<PuzzleManager>();
     }
@@ -59,11 +61,20 @@ public class Torch : MonoBehaviour
     }
 
     public void ToggleTorch() {
-        isLit = !isLit;
-        //Checks to see if all other torches are lit to complete the puzzles
-        if (_puzzleManager != null)
+
+        if(cantBeTurnedOff == true)
         {
-            _puzzleManager.CheckCompleteConditions();
+            return;
+        }
+        else
+        {
+            isLit = !isLit;
+            //Checks to see if all other torches are lit to complete the puzzles
+            if (_puzzleManager != null)
+            {
+                _puzzleManager.CheckCompleteConditions();
+            }
+
         }
     }
 

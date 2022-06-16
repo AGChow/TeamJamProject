@@ -4944,7 +4944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3701037644834175958
 Transform:
   m_ObjectHideFlags: 0
@@ -19475,7 +19475,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torchLight: {fileID: 3701037644834175959}
   _puzzleManager: {fileID: 0}
-  _isLit: 0
+  _isLit: 1
+  cantBeTurnedOff: 1
   _isTimerTorch: 0
   fireParticles: {fileID: 3701037644834175976}
   torchTimer: 10
