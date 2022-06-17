@@ -395,6 +395,7 @@ MonoBehaviour:
   Health: 12
   _poofParticles: {fileID: 7747298047355669779, guid: f02cf74ba6c424c4493dd43dce3832d3, type: 3}
   _hitParticles: {fileID: 5778600445472085346, guid: 41686b3bf7cf91a4fabc0524187ffd5d, type: 3}
+  dead: 0
 --- !u!136 &115713637960379306
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -555,3 +556,4 @@ MonoBehaviour:
   material:
   - {fileID: -876546973899608171, guid: 39361c8b65d18e542807fad1b6a63308, type: 3}
   - {fileID: 2100000, guid: 5bfd4f66cf29a274a8bb0774b3b5f36b, type: 2}
+  - {fileID: 2100000, guid: 38d0fd7ef0922c2448218e959ee81b2f, type: 2}

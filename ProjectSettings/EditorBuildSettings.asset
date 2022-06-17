@@ -11,4 +11,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test.unity
     guid: f1a1611d8af732b4c9fa9114f2d7c97a
+  - enabled: 1
+    path: Assets/Scenes/Test/PotentialLevel1.unity
+    guid: 11b5102182d557743b55ef57685da0ca
+  - enabled: 1
+    path: Assets/Scenes/Test/PotentialLevel2.unity
+    guid: f18062a8aed1e4f4b95314cc17b753f2
+  - enabled: 1
+    path: Assets/Scenes/Test/PotentialLevel3.unity
+    guid: a0db7953ecac2474b8141ecefbda4a14
+  - enabled: 1
+    path: Assets/Scenes/Test/PotentialLevel4.unity
+    guid: 80872b42cd38aa942bcccc7c1f75ff2b
+  - enabled: 1
+    path: Assets/Scenes/Test/PotentialLevel5.unity
+    guid: c2437d6b2a0940f4f986128bc07bf086
+  - enabled: 1
+    path: Assets/Scenes/Test/PotentialLevel6.unity
+    guid: 5056e10ac7639f045a393ffad1949925
+  - enabled: 1
+    path: Assets/Scenes/Test/PotentialLevel7.unity
+    guid: 926d5119d7044cd4cbcc88b6c83779db
+  - enabled: 1
+    path: Assets/Scenes/Test/PotentialLevel8.unity
+    guid: 2631d5813f21b8843b0b11876ddb5cb7
+  - enabled: 1
+    path: Assets/Scenes/Test/PotentialLevel9.unity
+    guid: d7ba6bd3b8659d548a28e1facdc1869b
   m_configObjects: {}

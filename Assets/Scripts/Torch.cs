@@ -11,6 +11,8 @@ public class Torch : MonoBehaviour
 
     [SerializeField]
     private bool _isLit = false;
+    [SerializeField]
+    private bool cantBeTurnedOff;
     public bool _isTimerTorch = false;
 
     public GameObject fireParticles;
@@ -20,7 +22,6 @@ public class Torch : MonoBehaviour
     public bool isLit {
         get { return _isLit; }
         set {
-            print("Set torch");
             //Turn the torch on
             if(_isLit == false && value == true) {
 
@@ -46,23 +47,9 @@ public class Torch : MonoBehaviour
     }
 
     void Awake() {
+        //isLit = false;
         _player = GameObject.FindObjectOfType<PlayerMovement>();
         _puzzleManager = FindObjectOfType<PuzzleManager>();
-    }
-
-    void Start() {
-        // turn torch on right away if it is checked in unity inspector
-        if(isLit) {
-            FindObjectOfType<AudioManager>().Play("FireOn");
-
-            fireParticles.SetActive(true);
-            torchLight.Play();
-            if(_isTimerTorch == true)
-            {
-                StopAllCoroutines();
-                StartCoroutine(TorchTurnOffCounter());
-            }
-        }
     }
 
     public void LightTorch() {
@@ -74,11 +61,20 @@ public class Torch : MonoBehaviour
     }
 
     public void ToggleTorch() {
-        isLit = !isLit;
-        //Checks to see if all other torches are lit to complete the puzzles
-        if (_puzzleManager != null)
+
+        if(cantBeTurnedOff == true)
         {
-            _puzzleManager.CheckCompleteConditions();
+            return;
+        }
+        else
+        {
+            isLit = !isLit;
+            //Checks to see if all other torches are lit to complete the puzzles
+            if (_puzzleManager != null)
+            {
+                _puzzleManager.CheckCompleteConditions();
+            }
+
         }
     }
 

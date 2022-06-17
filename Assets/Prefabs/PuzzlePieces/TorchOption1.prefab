@@ -4838,7 +4838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3701037644768726084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0432}
+  m_LocalPosition: {x: 0, y: -0.0015, z: 0.0684}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4944,7 +4944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3701037644834175958
 Transform:
   m_ObjectHideFlags: 0
@@ -4952,8 +4952,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3701037644834175976}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0.0461}
+  m_LocalRotation: {x: -0.08715578, y: 0, z: 0, w: 0.9961947}
+  m_LocalPosition: {x: 0, y: 0.0015, z: 0.0517}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4964,7 +4964,7 @@ Transform:
   - {fileID: 3701037645308708636}
   m_Father: {fileID: 3807234229553457250}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -10, y: 0, z: 0}
 --- !u!198 &3701037644834175959
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -19389,7 +19389,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4584053026423943896}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.6427876, y: 0, z: 0, w: 0.7660445}
   m_LocalPosition: {x: -6.9946003, y: -0.015588587, z: 6.9907403}
   m_LocalScale: {x: 50, y: 50, z: 29}
   m_ConstrainProportionsScale: 0
@@ -19397,7 +19397,7 @@ Transform:
   - {fileID: 3701037644834175958}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -80, y: 0, z: 0}
 --- !u!33 &250469614028515271
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19475,7 +19475,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torchLight: {fileID: 3701037644834175959}
   _puzzleManager: {fileID: 0}
-  _isLit: 0
+  _isLit: 1
+  cantBeTurnedOff: 1
   _isTimerTorch: 0
   fireParticles: {fileID: 3701037644834175976}
   torchTimer: 10
