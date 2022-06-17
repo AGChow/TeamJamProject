@@ -333,7 +333,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7763158, y: 1}
+    m_SensorSize: {x: 1.7799443, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -724,7 +724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4270852930045689245, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: torchTimer
-      value: 4
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 4270852930045689245, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: _isTimerTorch
@@ -2130,7 +2130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4270852930045689245, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: torchTimer
-      value: 4
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 4270852930045689245, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: _isTimerTorch
@@ -2389,7 +2389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4270852930045689245, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: torchTimer
-      value: 4
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 4270852930045689245, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: _isTimerTorch
@@ -2596,7 +2596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4270852930045689245, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: torchTimer
-      value: 4
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 4270852930045689245, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: _isTimerTorch
@@ -3732,6 +3732,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 38d0fd7ef0922c2448218e959ee81b2f, type: 2}
+    - target: {fileID: 6671695840408276518, guid: 6ec118987a3b49b45b88353a0c4f2d12, type: 3}
+      propertyPath: nextScene
+      value: PotentialLevel6
+      objectReference: {fileID: 0}
     - target: {fileID: 8506238271282400481, guid: 6ec118987a3b49b45b88353a0c4f2d12, type: 3}
       propertyPath: m_Name
       value: Exit
@@ -8639,7 +8643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4270852930045689245, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: torchTimer
-      value: 4
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 4270852930045689245, guid: ec121ab155002be42a9b296acc4621ec, type: 3}
       propertyPath: _isTimerTorch

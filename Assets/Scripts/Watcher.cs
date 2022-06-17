@@ -20,6 +20,8 @@ public class Watcher : MonoBehaviour
     private Transform _transform;
     private IEnumerator _co;
 
+    public ParticleSystem Particles;
+
     void Awake()
     {
         _transform = transform;
@@ -89,6 +91,7 @@ public class Watcher : MonoBehaviour
             StopCoroutine(_co);
         _co = LerpPosition(moveToLocation, moveTime);
         StartCoroutine(_co);
+
     }
 
     void DeactivatePlatform()
@@ -112,6 +115,7 @@ public class Watcher : MonoBehaviour
 
     IEnumerator LerpPosition(Vector3 targetPosition, float duration)
     {
+        Particles.Play();
         float time = 0;
         Vector3 startPosition = _transform.position;
         while (time < duration)
