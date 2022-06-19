@@ -8,6 +8,7 @@ public class Sword : MonoBehaviour
     [SerializeField]
     private Animator _playerAnimator;
     private bool _swungAtShield = false;
+    private bool canSwing;
 
     [SerializeField]
     private TrailRenderer swingTrail;
@@ -17,10 +18,12 @@ public class Sword : MonoBehaviour
     void Start()
     {
         _collider = GetComponent<Collider>();
+        canSwing = true;
     }
 
     public void SwordSwing()
     {
+        if (canSwing == true)
         _collider.enabled = true;
         StartCoroutine(Swing());
     }
@@ -55,6 +58,7 @@ public class Sword : MonoBehaviour
 
     IEnumerator Swing()
     {
+        canSwing = false;
         FindObjectOfType<AudioManager>().Play("SwordSwing");
 
         _playerAnimator.SetTrigger("SwingSword");
@@ -64,6 +68,9 @@ public class Sword : MonoBehaviour
 
         _collider.enabled = false;
         swingTrail.emitting = false;
+
+        yield return new WaitForSeconds(.5f);
+        canSwing = true;
 
     }
 

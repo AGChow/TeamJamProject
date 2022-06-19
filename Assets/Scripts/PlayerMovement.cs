@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController characterController;
-    public float speed = 10f;
+    public float speed = 7f;
     public float turnSpeed = 90f;
     public float gravity = 9.8f;
     public List<GameObject> activeTriggers = new();
@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private Ray _cameraRay;
     private float vSpeed = 0f; // current vertical velocity
     private bool _isPaused;
+    public bool _canMove;
     private PauseMenu _pauseMenu;
 
     //animation
@@ -40,9 +41,13 @@ public class PlayerMovement : MonoBehaviour
     void Update() {
         if(_pauseMenu.IsPaused()) return;
 
-        HandleInput();
-        HandleMovement();
-        HandleRotation();
+        if (_canMove)
+        {
+            HandleInput();
+            HandleMovement();
+            HandleRotation();
+
+        }
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
@@ -132,5 +137,24 @@ public class PlayerMovement : MonoBehaviour
     public bool IsPaused()
     {
         return _isPaused;
+    }
+
+    public void Death()
+    {
+        speed = 0f;
+        turnSpeed = 0f;
+    }
+    public void ResetMovement()
+    {
+        _canMove = true;
+        speed = 7f;
+        turnSpeed = 90;
+    }
+
+    public void StopMovement()
+    {
+        _canMove = false;
+        speed = 0f;
+        turnSpeed = 0;
     }
 }

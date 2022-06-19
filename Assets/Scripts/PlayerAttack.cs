@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     private Animator _playerAnimator;
 
     private bool _hasWeapon = true;
+    public bool canAttack;
     [SerializeField]
     private float _throwDistance = 17f;
 
@@ -44,6 +46,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void HandleMouseInput()
     {
+        if(canAttack == true)
+        {
+
         if (Input.GetButtonDown("Fire1"))
         {
             if (_hasWeapon)
@@ -54,17 +59,24 @@ public class PlayerAttack : MonoBehaviour
         else if (Input.GetButtonDown("Fire2"))
         {
             if (_hasWeapon)
-                ThrowWeapon();
+                //ThrowWeapon();
+                StartCoroutine(ThrowWeapon());
             else
                 RecallWeapon();
         }
+        }
     }
 
-    private void ThrowWeapon()
+    private IEnumerator ThrowWeapon()
     {
+        _playerAnimator.SetTrigger("ThrowSword");
+        FindObjectOfType<AudioManager>().Play("Throw");
+        yield return new WaitForSeconds(.2f);
         heldWeaponObj.SetActive(false);
         thrownWeaponObj.SetActive(true);
-        FindObjectOfType<AudioManager>().Play("Throw");
+        _hasWeapon = false;
+
+
 
         _swordScript.SetIsRecalling(false);
         thrownWeaponObj.transform.position = transform.position;
@@ -100,7 +112,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         _swordScript.MoveTo(throwTarget);
-        _hasWeapon = false;
+        //_hasWeapon = false;
         recallFailsafeTimerCurrent = recallFailsafeTimerWait;
     }
 
@@ -121,6 +133,8 @@ public class PlayerAttack : MonoBehaviour
         thrownWeaponObj.SetActive(false);
         _swordScript.SetIsRecalling(false);
         _hasWeapon = true;
+        _playerAnimator.SetTrigger("CatchSword");
+
     }
 
     public void SwingSword()

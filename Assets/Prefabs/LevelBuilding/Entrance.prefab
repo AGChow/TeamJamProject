@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 621122549241070445}
   - component: {fileID: 2380388561325915089}
   - component: {fileID: 8518657878295275660}
-  - component: {fileID: 6003449664371819863}
+  - component: {fileID: 5990756987947661615}
   m_Layer: 0
   m_Name: Entrance
   m_TagString: Environment
@@ -115,7 +115,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.010447466, y: 0.011999999, z: 0.04099999}
   m_Center: {x: 0.014972361, y: 1.07339364e-16, z: 0.020499993}
---- !u!114 &6003449664371819863
+--- !u!114 &5990756987947661615
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,14 +124,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2692223536176389540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cd93bded64281849822072c0b5e0b06, type: 3}
+  m_Script: {fileID: 11500000, guid: 262b8528c2d388d4bbc18b89f17929c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dustParticles: {fileID: 6003449663557991901}
-  door: {fileID: 7905775383744521605}
-  openDoorPos: {fileID: 6003449662272994223}
-  closedPos: {x: 0, y: 0, z: 0}
-  overTime: 50
 --- !u!1 &6003449662272994220
 GameObject:
   m_ObjectHideFlags: 0

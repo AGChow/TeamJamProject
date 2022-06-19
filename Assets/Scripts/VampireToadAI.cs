@@ -7,26 +7,36 @@ public class VampireToadAI : MonoBehaviour
     public GameObject eyesGraphics;
     public float speed = 10f;
     private Rigidbody rb;
+    private bool agro;
+
+
+    private Vector3 startPos;
 
     //animation
     // private Animator anim;
 
     [SerializeField] private Transform target;
+    
     private NavMeshAgent _navMeshAgent;
     private bool _isPushing;
 
     void Awake()
     {
+        startPos = transform.position;
+
         // anim = GetComponentInChildren<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.speed = speed / 3;
         _navMeshAgent.acceleration = speed / 3;
+
         rb = GetComponent<Rigidbody>();
     }
 
     void Start()
     {
         StartCoroutine(Freeze());
+
+        StartCoroutine(Init());
     }
 
     [System.Obsolete]
@@ -57,13 +67,25 @@ public class VampireToadAI : MonoBehaviour
         //behavior when torch is off
         else
         {
+            if(agro == true)
+            {
 
-            _navMeshAgent.destination = target.position;
-            // anim.SetBool("Awake", true);
-            GetComponentInChildren<Animator>().SetBool("Frozen", false);
+                _navMeshAgent.destination = target.position;
+                // anim.SetBool("Awake", true);
+                GetComponentInChildren<Animator>().SetBool("Frozen", false);
 
-            GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
-            eyesGraphics.SetActive(true);
+                GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
+                eyesGraphics.SetActive(true);
+            }
+            else
+            {
+                _navMeshAgent.destination = startPos;
+                // anim.SetBool("Awake", true);
+                GetComponentInChildren<Animator>().SetBool("Frozen", false);
+
+                GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
+                eyesGraphics.SetActive(true);
+            }
         }
     }
 
@@ -87,5 +109,11 @@ public class VampireToadAI : MonoBehaviour
             yield return new WaitForEndOfFrame();
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+    }
+
+    public IEnumerator Init()
+    {
+        yield return new WaitForSeconds(7f);
+        agro = true;
     }
 }

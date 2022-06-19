@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Hole : MonoBehaviour
 {
@@ -6,8 +7,10 @@ public class Hole : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().GameOver();
-            Destroy(other);
+            StartCoroutine(other.GetComponent<Player>().Fall());
+            //other.GetComponent<Player>().Fall();
+            //other.GetComponent<Player>().GameOver();
+            //Destroy(other);
         }
     }
 }

@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject gameOver;
 
+    private Animator _playerAnimator;
+
     private Transform hearts;
     [SerializeField]
     private Sprite fullHeart;
@@ -21,8 +23,10 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        _playerAnimator = GetComponentInChildren<Animator>();
         Heal(_playerMaxHealth);
         hearts = GameObject.Find("HealthUI").transform;
+        StartCoroutine(Intro());
     }
 
     public void Damage(int dmg)
@@ -70,6 +74,10 @@ public class Player : MonoBehaviour
 
     public void GameOver()
     {
+        _playerAnimator.SetTrigger("Death");
+        GetComponent<PlayerMovement>().Death();
+        GetComponent<PlayerMovement>()._canMove = false;
+
         GetComponent<CharacterController>().enabled = false;
         gameOver.SetActive(true);
     }
@@ -80,4 +88,30 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(3f);
         _isInvincible = false;
     }
+
+    public IEnumerator Fall()
+    {
+        _playerAnimator.SetTrigger("Fall");
+        yield return new WaitForSeconds(1f);
+
+        gameOver.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        GetComponent<PlayerMovement>()._canMove = false;
+        GetComponent<CharacterController>().enabled = false;
+
+    }
+
+    IEnumerator Intro()
+    {
+        _playerAnimator.SetTrigger("Intro");
+
+        GetComponent<PlayerMovement>().StopMovement();
+
+        yield return new WaitForSeconds(3.5f);
+
+        GetComponent<PlayerMovement>().ResetMovement();
+        GetComponent<PlayerAttack>().canAttack = true;
+    }
+
+
 }
