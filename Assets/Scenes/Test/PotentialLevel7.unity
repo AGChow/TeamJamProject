@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
-    agentHeight: 2
+    agentRadius: 1
+    agentHeight: 5
     agentSlope: 4
     agentClimb: 0.4
-    ledgeDropHeight: 0
+    ledgeDropHeight: 5
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.33333334
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: b012bfcbeeffdb941ba25a2c99681241, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 27db7a7fbd4423a4d8177c8b21848e72, type: 2}
 --- !u!1001 &22591756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -289,6 +289,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 115713637960379302, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
+      propertyPath: Health
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 7329074179195349523, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
       propertyPath: m_Name
       value: VampireToad

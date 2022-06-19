@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: b012bfcbeeffdb941ba25a2c99681241, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 1b4578a749a47bd4486a58b7fb0a3173, type: 2}
 --- !u!1001 &22591756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7799443, y: 1}
+    m_SensorSize: {x: 2.196, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
