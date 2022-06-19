@@ -11,15 +11,15 @@ public class PlayerAttack : MonoBehaviour
     private ThrownSword _swordScript;
     private PauseMenu _pauseMenu;
 
-
     //animation
     private Animator _playerAnimator;
-
-
 
     private bool _hasWeapon = true;
     [SerializeField]
     private float _throwDistance = 17f;
+
+    private float recallFailsafeTimerCurrent = 0;
+    private readonly float recallFailsafeTimerWait = 10f;
 
     private void Awake()
     {
@@ -30,9 +30,16 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if(_pauseMenu.IsPaused()) return;
+        if (_pauseMenu.IsPaused()) return;
         
         HandleMouseInput();
+    }
+
+    void UpdateRecallFailsafe() 
+    {
+        if (_hasWeapon) return;
+        if (recallFailsafeTimerCurrent <= 0) CatchWeapon();
+        recallFailsafeTimerCurrent -= Time.deltaTime;
     }
 
     private void HandleMouseInput()
@@ -40,7 +47,6 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             if (_hasWeapon)
-
                 SwingSword();
             else
                 RecallWeapon();
@@ -62,7 +68,6 @@ public class PlayerAttack : MonoBehaviour
 
         _swordScript.SetIsRecalling(false);
         thrownWeaponObj.transform.position = transform.position;
-       
 
         thrownWeaponObj.GetComponent<ThrownSword>().throwSpeedChange();
 
@@ -96,6 +101,7 @@ public class PlayerAttack : MonoBehaviour
 
         _swordScript.MoveTo(throwTarget);
         _hasWeapon = false;
+        recallFailsafeTimerCurrent = recallFailsafeTimerWait;
     }
 
     public void RecallWeapon()

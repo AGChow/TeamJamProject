@@ -35,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
         //add death sound
         GetComponentInChildren<Animator>().SetTrigger("Death");
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
 
         Instantiate(_poofParticles, transform.position, transform.rotation);
         Destroy(this.gameObject);
