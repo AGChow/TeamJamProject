@@ -159,6 +159,7 @@ MonoBehaviour:
   moveToLocation: {x: 15.5, y: -1.1, z: -0.06}
   moveTime: 1
   canToggle: 1
+  Particles: {fileID: 0}
 --- !u!65 &38292861
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -455,7 +456,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7753847, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1833,6 +1834,7 @@ MonoBehaviour:
   moveToLocation: {x: 0, y: 0, z: 0}
   moveTime: 1
   canToggle: 0
+  Particles: {fileID: 0}
 --- !u!1001 &835939908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9937,10 +9939,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2123727835590495316, guid: d53d76c37a5ddba4bbe777d4bc6efc34, type: 3}
-      propertyPath: m_Volume
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 4623414955185220593, guid: d53d76c37a5ddba4bbe777d4bc6efc34, type: 3}
       propertyPath: m_RootOrder
       value: 23
