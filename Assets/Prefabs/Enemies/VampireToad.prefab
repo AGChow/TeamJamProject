@@ -337,9 +337,9 @@ GameObject:
   - component: {fileID: 7997771225015087273}
   - component: {fileID: 7599670385392490312}
   - component: {fileID: 115713637960379302}
-  - component: {fileID: 115713637960379306}
   - component: {fileID: 9210987330148458423}
   - component: {fileID: 590315921}
+  - component: {fileID: 2117872404459983683}
   m_Layer: 0
   m_Name: VampireToad
   m_TagString: Enemy
@@ -378,7 +378,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &115713637960379302
 MonoBehaviour:
@@ -396,20 +396,6 @@ MonoBehaviour:
   _poofParticles: {fileID: 7747298047355669779, guid: f02cf74ba6c424c4493dd43dce3832d3, type: 3}
   _hitParticles: {fileID: 5778600445472085346, guid: 41686b3bf7cf91a4fabc0524187ffd5d, type: 3}
   dead: 0
---- !u!136 &115713637960379306
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7329074179195349523}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 3
-  m_Height: 12.867722
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.4338608, z: 0}
 --- !u!114 &9210987330148458423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +411,6 @@ MonoBehaviour:
   torch: {fileID: 0}
   eyesGraphics: {fileID: 1132621303577198528}
   speed: 15
-  rb: {fileID: 0}
   target: {fileID: 0}
 --- !u!195 &590315921
 NavMeshAgent:
@@ -449,6 +434,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &2117872404459983683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7329074179195349523}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 14.138386, z: 8}
+  m_Center: {x: 0, y: 7.1558533, z: 0}
 --- !u!1001 &5563386565204897851
 PrefabInstance:
   m_ObjectHideFlags: 0

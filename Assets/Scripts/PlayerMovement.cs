@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         
         // Push stone vampire
         Rigidbody body = hit.collider.attachedRigidbody;
-        float pushPower = 8f;
+        float pushPower = 4f;
 
         if(hit.gameObject.CompareTag("Enemy") && vamp && vamp.torch.isLit) {
             if (body == null || body.isKinematic) return;
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
             var pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
             body.velocity = pushDir * pushPower;
-            StartCoroutine(vamp.DecreaseVelocity());
+            // StartCoroutine(vamp.DecreaseVelocity());
         }
     }
 

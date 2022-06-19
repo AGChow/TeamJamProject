@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 29b3a6e6d14cbd643855553a6f10e802, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: af499d54e924ccc4e8eed771bbcff0f6, type: 2}
 --- !u!1 &21893405
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +564,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7799443, y: 1}
+    m_SensorSize: {x: 2.196, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -14912,6 +14912,10 @@ PrefabInstance:
     - target: {fileID: 1182890720324589944, guid: f85e56e10bbdebe4d972df9766bc9a90, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065763573614256702, guid: f85e56e10bbdebe4d972df9766bc9a90, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f85e56e10bbdebe4d972df9766bc9a90, type: 3}

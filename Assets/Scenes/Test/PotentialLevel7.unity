@@ -289,18 +289,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1408352161, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
-      propertyPath: material.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1408352161, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
-      propertyPath: material.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: 38d0fd7ef0922c2448218e959ee81b2f, type: 2}
-    - target: {fileID: 115713637960379302, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
-      propertyPath: Health
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 7329074179195349523, guid: 74c23305bbc3d7246b3964bb84435b3b, type: 3}
       propertyPath: m_Name
       value: VampireToad
@@ -634,7 +622,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7799443, y: 1}
+    m_SensorSize: {x: 2.196, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1093,7 +1081,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &670641363
 PrefabInstance:
@@ -8157,7 +8145,7 @@ PrefabInstance:
       objectReference: {fileID: 1868343574}
     - target: {fileID: 1182890720324589944, guid: f85e56e10bbdebe4d972df9766bc9a90, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1182890720324589944, guid: f85e56e10bbdebe4d972df9766bc9a90, type: 3}
       propertyPath: m_LocalPosition.x

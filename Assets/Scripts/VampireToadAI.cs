@@ -6,7 +6,7 @@ public class VampireToadAI : MonoBehaviour
     public Torch torch;
     public GameObject eyesGraphics;
     public float speed = 10f;
-    public Rigidbody rb;
+    private Rigidbody rb;
 
     //animation
     // private Animator anim;
@@ -34,8 +34,7 @@ public class VampireToadAI : MonoBehaviour
     {
         // also helps prevent drifting bugs
         rb.angularVelocity = Vector3.zero;
-        if(!_isPushing)
-            rb.velocity = Vector3.zero;
+        CheckDecreaseVelocity();
 
         //behavior when torch is on
         if (torch.isLit)
@@ -74,14 +73,11 @@ public class VampireToadAI : MonoBehaviour
             collision.gameObject.GetComponent<Player>().Damage(1);
     }
 
-    // pause for a bit after pushing for the stone vampire to slide a short distance
-    public IEnumerator DecreaseVelocity()
+    private void CheckDecreaseVelocity() 
     {
-        _isPushing = true;
-        yield return new WaitForSeconds(.4f);
-
+        if (!target) return;
+        if (Vector3.Distance(transform.position, target.transform.position) < 2) return;
         StartCoroutine(Freeze());
-        _isPushing = false;
     }
 
     // stop velocities, this helps fix drifting bugs
