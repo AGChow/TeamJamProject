@@ -17,6 +17,9 @@ public class ThrownSword : MonoBehaviour
     // variable to adjust swordHeight(Ari)
     private float _height = 1.5f;
 
+    // attatched hitParticles;
+    [SerializeField]
+    private ParticleSystem environmentHitParticles;
     private Transform _transform;
     private Transform _target;
     private bool _isMoving;
@@ -112,6 +115,8 @@ public class ThrownSword : MonoBehaviour
     {
         //parent sword to it's collision surface
         transform.parent = enviroObj.transform;
+        environmentHitParticles.Play();
+
 
         print("hit environment");
         if (!_isRecalling)

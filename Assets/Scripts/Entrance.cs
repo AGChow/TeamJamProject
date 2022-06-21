@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Entrance : MonoBehaviour
+{
+    public ParticleSystem dustParticles;
+    public GameObject door;
+    public Transform closeDoorPos;
+    public Vector3 closedPos;
+    public float overTime = 1;
+    // Start is called before the first frame update
+    void Start()
+    {
+        closedPos = door.transform.position;
+
+        StartCoroutine(MoveDoor());
+    }
+
+    public IEnumerator MoveDoor()
+    {
+        dustParticles.Play();
+        FindObjectOfType<AudioManager>().Play("Door");
+
+
+        float startTime = Time.time;
+        while (Time.time < startTime + overTime)
+        {
+            door.transform.position = Vector3.Lerp(door.transform.position, closeDoorPos.position, (Time.time - startTime) / overTime);
+            yield return null;
+        }
+        door.transform.position = closeDoorPos.position;
+    }
+}

@@ -157,4 +157,13 @@ public class PlayerMovement : MonoBehaviour
         speed = 0f;
         turnSpeed = 0;
     }
+
+    public void SceneTransition()
+    {
+        transform.position = transform.position + new Vector3(0, 0, 5);
+        _canMove = false;
+        speed = 0f;
+        turnSpeed = 0;
+
+    }
 }
