@@ -17,6 +17,7 @@ public class MaterialChange : MonoBehaviour
 
     public IEnumerator FlashWhite()
     {
+        
         rend.sharedMaterial = material[1];
         yield return new WaitForSeconds(.2f);
         rend.sharedMaterial = material[0];

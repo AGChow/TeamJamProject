@@ -35,6 +35,11 @@ public class Player : MonoBehaviour
 
         _playerCurrentHealth -= dmg;
 
+        //switch placeholder audio to player grunt
+        FindObjectOfType<AudioManager>().Play("placeholder");
+        StartCoroutine(HitTimePause());
+        StartCoroutine(GetComponentInChildren<MaterialChange>().FlashWhite());
+
         // Update UI hearts
         bool shakenHeart = false;
         for(int i = 0; i < _playerMaxHealth; i++)
@@ -111,6 +116,15 @@ public class Player : MonoBehaviour
 
         GetComponent<PlayerMovement>().ResetMovement();
         GetComponent<PlayerAttack>().canAttack = true;
+    }
+
+    public IEnumerator HitTimePause()
+    {
+
+        Time.timeScale = .1f;
+        yield return new WaitForSeconds(.04f);
+        Time.timeScale = 1;
+        yield return new WaitForSeconds(.3f);
     }
 
 

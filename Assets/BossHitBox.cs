@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class BossHitBox : MonoBehaviour
 {
-    
-    //this is for the bosses weakspot. He doesn't take damage, just goes into a stunned 
-    //state for the player to wail on him
-    public void StunHit()
+    // Start is called before the first frame update
+    void Start()
     {
-        StartCoroutine(GetComponentInParent<BossEvent>().Stun());
+        
     }
 
-    public void TurnOffHitBox()
+    // Update is called once per frame
+    void Update()
     {
-        GetComponent<Collider>().enabled = false;
+        
     }
-    public void TurnOnHitBox()
+
+    public void TakeDamage()
     {
-        GetComponent<Collider>().enabled = true;
+        //take damage
     }
 }

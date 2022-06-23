@@ -8,6 +8,7 @@ public class Torch : MonoBehaviour
     private PlayerMovement _player;
     [SerializeField]
     private PuzzleManager _puzzleManager;
+    public BossRoomManager _bossRoomManager;
 
     [SerializeField]
     private bool _isLit = false;
@@ -73,6 +74,11 @@ public class Torch : MonoBehaviour
             if (_puzzleManager != null)
             {
                 _puzzleManager.CheckCompleteConditions();
+            }
+            else if(_bossRoomManager != null)
+            {
+                //freeze boss when all torches are lit
+                _bossRoomManager.CheckCompleteConditions();
             }
 
         }

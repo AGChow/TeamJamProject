@@ -35,6 +35,10 @@ public class Sword : MonoBehaviour
             _swungAtShield = true;
         else if (other.CompareTag("Torch"))
             other.GetComponent<Torch>().ToggleTorch();
+        else if (other.CompareTag("BossWeakSpot"))
+            HandleBossWeakSpotCollision(other.gameObject);
+        else if (other.CompareTag("BossHitBox"))
+            HandleBossHitBoxCollision(other.gameObject);
         else if (other.CompareTag("Enemy"))
         {
 
@@ -92,5 +96,16 @@ public class Sword : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("placeholder");
 
         breakableObj.GetComponent<BreakableObject>().ObjectDestruction();
+    }
+
+    private void HandleBossWeakSpotCollision(GameObject weakSpot)
+    {
+        weakSpot.GetComponent<BossWeakSpot>().StunHit();
+    }
+    private void HandleBossHitBoxCollision(GameObject hitbox)
+    {
+        hitbox.GetComponentInParent<BossEvent>().TakeDamage();
+        FindObjectOfType<Player>().GetComponentInChildren<PlayerAttack>().RecallWeapon();
+
     }
 }

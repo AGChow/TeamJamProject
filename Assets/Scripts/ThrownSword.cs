@@ -102,9 +102,10 @@ public class ThrownSword : MonoBehaviour
             HandleBreakableCollision(other.gameObject);
         else if (other.CompareTag("BounceBack"))
             HandleBounceBackCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>());
+        else if (other.CompareTag("BossWeakSpot"))
+            HandleBossWeakSpotCollision(other.gameObject);
         else if (other.CompareTag("BossHitBox"))
-            HandleBounceBackCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>());
-
+            HandleBossHitBoxCollision(other.gameObject);
 
     }
 
@@ -157,5 +158,16 @@ public class ThrownSword : MonoBehaviour
     private void HandleBounceBackCollision(PlayerAttack playerAttackScript)
     {
         playerAttackScript.RecallWeapon();
+    }
+
+    private void HandleBossWeakSpotCollision(GameObject weakSpot)
+    {
+        weakSpot.GetComponent<BossWeakSpot>().StunHit();
+    }
+    private void HandleBossHitBoxCollision(GameObject hitbox)
+    {
+        hitbox.GetComponentInParent<BossEvent>().TakeDamage();
+        FindObjectOfType<Player>().GetComponentInChildren<PlayerAttack>().RecallWeapon();
+
     }
 }

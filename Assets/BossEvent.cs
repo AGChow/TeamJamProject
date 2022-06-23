@@ -5,16 +5,30 @@ using UnityEngine;
 public class BossEvent : MonoBehaviour
 {
     public GameObject player;
+    public GameObject BossHitBox;
+    public GameObject BossWeakSpot;
+    public Transform projectileSpawnPoint;
+
+    //Particles
+    public GameObject _hitParticles;
+    //prefab for projectile
+    public GameObject ProjectilePrefab;
+
     public float Health = 10;
     public float armor = 3;
 
     public Vector3 _lookDirection;
     public float currentRotSpeed = 0f;
-    public float rotNormal = 2f;
+    public float topRotSpeed = 2f;
 
     public bool canFollow;
     public bool frozen;
     public bool knockedOut;
+
+
+    public float rateOfShooting = 1f;
+    public bool canShoot;
+    public bool shooting;
 
 
     
@@ -23,6 +37,7 @@ public class BossEvent : MonoBehaviour
     {
         player = FindObjectOfType<Player>().gameObject;
         StartCoroutine(Init());
+
     }
 
     // Update is called once per frame
@@ -31,6 +46,12 @@ public class BossEvent : MonoBehaviour
         if (canFollow == true && frozen == false)
         {
             TurnToTarget(player);
+        }
+
+
+        if (shooting == true && canShoot == true)
+        {
+            StartCoroutine(ShootProjectile());
         }
 
     }
@@ -46,28 +67,21 @@ public class BossEvent : MonoBehaviour
 
     public void TakeDamage()
     {
-        
+        Instantiate(_hitParticles, BossHitBox.transform.position, BossHitBox.transform.rotation);
+        StartCoroutine(GetComponentInChildren<MaterialChange>().FlashWhite());
+        StartCoroutine(HitTimePauseBossHitBox());
+
         Health = Health - 1;
+
         if (Health <= 0)
         {
             //death animation
             BossDeath();
         }
-        else
-        {
-            if (frozen)
-            {
-                //Flash
-            }
-            else if(knockedOut)
-            {
-
-                //damage animation
-            }
-        }
     }
     public void BossDeath()
     {
+        Debug.Log("KilledBoss");
         //destroy and make a big deal about it
     }
 
@@ -91,8 +105,13 @@ public class BossEvent : MonoBehaviour
     {
             frozen = true;
             //change animation to frozen
+            BossWeakSpot.SetActive(true);
+            GetComponentInChildren<MaterialChange>().ChangeToAltMaterial();
+
             yield return new WaitForSeconds(4);
             //break out animation
+            GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
+
             yield return new WaitForSeconds(1);
             //turn back to player
             frozen = false;
@@ -100,16 +119,92 @@ public class BossEvent : MonoBehaviour
 
     public IEnumerator Stun()
     {
-        canFollow = false;
-        yield return new WaitForSeconds(2f);
+        StopAllCoroutines();
+        //make sure material is correct
+        GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
+
         //stun animation
+        //turn on stun hitbox
+        //replace with screech
+        FindObjectOfType<AudioManager>().Play("placeholder");
+
+        BossWeakSpot.GetComponent<BossWeakSpot>().TurnOffHitBox();
+        frozen = false;
+        canFollow = false;
+
+        
         yield return new WaitForSeconds(2f);
         //activate hitbox
-
-
+        BossHitBox.SetActive(true);
         yield return new WaitForSeconds(5f);
+        BossHitBox.SetActive(false);
+        yield return new WaitForSeconds(2f);
         //Getback up animation
         canFollow = true;
-    
+        //reset stun hitbox
+        BossWeakSpot.GetComponent<BossWeakSpot>().TurnOnHitBox();
+
+    }
+
+
+
+    public IEnumerator HitTimePauseWeakSpot()
+    {
+        // disable the collider during hit so that it doesn't keep getting triggered as it passes through
+        BossWeakSpot.GetComponent<BossWeakSpot>().TurnOffHitBox();
+        Time.timeScale = .1f;
+        yield return new WaitForSeconds(.04f);
+        Time.timeScale = 1;
+        yield return new WaitForSeconds(.3f);
+        BossWeakSpot.GetComponent<BossWeakSpot>().TurnOnHitBox();
+    }
+    public IEnumerator HitTimePauseBossHitBox()
+    {
+        // disable the collider during hit so that it doesn't keep getting triggered as it passes through
+        BossHitBox.GetComponent<Collider>().enabled = false;
+
+        Time.timeScale = .1f;
+        yield return new WaitForSeconds(.04f);
+        Time.timeScale = 1;
+        yield return new WaitForSeconds(.3f);
+        BossHitBox.GetComponent<Collider>().enabled = true;
+    }
+
+    public IEnumerator AttackLongRange()
+    {
+        canShoot = true;
+        //start animation charging up shooting attack
+        yield return new WaitForSeconds(1);
+        //start shooting
+        shooting = true;
+        currentRotSpeed /= 1.5f;
+
+
+        yield return new WaitForSeconds(8);
+        //stop shooting
+        canShoot = false;
+        currentRotSpeed = topRotSpeed;
+    }
+    public IEnumerator AttackShortRange()
+    {
+        //start animation wind up
+        yield return new WaitForSeconds(3);
+        //slam
+        currentRotSpeed = 0;
+        yield return new WaitForSeconds(.5f);
+        BossHitBox.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        BossHitBox.SetActive(false);
+        //return to idle anim
+        currentRotSpeed = topRotSpeed;
+    }
+    public IEnumerator ShootProjectile()
+    {
+        shooting = false;
+
+        Instantiate(ProjectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+
+        yield return new WaitForSeconds(rateOfShooting);
+        shooting = true;
     }
 }

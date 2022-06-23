@@ -15,7 +15,8 @@ TagManager:
   - FxTemporaire
   - BounceBack
   - Hole
-  - HitBox
+  - BossWeakSpot
+  - BossHitBox
   layers:
   - Default
   - TransparentFX
