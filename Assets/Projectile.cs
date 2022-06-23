@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float speed = 5;
+    public float speed = 8;
+    public float timer;
+    public GameObject explosionParticles;
+
 
     // Update is called once per frame
     void Update()
     {
         transform.position += transform.forward * Time.deltaTime * speed;
+        timer += Time.deltaTime;
+
+        if(timer > 5)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -18,7 +27,7 @@ public class Projectile : MonoBehaviour
         {
             other.gameObject.GetComponent<Player>().Damage(1);
         }
-
+        Instantiate(explosionParticles, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
 }

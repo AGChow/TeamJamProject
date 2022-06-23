@@ -73,6 +73,7 @@ public class VampireToadAI : MonoBehaviour
                 _navMeshAgent.destination = target.position;
                 // anim.SetBool("Awake", true);
                 GetComponentInChildren<Animator>().SetBool("Frozen", false);
+                GetComponentInChildren<Animator>().SetBool("Walking", true);
 
                 GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
                 eyesGraphics.SetActive(true);
