@@ -140,6 +140,11 @@ public class PlayerAttack : MonoBehaviour
     public void SwingSword()
     {
         heldWeaponObj.GetComponent<Sword>().SwordSwing();
+        //Double check can swing bool. Messes up otherwise when player swings sword and throws sword simultaneously
+        if (_hasWeapon)
+        {
+            heldWeaponObj.GetComponent<Sword>().canSwing = true;
+        }
     }
 
     public bool HasWeapon() {

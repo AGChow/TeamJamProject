@@ -102,6 +102,10 @@ public class ThrownSword : MonoBehaviour
             HandleBreakableCollision(other.gameObject);
         else if (other.CompareTag("BounceBack"))
             HandleBounceBackCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>());
+        else if (other.CompareTag("BossHitBox"))
+            HandleBounceBackCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>());
+
+
     }
 
     private void HandlePlayerCollision(PlayerAttack playerAttackScript)

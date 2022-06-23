@@ -9,7 +9,8 @@ public class BossEvent : MonoBehaviour
     public float armor = 3;
 
     public Vector3 _lookDirection;
-    public float rotSpeed = 0f;
+    public float currentRotSpeed = 0f;
+    public float rotNormal = 2f;
 
     public bool canFollow;
     public bool frozen;
@@ -77,7 +78,7 @@ public class BossEvent : MonoBehaviour
 
 
         // calculate the Quaternion for the rotation
-        Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(D), rotSpeed * Time.deltaTime);
+        Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(D), currentRotSpeed * Time.deltaTime);
 
         //Apply the rotation 
         transform.rotation = rot;
@@ -95,5 +96,20 @@ public class BossEvent : MonoBehaviour
             yield return new WaitForSeconds(1);
             //turn back to player
             frozen = false;
+    }
+
+    public IEnumerator Stun()
+    {
+        canFollow = false;
+        yield return new WaitForSeconds(2f);
+        //stun animation
+        yield return new WaitForSeconds(2f);
+        //activate hitbox
+
+
+        yield return new WaitForSeconds(5f);
+        //Getback up animation
+        canFollow = true;
+    
     }
 }

@@ -7,9 +7,9 @@ public class CameraManager : MonoBehaviour
 {
     public CinemachineVirtualCamera _introCam;
     public CinemachineVirtualCamera _intro2Cam;
-    private float transition1 = 0.5f;
-    private float transition2 = 2.5f;
-    private float transition3 = 3f;
+    //private float transition1 = 0.5f;
+    //private float transition2 = 2.5f;
+    //private float transition3 = 3f;
 
     public CinemachineVirtualCamera _topDownCam;
 

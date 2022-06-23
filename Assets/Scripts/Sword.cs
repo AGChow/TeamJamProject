@@ -8,7 +8,7 @@ public class Sword : MonoBehaviour
     [SerializeField]
     private Animator _playerAnimator;
     private bool _swungAtShield = false;
-    private bool canSwing;
+    public bool canSwing;
 
     [SerializeField]
     private TrailRenderer swingTrail;
@@ -23,9 +23,10 @@ public class Sword : MonoBehaviour
 
     public void SwordSwing()
     {
-        if (canSwing == true)
+        if (canSwing == true) { 
         _collider.enabled = true;
         StartCoroutine(Swing());
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -69,7 +70,7 @@ public class Sword : MonoBehaviour
         _collider.enabled = false;
         swingTrail.emitting = false;
 
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
         canSwing = true;
 
     }
