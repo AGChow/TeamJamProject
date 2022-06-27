@@ -6921,7 +6921,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.8746497, b: 0.7122642, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14580,6 +14580,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6671695840408276518, guid: 6ec118987a3b49b45b88353a0c4f2d12, type: 3}
+      propertyPath: nextScene
+      value: PotentialBossLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 8506238271282400481, guid: 6ec118987a3b49b45b88353a0c4f2d12, type: 3}
       propertyPath: m_Name
       value: Exit
@@ -14647,7 +14651,7 @@ PrefabInstance:
       objectReference: {fileID: 1073776647}
     - target: {fileID: 3674034457636561801, guid: 694245912c1507745abdc633d2a08527, type: 3}
       propertyPath: puzzleElements.Array.size
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3674034457636561801, guid: 694245912c1507745abdc633d2a08527, type: 3}
       propertyPath: puzzleElements.Array.data[0]

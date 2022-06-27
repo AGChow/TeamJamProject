@@ -5173,7 +5173,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torchLight: {fileID: 1918139485}
   _puzzleManager: {fileID: 0}
+  _bossRoomManager: {fileID: 0}
   _isLit: 0
+  cantBeTurnedOff: 0
   _isTimerTorch: 0
   fireParticles: {fileID: 799037959}
   torchTimer: 4
@@ -10038,6 +10040,7 @@ MonoBehaviour:
   moveToLocation: {x: 0, y: 0, z: 0}
   moveTime: 1
   canToggle: 0
+  Particles: {fileID: 0}
 --- !u!65 &88682026
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14990,7 +14993,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7765957, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -40191,7 +40194,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torchLight: {fileID: 496756193}
   _puzzleManager: {fileID: 0}
+  _bossRoomManager: {fileID: 0}
   _isLit: 0
+  cantBeTurnedOff: 0
   _isTimerTorch: 0
   fireParticles: {fileID: 293570001}
   torchTimer: 4
@@ -50323,6 +50328,7 @@ MonoBehaviour:
   gravity: 9.8
   activeTriggers: []
   dustParticles: {fileID: 0}
+  _canMove: 0
   velocity: 0
 --- !u!114 &882034212
 MonoBehaviour:
@@ -50338,6 +50344,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMaxHealth: 3
   gameOver: {fileID: 692038073}
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
 --- !u!136 &882034213
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -50385,6 +50393,7 @@ MonoBehaviour:
   heldWeaponObj: {fileID: 2370721235425592619}
   thrownWeaponObj: {fileID: 1311215996}
   throwTarget: {fileID: 632105376}
+  canAttack: 0
   _throwDistance: 17
 --- !u!1 &889488664 stripped
 GameObject:
@@ -50529,7 +50538,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torchLight: {fileID: 856898010}
   _puzzleManager: {fileID: 0}
+  _bossRoomManager: {fileID: 0}
   _isLit: 0
+  cantBeTurnedOff: 0
   _isTimerTorch: 0
   fireParticles: {fileID: 22380716}
   torchTimer: 4
@@ -65291,6 +65302,7 @@ MonoBehaviour:
   Health: 6
   _poofParticles: {fileID: 7747298047355669779, guid: f02cf74ba6c424c4493dd43dce3832d3, type: 3}
   _hitParticles: {fileID: 4377805436637210024, guid: ded9c1c718c4bd0489815988dc008f00, type: 3}
+  dead: 0
 --- !u!1 &1239313037
 GameObject:
   m_ObjectHideFlags: 0
@@ -70335,10 +70347,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8336937537522831344, guid: b819683b85698744eb4bb5797860a485, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b819683b85698744eb4bb5797860a485, type: 3}
 --- !u!1 &1311215996
@@ -70420,6 +70428,7 @@ MonoBehaviour:
   _speed: 10
   _throwSpeed: 15
   _returnSpeed: 25
+  environmentHitParticles: {fileID: 0}
 --- !u!1 &1409679268
 GameObject:
   m_ObjectHideFlags: 0
@@ -70456,6 +70465,7 @@ MonoBehaviour:
   moveToLocation: {x: 0, y: 0, z: 0}
   moveTime: 1
   canToggle: 0
+  Particles: {fileID: 0}
 --- !u!65 &1409679271
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -86226,6 +86236,7 @@ MonoBehaviour:
   moveToLocation: {x: 5, y: 0.5, z: 12}
   moveTime: 1
   canToggle: 1
+  Particles: {fileID: 0}
 --- !u!65 &2133269099
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -101829,6 +101840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerAttack: {fileID: 882034215}
   _playerAnimator: {fileID: 1856491927516585302}
+  canSwing: 0
   swingTrail: {fileID: 0}
 --- !u!65 &5617506944080597840
 BoxCollider:

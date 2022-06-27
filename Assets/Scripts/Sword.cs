@@ -64,9 +64,10 @@ public class Sword : MonoBehaviour
     IEnumerator Swing()
     {
         canSwing = false;
-        FindObjectOfType<AudioManager>().Play("SwordSwing");
 
         _playerAnimator.SetTrigger("SwingSword");
+        FindObjectOfType<AudioManager>().Play("SwordSwing");
+
         swingTrail.emitting = true;
         
         yield return new WaitForSeconds(0.2f);
