@@ -29,7 +29,7 @@ public class BossPhaseManager : MonoBehaviour
     {
         if(phase1 == true && looping == true)
         {
-            StartCoroutine(Phase1Loop());
+
         }
     }
     //phase 1, no torches, back exposed, slams hand to attack player
