@@ -15,10 +15,12 @@ public class BossPhaseManager : MonoBehaviour
                     //no torches, back exposed, slams hand to attack player
                     break;
                 case 2:
-                    //back exposed, shoots projectiles and slams hand
+                    _bossEvent.canShoot = true;
+                    _bossEvent.shooting = true;
                     break;
                 case 3:
-                    //covers back, torches come down, shoots projectiles, slams hands
+                    _bossEvent.rateOfShooting = .2f;
+                    _bossEvent.shooting = true;
                     break;
 
             }

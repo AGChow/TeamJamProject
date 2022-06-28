@@ -25,13 +25,12 @@ public class BossEvent : MonoBehaviour
     public bool knockedOut;
 
 
-    public float rateOfShooting = 1f;
+    public float rateOfShooting = .15f;
     public bool canShoot;
     public bool shooting;
 
     private BossPhaseManager bossPhaseManager;
     
-    // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>().gameObject;
@@ -40,7 +39,6 @@ public class BossEvent : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (canFollow == true && frozen == false)
@@ -164,10 +162,7 @@ public class BossEvent : MonoBehaviour
         canFollow = true;
         //reset stun hitbox
         BossWeakSpot.GetComponent<BossWeakSpot>().TurnOnHitBox();
-
     }
-
-
 
     public IEnumerator HitTimePauseWeakSpot()
     {
