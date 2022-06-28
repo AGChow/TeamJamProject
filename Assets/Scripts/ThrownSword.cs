@@ -120,7 +120,8 @@ public class ThrownSword : MonoBehaviour
     {
         //parent sword to it's collision surface
         transform.parent = enviroObj.transform;
-        environmentHitParticles.Play();
+        Instantiate(environmentHitParticles, transform.position, transform.rotation);
+        FindObjectOfType<AudioManager>().Play("SwordClank");
 
 
         print("hit environment");

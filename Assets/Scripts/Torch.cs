@@ -99,4 +99,5 @@ public class Torch : MonoBehaviour
             ExtinguishTorch();
         }
     }
+
 }

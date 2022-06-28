@@ -6,6 +6,7 @@ public class BossEvent : MonoBehaviour
     public GameObject player;
     public GameObject BossHitBox;
     public GameObject BossWeakSpot;
+    public GameObject torchesObjects;
     public Transform projectileSpawnPoint;
 
     //Particles
@@ -222,5 +223,10 @@ public class BossEvent : MonoBehaviour
 
         yield return new WaitForSeconds(rateOfShooting);
         shooting = true;
+    }
+
+    public void BringDownTorches()
+    {
+        torchesObjects.GetComponent<Animator>().SetTrigger("Drop");
     }
 }

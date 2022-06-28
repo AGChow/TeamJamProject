@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
 
         //switch placeholder audio to player grunt
         FindObjectOfType<AudioManager>().Play("placeholder");
+        FindObjectOfType<AudioManager>().Play("PlayerGetsHit");
+
         StartCoroutine(HitTimePause());
         StartCoroutine(GetComponentInChildren<MaterialChange>().FlashWhite());
 
@@ -97,6 +99,7 @@ public class Player : MonoBehaviour
     public IEnumerator Fall()
     {
         _playerAnimator.SetTrigger("Fall");
+        FindObjectOfType<AudioManager>().Play("PlayerFall");
         yield return new WaitForSeconds(1f);
 
         gameOver.SetActive(true);

@@ -90,7 +90,7 @@ MonoBehaviour:
     audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
     loop: 0
   - name: ButtonandSwitch
-    clip: {fileID: 8300000, guid: d1ed8c5a8b3909949b250111a9dbcc35, type: 3}
+    clip: {fileID: 8300000, guid: 6d923fd85171f5541b3356ab9176896c, type: 3}
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
@@ -112,6 +112,27 @@ MonoBehaviour:
     loop: 0
   - name: GameOver
     clip: {fileID: 8300000, guid: 893e337d8b4d58c4e8b23d0eef9bf7b3, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
+  - name: PlayerFall
+    clip: {fileID: 8300000, guid: 96b1ddd80a5b85e458ef5cc762d24d13, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
+  - name: PlayerGetsHit
+    clip: {fileID: 8300000, guid: 55351a599fb843f409d13cdae728c3ca, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
+  - name: SwordClank
+    clip: {fileID: 8300000, guid: 559755c0d2506a14d83d4dc4914c1966, type: 3}
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
