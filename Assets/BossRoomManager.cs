@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossRoomManager : MonoBehaviour
 {
+    public float torchTimer;
     public GameObject[] puzzleElements;
 
     [SerializeField]
