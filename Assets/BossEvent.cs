@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossEvent : MonoBehaviour
@@ -14,7 +13,7 @@ public class BossEvent : MonoBehaviour
     //prefab for projectile
     public GameObject ProjectilePrefab;
 
-    public float Health = 10;
+    public float Health = 15;
     public float armor = 3;
 
     public Vector3 _lookDirection;
@@ -30,12 +29,13 @@ public class BossEvent : MonoBehaviour
     public bool canShoot;
     public bool shooting;
 
-
+    private BossPhaseManager bossPhaseManager;
     
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>().gameObject;
+        bossPhaseManager = GetComponent<BossPhaseManager>();
         StartCoroutine(Init());
 
     }
@@ -61,8 +61,9 @@ public class BossEvent : MonoBehaviour
         //walk into room timing
         yield return new WaitForSeconds(5);
         //roar animation and camera sweep
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         canFollow = true;
+        bossPhaseManager.SetBossPhase(1);
     }
 
     public void TakeDamage()
@@ -73,10 +74,30 @@ public class BossEvent : MonoBehaviour
 
         Health = Health - 1;
 
-        if (Health <= 0)
-        {
-            //death animation
-            BossDeath();
+        switch(Health) {
+            case 10:
+                BossHitBox.SetActive(false);
+                //Getback up animation
+                canFollow = true;
+                //reset stun hitbox
+                BossWeakSpot.GetComponent<BossWeakSpot>().TurnOnHitBox();
+                bossPhaseManager.SetBossPhase(2);
+                break;
+            case 5:
+                BossHitBox.SetActive(false);
+                //Getback up animation
+                canFollow = true;
+                //reset stun hitbox
+                BossWeakSpot.GetComponent<BossWeakSpot>().TurnOnHitBox();
+                bossPhaseManager.SetBossPhase(3);
+                break;
+            case 0:
+                BossHitBox.SetActive(false);
+                BossDeath();
+                break;
+            default:
+                bossPhaseManager.SetBossPhase(1);
+                break;
         }
     }
     public void BossDeath()

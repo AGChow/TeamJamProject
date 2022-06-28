@@ -14,7 +14,8 @@ public class BossWeakSpot : MonoBehaviour
     public void StunHit()
     {
 
-        if(currentArmor <= 0)
+        // Changed to <=1 because if we check 0, we haven't subtracted the current armor yet, so they end up getting one extra armor
+        if(currentArmor <= 1)
         {
             //breaks armor. Start stun event
             StartCoroutine(GetComponentInParent<BossEvent>().Stun());
