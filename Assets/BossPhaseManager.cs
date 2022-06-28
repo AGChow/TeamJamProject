@@ -1,26 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossPhaseManager : MonoBehaviour
 {
-    public bool phase1;
-    public bool phase2;
-    public bool phase3;
-    // Start is called before the first frame update
-    void Start()
-    {
-        phase1 = true;
-        phase2 = false;
-        phase3 = true;
+    private BossEvent _bossEvent;
+
+    [SerializeField]
+    private int _phase = 1;
+    public int phase {
+        get { return _phase; }
+        set {
+
+            switch(value) {
+                case 1:
+                    //no torches, back exposed, slams hand to attack player
+                    break;
+                case 2:
+                    _bossEvent.canShoot = true;
+                    _bossEvent.shooting = true;
+                    break;
+                case 3:
+                    _bossEvent.rateOfShooting = .2f;
+                    _bossEvent.shooting = true;
+                    break;
+
+            }
+
+            _phase = value;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Awake() {
+        _bossEvent = GetComponent<BossEvent>();
     }
-    //phase 1, no torches, back exposed, slams hand to attack player
-    //phase 2, back exposed, shoots projectiles and slams hand
-    //phase 3, covers back, torches come down, shoots projectiles, slams hands
+
+    public int GetBossPhase() {
+        return _phase;
+    }
+
+    public void SetBossPhase(int newPhase) {
+        phase = newPhase;
+    }
 }

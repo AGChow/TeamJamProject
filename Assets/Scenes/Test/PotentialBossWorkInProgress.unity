@@ -446,7 +446,7 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 286487025}
   _hitParticles: {fileID: 5778600445472085346, guid: 41686b3bf7cf91a4fabc0524187ffd5d, type: 3}
   ProjectilePrefab: {fileID: 1571902335224944535, guid: 7073ed89e6698cf4d95de28bef9a9743, type: 3}
-  Health: 50
+  Health: 15
   armor: 3
   _lookDirection: {x: 0, y: 0, z: 0}
   currentRotSpeed: 2
@@ -553,9 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 923a7ecf609a12144993ddc834a8f39c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase1: 0
-  phase2: 0
-  phase3: 0
+  _phase: 1
 --- !u!1 &286487024
 GameObject:
   m_ObjectHideFlags: 0
