@@ -59,7 +59,8 @@ public class BossEvent : MonoBehaviour
         //walk into room timing
         yield return new WaitForSeconds(5);
         //roar animation and camera sweep
-        yield return new WaitForSeconds(3);
+        GetComponentInChildren<Animator>().SetTrigger("StartIntro");
+        yield return new WaitForSeconds(8);
         canFollow = true;
         bossPhaseManager.SetBossPhase(1);
     }
@@ -228,4 +229,5 @@ public class BossEvent : MonoBehaviour
     {
         torchesObjects.GetComponent<Animator>().SetTrigger("Drop");
     }
+   
 }
