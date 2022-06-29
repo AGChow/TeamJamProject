@@ -30,13 +30,14 @@ public class BossEvent : MonoBehaviour
     public bool shooting;
 
     private BossPhaseManager bossPhaseManager;
+    public BossWeakSpot bossWeakSpot;
     
     void Start()
     {
         player = FindObjectOfType<Player>().gameObject;
         bossPhaseManager = GetComponent<BossPhaseManager>();
         StartCoroutine(Init());
-
+        bossWeakSpot = GetComponentInChildren<BossWeakSpot>();
     }
 
     void Update()
@@ -95,7 +96,6 @@ public class BossEvent : MonoBehaviour
                 BossDeath();
                 break;
             default:
-                bossPhaseManager.SetBossPhase(1);
                 break;
         }
     }
@@ -139,6 +139,7 @@ public class BossEvent : MonoBehaviour
 
     public IEnumerator Stun()
     {
+        int currentBossPhase = bossPhaseManager.GetBossPhase();
         StopAllCoroutines();
         //make sure material is correct
         GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
@@ -163,6 +164,11 @@ public class BossEvent : MonoBehaviour
         canFollow = true;
         //reset stun hitbox
         BossWeakSpot.GetComponent<BossWeakSpot>().TurnOnHitBox();
+
+        // Player didn't get to the next phase yet after stun period
+        if(bossPhaseManager.GetBossPhase() == currentBossPhase) {
+            bossPhaseManager.ResumePhase();
+        }
     }
 
     public IEnumerator HitTimePauseWeakSpot()
