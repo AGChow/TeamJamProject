@@ -458,7 +458,7 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 286487025}
   _hitParticles: {fileID: 5778600445472085346, guid: 41686b3bf7cf91a4fabc0524187ffd5d, type: 3}
   ProjectilePrefab: {fileID: 1571902335224944535, guid: 7073ed89e6698cf4d95de28bef9a9743, type: 3}
-  Health: 6
+  Health: 13
   _lookDirection: {x: 0, y: 0, z: 0}
   currentRotSpeed: 2
   topRotSpeed: 2
@@ -468,6 +468,8 @@ MonoBehaviour:
   rateOfShooting: 0.3
   canShoot: 0
   shooting: 0
+  bossWeakSpot: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!136 &241384451
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -688,7 +690,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286487024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.472, z: 1.12}
+  m_LocalPosition: {x: 0, y: -0.472, z: 0.764}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -786,7 +788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &311883784
 Transform:
   m_ObjectHideFlags: 0
@@ -822,7 +824,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311883783}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2073,7 +2075,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.8746497, b: 0.7122642, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.015
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3326,7 +3328,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.780083, y: 1}
+    m_SensorSize: {x: 1.7776397, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3457,7 +3459,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7a215cd40bfcc6041976c6d56458ab04, type: 2}
+  - {fileID: 2100000, guid: c16719cd10124bd4dae6d2e3d22db28e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3871,6 +3873,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitparticles: {fileID: 5778600445472085346, guid: 41686b3bf7cf91a4fabc0524187ffd5d, type: 3}
+  maxArmor: 3
+  currentArmor: 3
 --- !u!1001 &1255759675001508463
 PrefabInstance:
   m_ObjectHideFlags: 0

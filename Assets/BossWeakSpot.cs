@@ -22,17 +22,22 @@ public class BossWeakSpot : MonoBehaviour
         // Changed to <=1 because if we check 0, we haven't subtracted the current armor yet, so they end up getting one extra armor
         if(currentArmor <= 1)
         {
-            //breaks armor. Start stun event
-            StartCoroutine(_bossEvent.Stun());
+            FindObjectOfType<AudioManager>().Play("BossScream");
+            Instantiate(hitparticles, transform.position, transform.rotation);
+
             //reset armor for next round
             resetArmor();
+            //breaks armor. Start stun event
+            StartCoroutine(_bossEvent.Stun());
         }
         else
         {
+            _bossEvent.anim.SetTrigger("WeakSpotHit");
+
             Instantiate(hitparticles, transform.position, transform.rotation);
             currentArmor -= 1;
             //replace with boss grunt
-            FindObjectOfType<AudioManager>().Play("placeholder");
+            FindObjectOfType<AudioManager>().Play("BossGrunt");
 
             //StartCoroutine(GetComponentInParent<BossEvent>().Flash());
             StartCoroutine(_bossEvent.HitTimePauseWeakSpot());
