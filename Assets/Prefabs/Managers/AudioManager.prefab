@@ -138,6 +138,27 @@ MonoBehaviour:
     source: {fileID: 0}
     audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
     loop: 0
+  - name: BossScream
+    clip: {fileID: 8300000, guid: 87c3cb05514950546881154ff151d8b0, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
+  - name: BossGrowl
+    clip: {fileID: 8300000, guid: 80a0deeb0dfb6b34ba5a5987109e4cd3, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
+  - name: BossGrunt
+    clip: {fileID: 8300000, guid: 96f44dce39050b54b9198be90fa6abd4, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
+    loop: 0
 --- !u!82 &2123727835590495316
 AudioSource:
   m_ObjectHideFlags: 0
