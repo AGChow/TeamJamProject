@@ -101,6 +101,7 @@ public class BossEvent : MonoBehaviour
     }
     public void BossDeath()
     {
+        Timer.instance.StopAndRecordTime();
         Debug.Log("KilledBoss");
         //destroy and make a big deal about it
     }
