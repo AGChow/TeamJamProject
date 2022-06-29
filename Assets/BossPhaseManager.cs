@@ -41,4 +41,23 @@ public class BossPhaseManager : MonoBehaviour
     public void SetBossPhase(int newPhase) {
         phase = newPhase;
     }
+
+    public void ResumePhase() {
+        _bossEvent.bossWeakSpot.currentArmor = _bossEvent.bossWeakSpot.maxArmor;
+        switch(_phase) {
+                case 1:
+                    //no torches, back exposed, slams hand to attack player
+                    break;
+                case 2:
+                    _bossEvent.canShoot = true;
+                    _bossEvent.shooting = true;
+                    break;
+                case 3:
+                    _bossEvent.BringDownTorches();
+                    _bossEvent.rateOfShooting = .2f;
+                    _bossEvent.shooting = true;
+                    break;
+
+            }
+    }
 }

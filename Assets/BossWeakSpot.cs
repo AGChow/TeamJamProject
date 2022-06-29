@@ -5,8 +5,8 @@ using UnityEngine;
 public class BossWeakSpot : MonoBehaviour
 {
     public GameObject hitparticles;
-    private float maxArmor = 3;
-    private float currentArmor = 3;
+    public float maxArmor = 3;
+    public float currentArmor = 3;
     private BossEvent _bossEvent;
 
     void Awake() {
