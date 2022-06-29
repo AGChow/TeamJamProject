@@ -7,6 +7,11 @@ public class BossWeakSpot : MonoBehaviour
     public GameObject hitparticles;
     private float maxArmor = 3;
     private float currentArmor = 3;
+    private BossEvent _bossEvent;
+
+    void Awake() {
+        _bossEvent = GetComponentInParent<BossEvent>();
+    }
     
     
     //this is for the bosses weakspot. He doesn't take damage, just goes into a stunned 
@@ -18,7 +23,7 @@ public class BossWeakSpot : MonoBehaviour
         if(currentArmor <= 1)
         {
             //breaks armor. Start stun event
-            StartCoroutine(GetComponentInParent<BossEvent>().Stun());
+            StartCoroutine(_bossEvent.Stun());
             //reset armor for next round
             resetArmor();
         }
@@ -30,7 +35,7 @@ public class BossWeakSpot : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("placeholder");
 
             //StartCoroutine(GetComponentInParent<BossEvent>().Flash());
-            StartCoroutine(GetComponentInParent<BossEvent>().HitTimePauseWeakSpot());
+            StartCoroutine(_bossEvent.HitTimePauseWeakSpot());
         }
     }
     public void resetArmor()

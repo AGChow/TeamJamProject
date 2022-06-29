@@ -19,6 +19,7 @@ public class BossPhaseManager : MonoBehaviour
                     _bossEvent.shooting = true;
                     break;
                 case 3:
+                    _bossEvent.BringDownTorches();
                     _bossEvent.rateOfShooting = .2f;
                     _bossEvent.shooting = true;
                     break;

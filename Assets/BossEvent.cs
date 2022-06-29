@@ -15,7 +15,6 @@ public class BossEvent : MonoBehaviour
     public GameObject ProjectilePrefab;
 
     public float Health = 15;
-    public float armor = 3;
 
     public Vector3 _lookDirection;
     public float currentRotSpeed = 0f;
