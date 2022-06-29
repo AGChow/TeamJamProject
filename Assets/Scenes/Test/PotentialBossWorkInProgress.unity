@@ -458,7 +458,7 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 286487025}
   _hitParticles: {fileID: 5778600445472085346, guid: 41686b3bf7cf91a4fabc0524187ffd5d, type: 3}
   ProjectilePrefab: {fileID: 1571902335224944535, guid: 7073ed89e6698cf4d95de28bef9a9743, type: 3}
-  Health: 6
+  Health: 11
   _lookDirection: {x: 0, y: 0, z: 0}
   currentRotSpeed: 2
   topRotSpeed: 2
@@ -468,6 +468,7 @@ MonoBehaviour:
   rateOfShooting: 0.3
   canShoot: 0
   shooting: 0
+  bossWeakSpot: {fileID: 0}
 --- !u!136 &241384451
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -786,7 +787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &311883784
 Transform:
   m_ObjectHideFlags: 0
@@ -795,7 +796,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311883783}
   m_LocalRotation: {x: -0.66682196, y: -0.0021923562, z: 0.02663495, w: 0.74473774}
-  m_LocalPosition: {x: -0.00007, y: 0.00169, z: -0.00011}
+  m_LocalPosition: {x: 0.00013, y: 0.0011, z: 0.00529}
   m_LocalScale: {x: 0.004343968, y: 0.0041508162, z: 0.0052577015}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3326,7 +3327,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.775281, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3871,6 +3872,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitparticles: {fileID: 5778600445472085346, guid: 41686b3bf7cf91a4fabc0524187ffd5d, type: 3}
+  maxArmor: 3
+  currentArmor: 3
 --- !u!1001 &1255759675001508463
 PrefabInstance:
   m_ObjectHideFlags: 0
