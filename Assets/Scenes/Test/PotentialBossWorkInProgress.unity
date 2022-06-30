@@ -476,6 +476,7 @@ MonoBehaviour:
   stunned: 0
   bossWeakSpot: {fileID: 0}
   anim: {fileID: 0}
+  bossMusic: {fileID: 8300000, guid: e99e9597c3762ca41955f777a5cc1e26, type: 3}
 --- !u!136 &241384451
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17712,7 +17713,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7761194, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

@@ -14,11 +14,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip musicAudioClip {
         get { return _musicAudioClip; }
         set {
-            if(_musicAudioClip != musicAudioClip) {
-                musicAudioSource.Stop();
-                musicAudioSource.clip = value;
-                musicAudioSource.Play();
-            }
+            print(value.name);
+            musicAudioSource.Stop();
+            musicAudioSource.clip = value;
+            musicAudioSource.Play();
 
             _musicAudioClip = value;
         }

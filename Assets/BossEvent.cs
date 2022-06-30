@@ -38,6 +38,7 @@ public class BossEvent : MonoBehaviour
     private BossPhaseManager bossPhaseManager;
     public BossWeakSpot bossWeakSpot;
     public Animator anim;
+    public AudioClip bossMusic;
     
     void Start()
     {
@@ -83,6 +84,7 @@ public class BossEvent : MonoBehaviour
     {
         //walk into room timing
         yield return new WaitForSeconds(5);
+        AudioManager.instance.musicAudioClip = bossMusic;
         //roar animation and camera sweep
         GetComponentInChildren<Animator>().SetTrigger("StartIntro");
         yield return new WaitForSeconds(8);
