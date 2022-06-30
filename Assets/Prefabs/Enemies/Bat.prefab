@@ -828,6 +828,7 @@ MonoBehaviour:
   Health: 1
   _poofParticles: {fileID: 7747298047355669779, guid: f02cf74ba6c424c4493dd43dce3832d3, type: 3}
   _hitParticles: {fileID: 5778600445472085346, guid: 41686b3bf7cf91a4fabc0524187ffd5d, type: 3}
+  dead: 0
 --- !u!65 &716173826
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -839,8 +840,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6, y: 6, z: 6}
-  m_Center: {x: 0.00000003570311, y: 0, z: 1.2070646}
+  m_Size: {x: 6, y: 14.977852, z: 6}
+  m_Center: {x: 0.000000005606414, y: 2.1961193, z: 1.2070646}
 --- !u!1 &8085203589490181143
 GameObject:
   m_ObjectHideFlags: 0

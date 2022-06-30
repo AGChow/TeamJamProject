@@ -7032,7 +7032,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.8746497, b: 0.7122642, a: 1}
-  m_Intensity: 0
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -7350,7 +7350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103793928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.21, y: 0, z: 3.8}
+  m_LocalPosition: {x: -16.21, y: -0.2, z: 3.8}
   m_LocalScale: {x: 1.5, y: 0.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8088,6 +8088,10 @@ PrefabInstance:
       value: MovingWall2
       objectReference: {fileID: 0}
     - target: {fileID: 7186465787867109379, guid: 390d8640f99e4394b92a8ae0347824b1, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186465787867109379, guid: 390d8640f99e4394b92a8ae0347824b1, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -8111,7 +8115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   watcherType: 1
-  moveToLocation: {x: 6.5, y: -2.5, z: -4.5}
+  moveToLocation: {x: 6.5, y: -3, z: -4.5}
   moveTime: 4
   canToggle: 1
   Particles: {fileID: 1319389639}
@@ -13479,27 +13483,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5855259609334319766, guid: f9578202f68a8c94480a5ebb020f94d5, type: 3}
       propertyPath: m_Size.x
-      value: 4
+      value: 4.7712326
       objectReference: {fileID: 0}
     - target: {fileID: 5855259609334319766, guid: f9578202f68a8c94480a5ebb020f94d5, type: 3}
       propertyPath: m_Size.y
-      value: 4
+      value: 4.550458
       objectReference: {fileID: 0}
     - target: {fileID: 5855259609334319766, guid: f9578202f68a8c94480a5ebb020f94d5, type: 3}
       propertyPath: m_Size.z
-      value: 4
+      value: 4.115309
       objectReference: {fileID: 0}
     - target: {fileID: 5855259609334319766, guid: f9578202f68a8c94480a5ebb020f94d5, type: 3}
       propertyPath: m_Center.x
-      value: 0
+      value: 0.022855759
       objectReference: {fileID: 0}
     - target: {fileID: 5855259609334319766, guid: f9578202f68a8c94480a5ebb020f94d5, type: 3}
       propertyPath: m_Center.y
-      value: 0
+      value: -0.27522993
       objectReference: {fileID: 0}
     - target: {fileID: 5855259609334319766, guid: f9578202f68a8c94480a5ebb020f94d5, type: 3}
       propertyPath: m_Center.z
-      value: 0
+      value: -0.07268238
       objectReference: {fileID: 0}
     - target: {fileID: 5855259609334319766, guid: f9578202f68a8c94480a5ebb020f94d5, type: 3}
       propertyPath: m_IsTrigger
@@ -14512,6 +14516,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1103793933}
     m_Modifications:
+    - target: {fileID: 2334849376338407948, guid: 7a0eadc9d29f6fd4197863d78a50396f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5491078103803407021, guid: 7a0eadc9d29f6fd4197863d78a50396f, type: 3}
       propertyPath: m_RootOrder
       value: 1

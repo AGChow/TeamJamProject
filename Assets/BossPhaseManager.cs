@@ -13,17 +13,16 @@ public class BossPhaseManager : MonoBehaviour
             switch(value) {
                 case 1:
                     //no torches, back exposed, slams hand to attack player
+                    StartCoroutine(_bossEvent.AttackShortRange());
                     break;
                 case 2:
-                    _bossEvent.canShoot = true;
-                    _bossEvent.shooting = true;
+                    //no torches, back exposed, shoots projectiles
+                    StartCoroutine(_bossEvent.InitPhase2());
                     break;
                 case 3:
-                    _bossEvent.BringDownTorches();
-                    _bossEvent.rateOfShooting = .2f;
-                    _bossEvent.shooting = true;
+                    //torches drop, covers back, shoots and slams
+                    StartCoroutine(_bossEvent.InitPhase3());
                     break;
-
             }
 
             _phase = value;
@@ -43,21 +42,23 @@ public class BossPhaseManager : MonoBehaviour
     }
 
     public void ResumePhase() {
+
         _bossEvent.bossWeakSpot.currentArmor = _bossEvent.bossWeakSpot.maxArmor;
         switch(_phase) {
-                case 1:
-                    //no torches, back exposed, slams hand to attack player
-                    break;
-                case 2:
-                    _bossEvent.canShoot = true;
-                    _bossEvent.shooting = true;
-                    break;
-                case 3:
-                    _bossEvent.BringDownTorches();
-                    _bossEvent.rateOfShooting = .2f;
-                    _bossEvent.shooting = true;
-                    break;
+            case 1:
+                //no torches, back exposed, slams hand to attack player
+                StartCoroutine(_bossEvent.AttackShortRange());
+                break;
+            case 2:
+                //no torches, back exposed, shoots projectiles
+                StartCoroutine(_bossEvent.InitPhase2());
+                break;
+            case 3:
+                //torches drop, covers back, shoots and slams
+                StartCoroutine(_bossEvent.InitPhase3());
+                break;
 
-            }
+        }
     }
+
 }
