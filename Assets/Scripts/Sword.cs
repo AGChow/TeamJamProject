@@ -70,9 +70,9 @@ public class Sword : MonoBehaviour
     IEnumerator Swing()
     {
         canSwing = false;
+        FindObjectOfType<AudioManager>().Play("SwordSwing");
 
         _playerAnimator.SetTrigger("SwingSword");
-        FindObjectOfType<AudioManager>().Play("SwordSwing");
 
         swingTrail.emitting = true;
         
@@ -111,11 +111,15 @@ public class Sword : MonoBehaviour
 
     private void HandleBossWeakSpotCollision(GameObject weakSpot)
     {
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .5f, 1);
+
         weakSpot.GetComponent<BossWeakSpot>().StunHit();
     }
     private void HandleBossHitBoxCollision(GameObject hitbox)
     {
         hitbox.GetComponentInParent<BossEvent>().TakeDamage();
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .5f, 1);
+
         FindObjectOfType<Player>().GetComponentInChildren<PlayerAttack>().RecallWeapon();
 
     }

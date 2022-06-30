@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private int _playerMaxHealth = 3;
     private int _playerCurrentHealth = 3;
     private bool _isInvincible = false;
+    public float timeToMove = 3.5f;
 
     [SerializeField]
     private GameObject gameOver;
@@ -26,6 +27,10 @@ public class Player : MonoBehaviour
         _playerAnimator = GetComponentInChildren<Animator>();
         Heal(_playerMaxHealth);
         hearts = GameObject.Find("HealthUI").transform;
+        //StartCoroutine(Intro());
+    }
+    private void Start()
+    {
         StartCoroutine(Intro());
     }
 
@@ -38,6 +43,8 @@ public class Player : MonoBehaviour
         //switch placeholder audio to player grunt
         FindObjectOfType<AudioManager>().Play("placeholder");
         FindObjectOfType<AudioManager>().Play("PlayerGetsHit");
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .5f, 1);
+
 
         StartCoroutine(HitTimePause());
         StartCoroutine(GetComponentInChildren<MaterialChange>().FlashWhite());
@@ -118,7 +125,7 @@ public class Player : MonoBehaviour
 
         GetComponent<PlayerMovement>().StopMovement();
 
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(timeToMove);
 
         if(Timer.instance != null)
             Timer.instance.StartTimer();
