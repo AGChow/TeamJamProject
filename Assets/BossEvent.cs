@@ -29,6 +29,9 @@ public class BossEvent : MonoBehaviour
     public float rateOfShooting = .15f;
     public bool canShoot;
     public bool shooting;
+    public bool canSlam;
+    public bool slamming;
+    public bool stunned;
 
     private BossPhaseManager bossPhaseManager;
     public BossWeakSpot bossWeakSpot;
@@ -51,16 +54,24 @@ public class BossEvent : MonoBehaviour
         }
 
 
-        if (canShoot == true)
-        {
-            StartCoroutine(AttackLongRange());
-        }
+        if(stunned == false) {
+            if (canShoot == true && !shooting)
+            {
+                StartCoroutine(AttackLongRange());
+            }
+            
+            if(canSlam == true && !slamming)
+            {
+                StartCoroutine(AttackShortRange());
+            }
 
-        if(shooting == true)
-        {
-            StopCoroutine(ShootProjectile());
-            StartCoroutine(ShootProjectile());
+            if(shooting == true)
+            {
+                StopCoroutine(ShootProjectile());
+                StartCoroutine(ShootProjectile());
+            }
         }
+        
 
     }
 
@@ -72,6 +83,7 @@ public class BossEvent : MonoBehaviour
         GetComponentInChildren<Animator>().SetTrigger("StartIntro");
         yield return new WaitForSeconds(8);
         canFollow = true;
+        player.GetComponent<PlayerMovement>()._canMove = true;
         bossPhaseManager.SetBossPhase(1);
     }
 
@@ -186,9 +198,12 @@ public class BossEvent : MonoBehaviour
 
     public IEnumerator Stun()
     {
+        stunned = true;
         int currentBossPhase = bossPhaseManager.GetBossPhase();
         StopAllCoroutines();
         shooting = false;
+        canSlam = false;
+        slamming = false;
 
         //make sure material is correct
         GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
@@ -228,6 +243,7 @@ public class BossEvent : MonoBehaviour
         if(bossPhaseManager.GetBossPhase() == currentBossPhase) {
             bossPhaseManager.ResumePhase();
         }
+        stunned = false;
     }
 
     public IEnumerator HitTimePauseWeakSpot()
@@ -254,16 +270,12 @@ public class BossEvent : MonoBehaviour
 
     public IEnumerator AttackLongRange()
     {
-        int currentBossPhase = bossPhaseManager.GetBossPhase();
-
-
         canShoot = false;
         //start animation charging up shooting attack
         anim.SetTrigger("StartProjectile");
         yield return new WaitForSeconds(4);
         //start shooting
         shooting = true;
-
 
         yield return new WaitForSeconds(8);
         anim.SetTrigger("EndProjectile");
@@ -276,14 +288,6 @@ public class BossEvent : MonoBehaviour
         //StopAllCoroutines();
 
         yield return new WaitForSeconds(5);
-
-        // Player didn't get to the next phase yet after stun period
-        if (bossPhaseManager.GetBossPhase() == currentBossPhase)
-        {
-            bossPhaseManager.ResumePhase();
-        }
-
-
     }
     public IEnumerator ShootProjectile()
     {
@@ -295,33 +299,50 @@ public class BossEvent : MonoBehaviour
         yield return new WaitForSeconds(rateOfShooting);
         shooting = true;
     }
+    public IEnumerator InitPhase1()
+    {
+        yield return new WaitForSeconds(1f);
+        canSlam = true;
+        StartCoroutine(AttackShortRange());
+    }
     public IEnumerator InitPhase2()
     {
-
         yield return new WaitForSeconds(2f);
+        canSlam = false;
         canShoot = true;
-
     }
     public IEnumerator InitPhase3()
     {
         yield return new WaitForSeconds(2f);
         BringDownTorches();
-
         CoverBack();
         rateOfShooting = .2f;
         canShoot = true;
     }
+    public IEnumerator ResumePhase1() {
+        yield return new WaitForSeconds(2f);
+        canSlam = true;
+        slamming = false;
+    }
+    public IEnumerator ResumePhase2() {
+        yield return new WaitForSeconds(2f);
+        canShoot = true;
+    }
+    public IEnumerator ResumePhase3() {
+        yield return new WaitForSeconds(2f);
+        canShoot = true;
+    }
     public IEnumerator AttackShortRange()
     {
-        int currentBossPhase = bossPhaseManager.GetBossPhase();
+        canSlam = true;
+        slamming = true;
 
-        yield return new WaitForSeconds(1);
         //start animation wind up
         anim.SetTrigger("SlamAttack");
         yield return new WaitForSeconds(3f);
         //slam
         currentRotSpeed = 0;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.3f);
         BossSlamAttackBox.SetActive(true);
         yield return new WaitForSeconds(1f);
         BossSlamAttackBox.SetActive(false);
@@ -329,12 +350,7 @@ public class BossEvent : MonoBehaviour
         currentRotSpeed = topRotSpeed;
 
         yield return new WaitForSeconds(3);
-
-        // Player didn't get to the next phase yet after stun period
-        if (bossPhaseManager.GetBossPhase() == currentBossPhase)
-        {
-            bossPhaseManager.ResumePhase();
-        }
+        slamming = false;
     }
 
 

@@ -13,7 +13,7 @@ public class BossPhaseManager : MonoBehaviour
             switch(value) {
                 case 1:
                     //no torches, back exposed, slams hand to attack player
-                    StartCoroutine(_bossEvent.AttackShortRange());
+                    StartCoroutine(_bossEvent.InitPhase1());
                     break;
                 case 2:
                     //no torches, back exposed, shoots projectiles
@@ -47,15 +47,15 @@ public class BossPhaseManager : MonoBehaviour
         switch(_phase) {
             case 1:
                 //no torches, back exposed, slams hand to attack player
-                StartCoroutine(_bossEvent.AttackShortRange());
+                StartCoroutine(_bossEvent.ResumePhase1());
                 break;
             case 2:
                 //no torches, back exposed, shoots projectiles
-                StartCoroutine(_bossEvent.InitPhase2());
+                StartCoroutine(_bossEvent.ResumePhase2());
                 break;
             case 3:
                 //torches drop, covers back, shoots and slams
-                StartCoroutine(_bossEvent.InitPhase3());
+                StartCoroutine(_bossEvent.ResumePhase3());
                 break;
 
         }
