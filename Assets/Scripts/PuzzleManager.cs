@@ -1,5 +1,7 @@
+using System.Linq;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -53,6 +55,7 @@ public class PuzzleManager : MonoBehaviour
 
         //turn on light and maybe lerp intensity to 1
         StartCoroutine(DimTheLightsOn());
+        DestroyAllEnemies();
         yield return new WaitForSeconds(1f);
         //unlock door
         StartCoroutine(Exit.GetComponent<MainDoor>().MoveDoor());
@@ -71,5 +74,16 @@ public class PuzzleManager : MonoBehaviour
             yield return null;
         }
         mainLight.GetComponent<Light>().intensity = 1;
+    }
+
+    void DestroyAllEnemies() {
+        List<GameObject> allEnemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+
+        foreach(GameObject enemy in allEnemies) {
+            if(enemy.GetComponent<VampireToadAI>())
+                StartCoroutine(enemy.GetComponent<VampireToadAI>().Freeze());
+            if(enemy.GetComponent<BatAI>() && enemy.GetComponent<EnemyHealth>())
+                StartCoroutine(enemy.GetComponent<EnemyHealth>().Death());
+        }
     }
 }

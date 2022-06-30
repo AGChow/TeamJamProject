@@ -28,7 +28,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    IEnumerator Death()
+    public IEnumerator Death()
     {
         dead = true;
         //change to death animation
