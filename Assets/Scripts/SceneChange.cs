@@ -23,11 +23,12 @@ public class SceneChange : MonoBehaviour
 
     public IEnumerator LoadNextScene()
     {
-            activated = true;
-            FindObjectOfType<Player>().GetComponent<PlayerMovement>().SceneTransition();
-            StartCoroutine(CameraManager.GetComponent<CameraManager>().ExitScene());
-            yield return new WaitForSeconds(4);
-            SceneManager.LoadScene(nextScene);
+        Timer.instance.PauseTimer();
+        activated = true;
+        FindObjectOfType<Player>().GetComponent<PlayerMovement>().SceneTransition();
+        StartCoroutine(CameraManager.GetComponent<CameraManager>().ExitScene());
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene(nextScene);
     }
     
 }

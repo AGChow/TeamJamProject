@@ -118,6 +118,7 @@ public class BossEvent : MonoBehaviour
     }
     public IEnumerator BossDeath()
     {
+        Timer.instance.StopAndRecordTime();
         //TODO: move object down so player can't run into it
 
         StopAllCoroutines();
