@@ -25,7 +25,6 @@ public class Torch : MonoBehaviour
         set {
             //Turn the torch on
             if(_isLit == false && value == true) {
-
                 FindObjectOfType<AudioManager>().Play("FireOn");
 
                 fireParticles.SetActive(true);
@@ -38,6 +37,9 @@ public class Torch : MonoBehaviour
             }
             //Turn the torch off
             else if(_isLit == true && value == false) {
+                foreach(VampireToadAI vamp in GetComponentInChildren<TorchVampDetection>().frozenVampires) {
+                    vamp.frozen = false;
+                }
                 FindObjectOfType<AudioManager>().Play("FireOff");
 
                 fireParticles.SetActive(false);
