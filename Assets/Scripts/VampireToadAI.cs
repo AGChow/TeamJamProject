@@ -8,6 +8,7 @@ public class VampireToadAI : MonoBehaviour
     public float speed = 10f;
     private Rigidbody rb;
     private bool agro;
+    public bool frozen;
 
 
     private Vector3 startPos;
@@ -34,9 +35,10 @@ public class VampireToadAI : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(Freeze());
-
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         StartCoroutine(Init());
+        frozen = false;
     }
 
     [System.Obsolete]
@@ -45,31 +47,9 @@ public class VampireToadAI : MonoBehaviour
         // also helps prevent drifting bugs
         rb.angularVelocity = Vector3.zero;
         CheckDecreaseVelocity();
-
-        //behavior when torch is on
-        if (torch.isLit)
-        {
-            if(eyesGraphics.activeSelf)
-            {
-                StartCoroutine(Freeze(true));
-            }
-
-            eyesGraphics.SetActive(false);
-            // anim.SetBool("Awake", false);
-            
-            //feedbackresponse to being frozen
-            GetComponentInChildren<MaterialChange>().ChangeToAltMaterial();
-            GetComponentInChildren<Animator>().SetBool("Frozen", true);
-            
-
-            _navMeshAgent.destination = transform.position;
-        }
-        //behavior when torch is off
-        else
-        {
+        if(!frozen) {
             if(agro == true)
             {
-
                 _navMeshAgent.destination = target.position;
                 // anim.SetBool("Awake", true);
                 GetComponentInChildren<Animator>().SetBool("Frozen", false);
@@ -87,6 +67,8 @@ public class VampireToadAI : MonoBehaviour
                 GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
                 eyesGraphics.SetActive(true);
             }
+        } else {
+            _navMeshAgent.destination = transform.position;
         }
     }
 
@@ -100,14 +82,22 @@ public class VampireToadAI : MonoBehaviour
     {
         if (!target) return;
         if (Vector3.Distance(transform.position, target.transform.position) < 2) return;
-        StartCoroutine(Freeze());
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 
     // stop velocities, this helps fix drifting bugs
     public IEnumerator Freeze(bool wait = false)
     {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         if(wait)
             yield return new WaitForEndOfFrame();
+        frozen = true;
+        eyesGraphics.SetActive(false);
+        //feedbackresponse to being frozen
+        GetComponentInChildren<MaterialChange>().ChangeToAltMaterial();
+        GetComponentInChildren<Animator>().SetBool("Frozen", true);
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     }
@@ -116,5 +106,6 @@ public class VampireToadAI : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         agro = true;
+        frozen = false;
     }
 }

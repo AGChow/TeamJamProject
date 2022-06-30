@@ -469,6 +469,9 @@ MonoBehaviour:
   rateOfShooting: 0.3
   canShoot: 0
   shooting: 0
+  canSlam: 0
+  slamming: 0
+  stunned: 0
   bossWeakSpot: {fileID: 0}
   anim: {fileID: 0}
 --- !u!136 &241384451
@@ -3329,7 +3332,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.78125, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
