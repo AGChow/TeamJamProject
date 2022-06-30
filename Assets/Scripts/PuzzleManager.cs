@@ -55,8 +55,8 @@ public class PuzzleManager : MonoBehaviour
 
         //turn on light and maybe lerp intensity to 1
         StartCoroutine(DimTheLightsOn());
-        yield return new WaitForSeconds(1f);
         DestroyAllEnemies();
+        yield return new WaitForSeconds(1f);
         //unlock door
         StartCoroutine(Exit.GetComponent<MainDoor>().MoveDoor());
 
