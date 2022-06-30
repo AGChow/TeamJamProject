@@ -40,6 +40,7 @@ public class Torch : MonoBehaviour
                 foreach(VampireToadAI vamp in GetComponentInChildren<TorchVampDetection>().frozenVampires) {
                     vamp.frozen = false;
                 }
+                GetComponentInChildren<TorchVampDetection>().frozenVampires.Clear();
                 FindObjectOfType<AudioManager>().Play("FireOff");
 
                 fireParticles.SetActive(false);
