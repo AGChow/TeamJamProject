@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Timer : MonoBehaviour
@@ -32,10 +33,11 @@ public class Timer : MonoBehaviour
     public void StartTimer() {
         _timerGoing = true;
         float startTime = Time.time;
-        if(PlayerPrefs.HasKey("CurrentTime"))
+        if(PlayerPrefs.HasKey("CurrentTime") && SceneManager.GetActiveScene().name != "StartScreen")
             _timeElapsed = PlayerPrefs.GetFloat("CurrentTime");
         else
             _timeElapsed = 0f;
+            PlayerPrefs.SetFloat("CurrentTime", _timeElapsed);
 
         StartCoroutine(UpdateTimer());
     }

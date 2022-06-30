@@ -21,6 +21,7 @@ public class StartScreen : MonoBehaviour
 
     public void StartGame()
     {
+        PlayerPrefs.SetFloat("CurrentTime", 0f);
         SceneManager.LoadScene(1);
     }
 
