@@ -31,9 +31,11 @@ public class BossEvent : MonoBehaviour
 
     private BossPhaseManager bossPhaseManager;
     public BossWeakSpot bossWeakSpot;
+    public Animator anim;
     
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         player = FindObjectOfType<Player>().gameObject;
         bossPhaseManager = GetComponent<BossPhaseManager>();
         StartCoroutine(Init());
@@ -48,8 +50,14 @@ public class BossEvent : MonoBehaviour
         }
 
 
-        if (shooting == true && canShoot == true)
+        if (canShoot == true)
         {
+            StartCoroutine(AttackLongRange());
+        }
+
+        if(shooting == true)
+        {
+            StopCoroutine(ShootProjectile());
             StartCoroutine(ShootProjectile());
         }
 
@@ -71,6 +79,10 @@ public class BossEvent : MonoBehaviour
         Instantiate(_hitParticles, BossHitBox.transform.position, BossHitBox.transform.rotation);
         StartCoroutine(GetComponentInChildren<MaterialChange>().FlashWhite());
         StartCoroutine(HitTimePauseBossHitBox());
+        FindObjectOfType<AudioManager>().Play("BossGrunt");
+
+        //animation
+        anim.SetTrigger("StunnedHurt");
 
         Health = Health - 1;
 
@@ -81,6 +93,8 @@ public class BossEvent : MonoBehaviour
                 canFollow = true;
                 //reset stun hitbox
                 BossWeakSpot.GetComponent<BossWeakSpot>().TurnOnHitBox();
+                anim.SetBool("Stunned", false);
+                anim.SetTrigger("StunnedRecover");
                 bossPhaseManager.SetBossPhase(2);
                 break;
             case 5:
@@ -89,20 +103,30 @@ public class BossEvent : MonoBehaviour
                 canFollow = true;
                 //reset stun hitbox
                 BossWeakSpot.GetComponent<BossWeakSpot>().TurnOnHitBox();
+                anim.SetBool("Stunned", false);
+                anim.SetTrigger("StunnedRecover");
                 bossPhaseManager.SetBossPhase(3);
                 break;
             case 0:
                 BossHitBox.SetActive(false);
-                BossDeath();
+                StartCoroutine(BossDeath());
                 break;
             default:
                 break;
         }
     }
-    public void BossDeath()
+    public IEnumerator BossDeath()
     {
         Debug.Log("KilledBoss");
+        FindObjectOfType<AudioManager>().Play("BossScream");
         //destroy and make a big deal about it
+        anim.SetBool("Dead", true);
+        yield return new WaitForSeconds(5f);
+        FindObjectOfType<AudioManager>().Play("BossScream");
+
+        FindObjectOfType<BossRoomManager>().GetComponent<BossRoomManager>().CheckCompleteConditions();
+        //open door now
+
     }
 
     public void TurnToTarget(GameObject Target)
@@ -123,47 +147,72 @@ public class BossEvent : MonoBehaviour
 
     public IEnumerator Freeze()
     {
-            frozen = true;
-            //change animation to frozen
-            BossWeakSpot.SetActive(true);
-            GetComponentInChildren<MaterialChange>().ChangeToAltMaterial();
+        int currentBossPhase = bossPhaseManager.GetBossPhase();
 
-            yield return new WaitForSeconds(4);
-            //break out animation
-            GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
+        frozen = true;
+        //change animation to frozen
+        anim.SetBool("Frozen", true);
+
+        BossWeakSpot.SetActive(true);
+        GetComponentInChildren<MaterialChange>().ChangeToAltMaterial();
+        ExposeBack();
+
+        yield return new WaitForSeconds(4);
+        //break out animation
+        anim.SetBool("Frozen", false);
+
+        GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
 
             yield return new WaitForSeconds(1);
             //turn back to player
             frozen = false;
+
+        // Player didn't get to the next phase yet after frozen period
+        if (bossPhaseManager.GetBossPhase() == currentBossPhase)
+        {
+            bossPhaseManager.ResumePhase();
+        }
     }
 
     public IEnumerator Stun()
     {
         int currentBossPhase = bossPhaseManager.GetBossPhase();
         StopAllCoroutines();
+        shooting = false;
+
         //make sure material is correct
         GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
 
         //stun animation
-        //turn on stun hitbox
-        //replace with screech
-        FindObjectOfType<AudioManager>().Play("placeholder");
+        anim.SetBool("Stunned", true);
+        anim.SetTrigger("StartStun");
 
+
+        FindObjectOfType<AudioManager>().Play("BossScream");
+
+        //turn off stun hitbox
         BossWeakSpot.GetComponent<BossWeakSpot>().TurnOffHitBox();
         frozen = false;
         canFollow = false;
 
         
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         //activate hitbox
         BossHitBox.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
         BossHitBox.SetActive(false);
-        yield return new WaitForSeconds(2f);
+        anim.SetBool("Stunned", false);
+        anim.SetTrigger("StunnedRecover");
+
+
         //Getback up animation
-        canFollow = true;
+        yield return new WaitForSeconds(4f);
+
+        yield return new WaitForSeconds(2f);
         //reset stun hitbox
         BossWeakSpot.GetComponent<BossWeakSpot>().TurnOnHitBox();
+        canFollow = true;
+        yield return new WaitForSeconds(2f);
 
         // Player didn't get to the next phase yet after stun period
         if(bossPhaseManager.GetBossPhase() == currentBossPhase) {
@@ -195,18 +244,54 @@ public class BossEvent : MonoBehaviour
 
     public IEnumerator AttackLongRange()
     {
-        canShoot = true;
+        int currentBossPhase = bossPhaseManager.GetBossPhase();
+
+
+        canShoot = false;
         //start animation charging up shooting attack
-        yield return new WaitForSeconds(1);
+        anim.SetTrigger("StartProjectile");
+        yield return new WaitForSeconds(4);
         //start shooting
         shooting = true;
-        currentRotSpeed /= 1.5f;
 
 
         yield return new WaitForSeconds(8);
+        anim.SetTrigger("EndProjectile");
+        yield return new WaitForSeconds(1);
         //stop shooting
-        canShoot = false;
-        currentRotSpeed = topRotSpeed;
+        shooting = false;
+        StopCoroutine(ShootProjectile());
+        shooting = false;
+
+        //StopAllCoroutines();
+
+        yield return new WaitForSeconds(5);
+
+        // Player didn't get to the next phase yet after stun period
+        if (bossPhaseManager.GetBossPhase() == currentBossPhase)
+        {
+            bossPhaseManager.ResumePhase();
+        }
+
+
+    }
+    public IEnumerator ShootProjectile()
+    {
+
+        shooting = false;
+
+        Instantiate(ProjectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+
+        yield return new WaitForSeconds(rateOfShooting);
+        shooting = true;
+    }
+    public IEnumerator InitPhase2()
+    {
+
+        yield return new WaitForSeconds(2f);
+        Debug.Log("coroutine test1");
+        canShoot = true;
+
     }
     public IEnumerator AttackShortRange()
     {
@@ -221,19 +306,23 @@ public class BossEvent : MonoBehaviour
         //return to idle anim
         currentRotSpeed = topRotSpeed;
     }
-    public IEnumerator ShootProjectile()
-    {
-        shooting = false;
 
-        Instantiate(ProjectilePrefab, projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
-
-        yield return new WaitForSeconds(rateOfShooting);
-        shooting = true;
-    }
 
     public void BringDownTorches()
     {
         torchesObjects.GetComponent<Animator>().SetTrigger("Drop");
     }
-   
+
+    public void CoverBack()
+    {
+        anim.SetBool("CoveringWeakSpot", true);
+        bossWeakSpot.TurnOffHitBox();
+    }
+    public void ExposeBack()
+    {
+        anim.SetBool("CoveringWeakSpot", false);
+        bossWeakSpot.TurnOnHitBox();
+
+    }
+
 }

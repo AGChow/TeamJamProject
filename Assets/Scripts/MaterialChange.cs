@@ -17,7 +17,6 @@ public class MaterialChange : MonoBehaviour
 
     public IEnumerator FlashWhite()
     {
-        
         rend.sharedMaterial = material[1];
         yield return new WaitForSeconds(.2f);
         rend.sharedMaterial = material[0];
@@ -31,6 +30,13 @@ public class MaterialChange : MonoBehaviour
     {
         rend.sharedMaterial = material[0];
 
+    }
+
+    public IEnumerator FlashWhiteFrozen()
+    {
+        rend.sharedMaterial = material[1];
+        yield return new WaitForSeconds(.2f);
+        rend.sharedMaterial = material[2];
     }
 
 }

@@ -15,15 +15,16 @@ public class BossPhaseManager : MonoBehaviour
                     //no torches, back exposed, slams hand to attack player
                     break;
                 case 2:
-                    _bossEvent.canShoot = true;
-                    _bossEvent.shooting = true;
+                    //no torches, back exposed, shoots projectiles
+                    StartCoroutine(_bossEvent.InitPhase2());
                     break;
                 case 3:
-                    _bossEvent.BringDownTorches();
-                    _bossEvent.rateOfShooting = .2f;
-                    _bossEvent.shooting = true;
+                    //torches drop, covers back, shoots and slams
+                        _bossEvent.BringDownTorches();
+                        _bossEvent.CoverBack();
+                        _bossEvent.rateOfShooting = .2f;
+                        _bossEvent.shooting = true;
                     break;
-
             }
 
             _phase = value;
@@ -43,21 +44,28 @@ public class BossPhaseManager : MonoBehaviour
     }
 
     public void ResumePhase() {
+
         _bossEvent.bossWeakSpot.currentArmor = _bossEvent.bossWeakSpot.maxArmor;
         switch(_phase) {
-                case 1:
-                    //no torches, back exposed, slams hand to attack player
-                    break;
-                case 2:
-                    _bossEvent.canShoot = true;
-                    _bossEvent.shooting = true;
-                    break;
-                case 3:
+            case 1:
+                //no torches, back exposed, slams hand to attack player
+                break;
+            case 2:
+                //no torches, back exposed, shoots projectiles
+                Debug.Log("continue phase 2");
+                StartCoroutine(_bossEvent.InitPhase2());
+                Debug.Log("continue phase 2");
+
+                break;
+            case 3:
+                //torches drop, covers back, shoots and slams
                     _bossEvent.BringDownTorches();
+                    _bossEvent.CoverBack();
                     _bossEvent.rateOfShooting = .2f;
                     _bossEvent.shooting = true;
-                    break;
+                break;
 
-            }
+        }
     }
+
 }
