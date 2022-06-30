@@ -3623,6 +3623,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 669011262043928735, guid: 7a0eadc9d29f6fd4197863d78a50396f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 669011262043928735, guid: 7a0eadc9d29f6fd4197863d78a50396f, type: 3}
+      propertyPath: m_TagString
+      value: PassThrough
+      objectReference: {fileID: 0}
     - target: {fileID: 2334849376338407948, guid: 7a0eadc9d29f6fd4197863d78a50396f, type: 3}
       propertyPath: m_IsActive
       value: 0
