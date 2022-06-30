@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5527983041285955343}
   - component: {fileID: 2550821959853319066}
   - component: {fileID: 1082470508215636400}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VampDetection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ab337c26f0d4041a38c0be19ba085d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frozenVampires: []
 --- !u!135 &1082470508215636400
 SphereCollider:
   m_ObjectHideFlags: 0

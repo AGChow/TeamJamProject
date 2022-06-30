@@ -25,10 +25,11 @@ public class Torch : MonoBehaviour
         set {
             //Turn the torch on
             if(_isLit == false && value == true) {
-                FindObjectOfType<AudioManager>().Play("FireOn");
-
                 fireParticles.SetActive(true);
                 torchLight.Play();
+                
+                FindObjectOfType<AudioManager>().Play("FireOn");
+                
                 if(_isTimerTorch == true)
                 {
                     StopAllCoroutines();
@@ -37,21 +38,23 @@ public class Torch : MonoBehaviour
             }
             //Turn the torch off
             else if(_isLit == true && value == false) {
-                foreach(VampireToadAI vamp in GetComponentInChildren<TorchVampDetection>().frozenVampires) {
-                    vamp.frozen = false;
+                if(GetComponentInChildren<TorchVampDetection>().frozenVampires.Count > 0) {
+                    foreach(VampireToadAI vamp in GetComponentInChildren<TorchVampDetection>().frozenVampires) {
+                        vamp.frozen = false;
+                    }
+                    GetComponentInChildren<TorchVampDetection>().frozenVampires.Clear();
                 }
-                GetComponentInChildren<TorchVampDetection>().frozenVampires.Clear();
                 FindObjectOfType<AudioManager>().Play("FireOff");
 
                 fireParticles.SetActive(false);
                 torchLight.Stop();
             }
+
             _isLit = value;
         }
     }
 
     void Awake() {
-        //isLit = false;
         _player = GameObject.FindObjectOfType<PlayerMovement>();
         _puzzleManager = FindObjectOfType<PuzzleManager>();
     }
@@ -65,7 +68,7 @@ public class Torch : MonoBehaviour
     }
 
     public void ToggleTorch() {
-
+        print("Toggling");
         if(cantBeTurnedOff == true)
         {
             return;
@@ -89,7 +92,7 @@ public class Torch : MonoBehaviour
 
     IEnumerator TorchTurnOffCounter()
     {
-        //what does this do?(Ari)
+        // Keeps the torch timer from counting down while the sword is thrown at the torch
         PlayerAttack playerAttack = GameObject.FindObjectOfType<PlayerAttack>();
         while(!playerAttack.HasWeapon()) {
             yield return null;

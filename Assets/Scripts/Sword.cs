@@ -31,6 +31,7 @@ public class Sword : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        DisableColliderTemporary(.15f);
         if (other.CompareTag("Shield"))
             _swungAtShield = true;
         else if (other.CompareTag("Torch"))
@@ -78,6 +79,12 @@ public class Sword : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         canSwing = true;
 
+    }
+
+    IEnumerator DisableColliderTemporary(float timeToDisable) {
+        _collider.enabled = false;
+        yield return new WaitForSeconds(timeToDisable);
+        _collider.enabled = true;
     }
 
 

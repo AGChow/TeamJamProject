@@ -23,7 +23,9 @@ public class SceneChange : MonoBehaviour
 
     public IEnumerator LoadNextScene()
     {
-        Timer.instance.PauseTimer();
+        if(Timer.instance != null)
+            Timer.instance.PauseTimer();
+            
         activated = true;
         FindObjectOfType<Player>().GetComponent<PlayerMovement>().SceneTransition();
         StartCoroutine(CameraManager.GetComponent<CameraManager>().ExitScene());
