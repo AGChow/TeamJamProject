@@ -57,6 +57,7 @@ public class BossEvent : MonoBehaviour
 
         if(shooting == true)
         {
+            StopCoroutine(ShootProjectile());
             StartCoroutine(ShootProjectile());
         }
 
@@ -177,6 +178,7 @@ public class BossEvent : MonoBehaviour
     {
         int currentBossPhase = bossPhaseManager.GetBossPhase();
         StopAllCoroutines();
+        shooting = false;
 
         //make sure material is correct
         GetComponentInChildren<MaterialChange>().ChangeBackToOrigingalMaterial();
@@ -259,6 +261,8 @@ public class BossEvent : MonoBehaviour
         //stop shooting
         shooting = false;
         StopCoroutine(ShootProjectile());
+        shooting = false;
+
         //StopAllCoroutines();
 
         yield return new WaitForSeconds(5);
@@ -311,12 +315,12 @@ public class BossEvent : MonoBehaviour
 
     public void CoverBack()
     {
-        anim.SetTrigger("CoveringWeakSpot");
+        anim.SetBool("CoveringWeakSpot", true);
         bossWeakSpot.TurnOffHitBox();
     }
     public void ExposeBack()
     {
-        anim.SetTrigger("CoveringWeakSpot");
+        anim.SetBool("CoveringWeakSpot", false);
         bossWeakSpot.TurnOnHitBox();
 
     }

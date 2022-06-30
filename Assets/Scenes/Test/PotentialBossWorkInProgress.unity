@@ -458,7 +458,7 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 286487025}
   _hitParticles: {fileID: 5778600445472085346, guid: 41686b3bf7cf91a4fabc0524187ffd5d, type: 3}
   ProjectilePrefab: {fileID: 1571902335224944535, guid: 7073ed89e6698cf4d95de28bef9a9743, type: 3}
-  Health: 13
+  Health: 15
   _lookDirection: {x: 0, y: 0, z: 0}
   currentRotSpeed: 2
   topRotSpeed: 2
@@ -3328,7 +3328,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7776397, y: 1}
+    m_SensorSize: {x: 1.78125, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
