@@ -32,7 +32,10 @@ public class BossWeakSpot : MonoBehaviour
         }
         else
         {
-            _bossEvent.anim.SetTrigger("WeakSpotHit");
+
+                _bossEvent.anim.SetTrigger("WeakSpotHit");
+
+      
 
             Instantiate(hitparticles, transform.position, transform.rotation);
             currentArmor -= 1;

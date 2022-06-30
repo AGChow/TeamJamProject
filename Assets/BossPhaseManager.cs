@@ -23,6 +23,9 @@ public class BossPhaseManager : MonoBehaviour
                     //torches drop, covers back, shoots and slams
                     StartCoroutine(_bossEvent.InitPhase3());
                     break;
+                case 4:
+                    //death don't repeat any phase
+                    break;
             }
 
             _phase = value;
@@ -56,6 +59,9 @@ public class BossPhaseManager : MonoBehaviour
             case 3:
                 //torches drop, covers back, shoots and slams
                 StartCoroutine(_bossEvent.ResumePhase3());
+                break;
+            case 4:
+                //death don't repeat any phase
                 break;
 
         }

@@ -14,4 +14,14 @@ public class BossAnimationEvents : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("BossScream");
     }
+
+    public void SlamTurnOn()
+    {
+        GetComponentInParent<BossEvent>().TurnOnSlamHitBox();
+    }
+
+    public void SlamTurnOff()
+    {
+        GetComponentInParent<BossEvent>().TurnOffSlamHitBox();
+    }
 }
