@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
         get { return _musicAudioClip; }
         set {
             if(_musicAudioClip != musicAudioClip) {
+                musicAudioSource.Stop();
                 musicAudioSource.clip = value;
                 musicAudioSource.Play();
             }

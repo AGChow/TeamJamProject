@@ -159,6 +159,7 @@ MonoBehaviour:
     source: {fileID: 0}
     audioMixerGroup: {fileID: -1903432307403994140, guid: bd4280770864db04189cf270961b017a, type: 2}
     loop: 0
+  musicAudioSource: {fileID: 2123727835590495316}
 --- !u!82 &2123727835590495316
 AudioSource:
   m_ObjectHideFlags: 0
