@@ -38,16 +38,12 @@ public class BossEvent : MonoBehaviour
     private BossPhaseManager bossPhaseManager;
     public BossWeakSpot bossWeakSpot;
     public Animator anim;
-
-    private void Awake()
-    {
-        player = FindObjectOfType<Player>().gameObject;
-        player.GetComponent<Player>().timeToMove = 12.5f;
-        
-    }
+    public AudioClip bossMusic;
+    
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        player = FindObjectOfType<Player>().gameObject;
         bossPhaseManager = GetComponent<BossPhaseManager>();
         StartCoroutine(Init());
         bossWeakSpot = GetComponentInChildren<BossWeakSpot>();
@@ -88,6 +84,7 @@ public class BossEvent : MonoBehaviour
     {
         //walk into room timing
         yield return new WaitForSeconds(5);
+        AudioManager.instance.musicAudioClip = bossMusic;
         //roar animation and camera sweep
         GetComponentInChildren<Animator>().SetTrigger("StartIntro");
         yield return new WaitForSeconds(8);
@@ -110,13 +107,6 @@ public class BossEvent : MonoBehaviour
 
         switch(Health) {
             case 10:
-                if (Health>10)
-                {
-                    return;
-                }
-                else
-                {
-
                 Debug.Log("check health");
                 BossHitBox.SetActive(false);
                 //reset stun hitbox
@@ -126,15 +116,7 @@ public class BossEvent : MonoBehaviour
                 anim.SetTrigger("StunnedRecover");
                 bossPhaseManager.SetBossPhase(2);
                 break;
-                }
             case 5:
-                if (Health>5)
-                {
-                    return;
-                }
-                else
-                {
-
                 BossHitBox.SetActive(false);
                 //reset stun hitbox
                 BossWeakSpot.GetComponent<BossWeakSpot>().TurnOnHitBox();
@@ -143,20 +125,11 @@ public class BossEvent : MonoBehaviour
                 anim.SetTrigger("StunnedRecover");
                 bossPhaseManager.SetBossPhase(3);
                 break;
-                }
             case 0:
-                if (Health>0)
-                {
-                    return;
-                }
-                else
-                {
-
                 BossHitBox.SetActive(false);
                 StartCoroutine(BossDeath());
                 bossPhaseManager.SetBossPhase(4);
                 break;
-                }
             default:
                 break;
         }
@@ -296,7 +269,7 @@ public class BossEvent : MonoBehaviour
 
         }
         canFollow = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         // Player didn't get to the next phase yet after stun period
         if(bossPhaseManager.GetBossPhase() == currentBossPhase) {
@@ -369,14 +342,14 @@ public class BossEvent : MonoBehaviour
     }
     public IEnumerator InitPhase2()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         canFollow = true;
         canSlam = false;
         canShoot = true;
     }
     public IEnumerator InitPhase3()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         BringDownTorches();
         CoverBack();
         canFollow = true;
@@ -384,7 +357,7 @@ public class BossEvent : MonoBehaviour
         canShoot = true;
     }
     public IEnumerator ResumePhase1() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         canFollow = true;
         canSlam = true;
         slamming = false;
@@ -393,13 +366,13 @@ public class BossEvent : MonoBehaviour
 
     }
     public IEnumerator ResumePhase2() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         canFollow = true;
         canSlam = false;
         canShoot = true;
     }
     public IEnumerator ResumePhase3() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         CoverBack();
         canFollow = true;
         //rateOfShooting = .2f;
@@ -411,8 +384,6 @@ public class BossEvent : MonoBehaviour
         slamming = true;
         _damageAreaParticles.SetActive(true);
         _damageAreaParticles.GetComponent<ParticleSystem>().Play();
-        FindObjectOfType<AudioManager>().Play("BossGrowl");
-
 
         //start animation wind up
         anim.SetTrigger("SlamAttack");
@@ -451,10 +422,6 @@ public class BossEvent : MonoBehaviour
     {
         BossSlamAttackBox.SetActive(true);
         _slamHitParticles.GetComponent<ParticleSystem>().Play();
-        FindObjectOfType<CameraShake>().ScreenShake(.2f, .7f, 1);
-
-        FindObjectOfType<AudioManager>().Play("placeholder");
-        
 
     }
     public void TurnOffSlamHitBox()

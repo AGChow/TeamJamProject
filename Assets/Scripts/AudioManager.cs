@@ -8,6 +8,22 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager instance;
+
+    public AudioSource musicAudioSource;
+    private AudioClip _musicAudioClip;
+    public AudioClip musicAudioClip {
+        get { return _musicAudioClip; }
+        set {
+            print(value.name);
+            musicAudioSource.Stop();
+            musicAudioSource.clip = value;
+            musicAudioSource.Play();
+
+            _musicAudioClip = value;
+        }
+    }
+    
+
     // Start is called before the first frame update
     void Awake()
     {
