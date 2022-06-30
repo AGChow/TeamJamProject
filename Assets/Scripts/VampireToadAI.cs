@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.AI;
 public class VampireToadAI : MonoBehaviour
 {
-    public Torch torch;
     public GameObject eyesGraphics;
     public float speed = 10f;
     private Rigidbody rb;
@@ -74,7 +73,7 @@ public class VampireToadAI : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player") && !torch.isLit)
+        if (collision.gameObject.CompareTag("Player") && !frozen)
             collision.gameObject.GetComponent<Player>().Damage(1);
     }
 
@@ -89,8 +88,6 @@ public class VampireToadAI : MonoBehaviour
     // stop velocities, this helps fix drifting bugs
     public IEnumerator Freeze(bool wait = false)
     {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
         if(wait)
             yield return new WaitForEndOfFrame();
         frozen = true;
