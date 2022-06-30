@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         Rigidbody body = hit.collider.attachedRigidbody;
         float pushPower = 4f;
 
-        if(hit.gameObject.CompareTag("Enemy") && vamp && vamp.torch.isLit) {
+        if(hit.gameObject.CompareTag("Enemy") && vamp && vamp.frozen) {
             if (body == null || body.isKinematic) return;
             if (hit.moveDirection.y < -0.3) return;
 
