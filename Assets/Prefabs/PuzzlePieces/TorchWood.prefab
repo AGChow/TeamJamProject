@@ -97,8 +97,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.022809602, y: 0.023760008, z: 0.06934791}
-  m_Center: {x: 0, y: -0.0000000010268645, z: 0.034455862}
+  m_Size: {x: 0.025756327, y: 0.036244318, z: 0.06934791}
+  m_Center: {x: -0.0000989154, y: -0.0016843076, z: 0.03445589}
 --- !u!114 &4270852930045689245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +113,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torchLight: {fileID: 4734560505264227264}
   _puzzleManager: {fileID: 0}
+  _bossRoomManager: {fileID: 0}
   _isLit: 0
+  cantBeTurnedOff: 0
   _isTimerTorch: 1
   fireParticles: {fileID: 4734560505264227279}
   torchTimer: 5

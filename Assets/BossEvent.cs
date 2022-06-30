@@ -37,8 +37,10 @@ public class BossEvent : MonoBehaviour
 
     private BossPhaseManager bossPhaseManager;
     public BossWeakSpot bossWeakSpot;
+    public BossEyeball bossEyeBallAnim;
     public Animator anim;
     public AudioClip bossMusic;
+    public AudioClip finishBossMusic;
     
     void Start()
     {
@@ -84,10 +86,11 @@ public class BossEvent : MonoBehaviour
     {
         //walk into room timing
         yield return new WaitForSeconds(5);
-        AudioManager.instance.musicAudioClip = bossMusic;
         //roar animation and camera sweep
         GetComponentInChildren<Animator>().SetTrigger("StartIntro");
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(4);
+        AudioManager.instance.musicAudioClip = bossMusic;
+        yield return new WaitForSeconds(4);
         canFollow = true;
         //player.GetComponent<PlayerMovement>()._canMove = true;
         bossPhaseManager.SetBossPhase(1);
@@ -156,6 +159,8 @@ public class BossEvent : MonoBehaviour
         transform.position = new Vector3(transform.position.x, -20, transform.position.z);
 
         FindObjectOfType<BossRoomManager>().GetComponent<BossRoomManager>().RoomCleared();
+        AudioManager.instance.musicAudioClip = finishBossMusic;
+
         //open door now
 
     }
@@ -232,6 +237,8 @@ public class BossEvent : MonoBehaviour
         //turn off stun hitbox
         BossWeakSpot.GetComponent<BossWeakSpot>().TurnOffHitBox();
         ExposeBack();
+        bossEyeBallAnim.CloseEye();
+
 
 
 
@@ -337,6 +344,7 @@ public class BossEvent : MonoBehaviour
         canFollow = true;
         canSlam = true;
         slamming = false;
+        bossEyeBallAnim.OpenEye();
 
         StartCoroutine(AttackShortRange());
     }
@@ -346,6 +354,8 @@ public class BossEvent : MonoBehaviour
         canFollow = true;
         canSlam = false;
         canShoot = true;
+        bossEyeBallAnim.OpenEye();
+
     }
     public IEnumerator InitPhase3()
     {
@@ -355,12 +365,16 @@ public class BossEvent : MonoBehaviour
         canFollow = true;
         rateOfShooting = .2f;
         canShoot = true;
+        bossEyeBallAnim.OpenEye();
+
     }
     public IEnumerator ResumePhase1() {
         yield return new WaitForSeconds(2f);
         canFollow = true;
         canSlam = true;
         slamming = false;
+        bossEyeBallAnim.OpenEye();
+
 
         StartCoroutine(AttackShortRange());
 
@@ -370,11 +384,15 @@ public class BossEvent : MonoBehaviour
         canFollow = true;
         canSlam = false;
         canShoot = true;
+        bossEyeBallAnim.OpenEye();
+
     }
     public IEnumerator ResumePhase3() {
         yield return new WaitForSeconds(3f);
         CoverBack();
         canFollow = true;
+        bossEyeBallAnim.OpenEye();
+
         //rateOfShooting = .2f;
         canShoot = true;
     }
@@ -411,11 +429,13 @@ public class BossEvent : MonoBehaviour
     {
         anim.SetBool("CoveringWeakSpot", true);
         bossWeakSpot.TurnOffHitBox();
+        bossEyeBallAnim.CloseEye();
     }
     public void ExposeBack()
     {
         anim.SetBool("CoveringWeakSpot", false);
         bossWeakSpot.TurnOnHitBox();
+        bossEyeBallAnim.OpenEye();
     }
 
     public void TurnOnSlamHitBox()

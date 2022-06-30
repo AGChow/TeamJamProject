@@ -60,6 +60,7 @@ public class BossRoomManager : MonoBehaviour
         //play complete sound
         FindObjectOfType<AudioManager>().Play("PuzzleComplete");
 
+
         //Debug.Log("You did it");
 
         //turn on light and maybe lerp intensity to 1

@@ -35,4 +35,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test/PotentialLevel9.unity
     guid: d7ba6bd3b8659d548a28e1facdc1869b
+  - enabled: 1
+    path: Assets/Scenes/Test/PotentialLevel10.unity
+    guid: 2ad7bdf9b1c5c6743bc9b111cd55b51b
+  - enabled: 1
+    path: Assets/Scenes/Test/PotentialBossWorkInProgress.unity
+    guid: c318811fc6415bb43b7db055c9b3e8b8
+  - enabled: 1
+    path: Assets/Scenes/VictoryCredits.unity
+    guid: e0a91e5ea0825744aab7e352ab439ce6
   m_configObjects: {}

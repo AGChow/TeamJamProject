@@ -134,6 +134,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopCover
       objectReference: {fileID: 0}
+    - target: {fileID: 833069107348434198, guid: 31b3d4b2b1b629b4e8b3355b1a1bb955, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -39.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 3314167441147303645, guid: 31b3d4b2b1b629b4e8b3355b1a1bb955, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 39.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6838159477943328911, guid: 31b3d4b2b1b629b4e8b3355b1a1bb955, type: 3}
       propertyPath: m_RootOrder
       value: 2
