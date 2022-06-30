@@ -468,7 +468,7 @@ MonoBehaviour:
   canFollow: 0
   frozen: 0
   knockedOut: 0
-  rateOfShooting: 0.3
+  rateOfShooting: 0.4
   canShoot: 0
   shooting: 0
   canSlam: 0
@@ -17712,7 +17712,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7761194, y: 1}
+    m_SensorSize: {x: 1.7782178, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

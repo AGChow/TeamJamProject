@@ -164,10 +164,14 @@ public class ThrownSword : MonoBehaviour
     private void HandleBossWeakSpotCollision(GameObject weakSpot)
     {
         weakSpot.GetComponent<BossWeakSpot>().StunHit();
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .3f, 1);
+
     }
     private void HandleBossHitBoxCollision(GameObject hitbox)
     {
         hitbox.GetComponentInParent<BossEvent>().TakeDamage();
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .3f, 1);
+
         FindObjectOfType<Player>().GetComponentInChildren<PlayerAttack>().RecallWeapon();
 
     }
