@@ -117,7 +117,9 @@ public class Player : MonoBehaviour
 
         yield return new WaitForSeconds(3.5f);
 
-        Timer.instance.StartTimer();
+        if(Timer.instance != null)
+            Timer.instance.StartTimer();
+        
         GetComponent<PlayerMovement>().ResetMovement();
         GetComponent<PlayerAttack>().canAttack = true;
     }
