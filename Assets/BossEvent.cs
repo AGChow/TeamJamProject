@@ -139,7 +139,9 @@ public class BossEvent : MonoBehaviour
     }
     public IEnumerator BossDeath()
     {
-        //Timer.instance.StopAndRecordTime();
+        if(Timer.instance != null)
+            Timer.instance.StopAndRecordTime();
+
         StopSelectedCoroutines();
         StopCoroutine(Freeze());
         StopCoroutine(Stun());

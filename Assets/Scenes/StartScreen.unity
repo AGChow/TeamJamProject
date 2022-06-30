@@ -2390,6 +2390,7 @@ MonoBehaviour:
   bestTimeObject: {fileID: 1114701057}
   bestTime: {fileID: 145864076}
   timerObject: {fileID: 1630573476}
+  defaultMusic: {fileID: 8300000, guid: d5e7a30d1a1a5e743b262fd36b3d47a5, type: 3}
 --- !u!1 &1989618793
 GameObject:
   m_ObjectHideFlags: 0
