@@ -9,6 +9,7 @@ public class Sword : MonoBehaviour
     private Animator _playerAnimator;
     private bool _swungAtShield = false;
     public bool canSwing;
+    private bool preventExtraTorchToggles;
 
     [SerializeField]
     private TrailRenderer swingTrail;
@@ -31,11 +32,15 @@ public class Sword : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        DisableColliderTemporary(.15f);
         if (other.CompareTag("Shield"))
             _swungAtShield = true;
-        else if (other.CompareTag("Torch"))
-            other.GetComponent<Torch>().ToggleTorch();
+        else if (other.CompareTag("Torch")) {
+            if(!preventExtraTorchToggles) {
+                other.GetComponent<Torch>().ToggleTorch();
+                preventExtraTorchToggles = true;
+                StartCoroutine(PreventExtraTorchToggles());
+            }
+        }
         else if (other.CompareTag("BossWeakSpot"))
             HandleBossWeakSpotCollision(other.gameObject);
         else if (other.CompareTag("BossHitBox"))
@@ -81,12 +86,10 @@ public class Sword : MonoBehaviour
 
     }
 
-    IEnumerator DisableColliderTemporary(float timeToDisable) {
-        _collider.enabled = false;
-        yield return new WaitForSeconds(timeToDisable);
-        _collider.enabled = true;
+    IEnumerator PreventExtraTorchToggles() {
+        yield return new WaitForSeconds(.2f);
+        preventExtraTorchToggles = false;
     }
-
 
     private void HandleEnemyCollision(GameObject enemyHit)
     {
