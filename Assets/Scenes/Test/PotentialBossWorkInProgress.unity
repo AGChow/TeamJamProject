@@ -454,6 +454,7 @@ MonoBehaviour:
   player: {fileID: 0}
   BossHitBox: {fileID: 311883783}
   BossWeakSpot: {fileID: 2123428750}
+  BossSlamAttackBox: {fileID: 2059634765}
   torchesObjects: {fileID: 1540786224}
   projectileSpawnPoint: {fileID: 286487025}
   _hitParticles: {fileID: 5778600445472085346, guid: 41686b3bf7cf91a4fabc0524187ffd5d, type: 3}
@@ -824,7 +825,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311883783}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

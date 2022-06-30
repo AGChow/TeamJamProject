@@ -6,6 +6,7 @@ public class BossEvent : MonoBehaviour
     public GameObject player;
     public GameObject BossHitBox;
     public GameObject BossWeakSpot;
+    public GameObject BossSlamAttackBox;
     public GameObject torchesObjects;
     public Transform projectileSpawnPoint;
 
@@ -117,12 +118,20 @@ public class BossEvent : MonoBehaviour
     }
     public IEnumerator BossDeath()
     {
+        //TODO: move object down so player can't run into it
+
+        StopAllCoroutines();
+        shooting = false;
+        canShoot = false;
+        canFollow = false;
+        
         Debug.Log("KilledBoss");
         FindObjectOfType<AudioManager>().Play("BossScream");
         //destroy and make a big deal about it
         anim.SetBool("Dead", true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         FindObjectOfType<AudioManager>().Play("BossScream");
+        yield return new WaitForSeconds(2f);
 
         FindObjectOfType<BossRoomManager>().GetComponent<BossRoomManager>().CheckCompleteConditions();
         //open door now
@@ -148,6 +157,7 @@ public class BossEvent : MonoBehaviour
     public IEnumerator Freeze()
     {
         int currentBossPhase = bossPhaseManager.GetBossPhase();
+        ExposeBack();
 
         frozen = true;
         //change animation to frozen
@@ -155,7 +165,6 @@ public class BossEvent : MonoBehaviour
 
         BossWeakSpot.SetActive(true);
         GetComponentInChildren<MaterialChange>().ChangeToAltMaterial();
-        ExposeBack();
 
         yield return new WaitForSeconds(4);
         //break out animation
@@ -289,22 +298,42 @@ public class BossEvent : MonoBehaviour
     {
 
         yield return new WaitForSeconds(2f);
-        Debug.Log("coroutine test1");
         canShoot = true;
 
     }
+    public IEnumerator InitPhase3()
+    {
+        yield return new WaitForSeconds(2f);
+        BringDownTorches();
+
+        CoverBack();
+        rateOfShooting = .2f;
+        canShoot = true;
+    }
     public IEnumerator AttackShortRange()
     {
+        int currentBossPhase = bossPhaseManager.GetBossPhase();
+
+        yield return new WaitForSeconds(1);
         //start animation wind up
-        yield return new WaitForSeconds(3);
+        anim.SetTrigger("SlamAttack");
+        yield return new WaitForSeconds(3f);
         //slam
         currentRotSpeed = 0;
         yield return new WaitForSeconds(.5f);
-        BossHitBox.SetActive(true);
+        BossSlamAttackBox.SetActive(true);
         yield return new WaitForSeconds(1f);
-        BossHitBox.SetActive(false);
+        BossSlamAttackBox.SetActive(false);
         //return to idle anim
         currentRotSpeed = topRotSpeed;
+
+        yield return new WaitForSeconds(3);
+
+        // Player didn't get to the next phase yet after stun period
+        if (bossPhaseManager.GetBossPhase() == currentBossPhase)
+        {
+            bossPhaseManager.ResumePhase();
+        }
     }
 
 
@@ -322,7 +351,6 @@ public class BossEvent : MonoBehaviour
     {
         anim.SetBool("CoveringWeakSpot", false);
         bossWeakSpot.TurnOnHitBox();
-
     }
 
 }
