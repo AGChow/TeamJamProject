@@ -137,7 +137,7 @@ public class ThrownSword : MonoBehaviour
     private void HandleEnemyCollision(GameObject enemyHit)
     {
         FindObjectOfType<AudioManager>().Play("placeholder");
-        FindObjectOfType<CameraShake>().ScreenShake(.2f, .5f, 1);
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .25f, 1);
 
         enemyHit.GetComponent<EnemyHealth>().takeDamage();
         if (!_isRecalling)
@@ -159,13 +159,13 @@ public class ThrownSword : MonoBehaviour
     private void HandleBossWeakSpotCollision(GameObject weakSpot)
     {
         weakSpot.GetComponent<BossWeakSpot>().StunHit();
-        FindObjectOfType<CameraShake>().ScreenShake(.2f, .3f, 1);
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .15f, 1);
 
     }
     private void HandleBossHitBoxCollision(GameObject hitbox)
     {
         hitbox.GetComponentInParent<BossEvent>().TakeDamage();
-        FindObjectOfType<CameraShake>().ScreenShake(.2f, .3f, 1);
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .15f, 1);
 
         FindObjectOfType<Player>().GetComponentInChildren<PlayerAttack>().RecallWeapon();
 

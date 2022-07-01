@@ -92,7 +92,7 @@ public class Sword : MonoBehaviour
     private void HandleEnemyCollision(GameObject enemyHit)
     {
         FindObjectOfType<AudioManager>().Play("placeholder");
-        FindObjectOfType<CameraShake>().ScreenShake(.2f, .5f, 1);
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .25f, 1);
 
         enemyHit.GetComponent<EnemyHealth>().takeDamage();
     }
@@ -107,14 +107,14 @@ public class Sword : MonoBehaviour
 
     private void HandleBossWeakSpotCollision(GameObject weakSpot)
     {
-        FindObjectOfType<CameraShake>().ScreenShake(.2f, .5f, 1);
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .25f, 1);
 
         weakSpot.GetComponent<BossWeakSpot>().StunHit();
     }
     private void HandleBossHitBoxCollision(GameObject hitbox)
     {
         hitbox.GetComponentInParent<BossEvent>().TakeDamage();
-        FindObjectOfType<CameraShake>().ScreenShake(.2f, .5f, 1);
+        FindObjectOfType<CameraShake>().ScreenShake(.2f, .25f, 1);
 
         FindObjectOfType<Player>().GetComponentInChildren<PlayerAttack>().RecallWeapon();
 

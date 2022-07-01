@@ -9,7 +9,7 @@ public class BreakableObject : MonoBehaviour
 
     public void ObjectDestruction()
     {
-        FindObjectOfType<CameraShake>().ScreenShake(.3f, .8f, 1);
+        FindObjectOfType<CameraShake>().ScreenShake(.3f, .1f, 1);
 
         Instantiate(_debrisParticles, transform.position, transform.rotation);
         FindObjectOfType<AudioManager>().Play("placeholder");
