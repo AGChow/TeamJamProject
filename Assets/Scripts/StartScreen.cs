@@ -1,12 +1,17 @@
+using System.Linq;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class StartScreen : MonoBehaviour
 {
     public Animator settingsMenuAnimator;
     private bool _isSettingsMenuActive = false;
+    public Animator leaderboardMenuAnimator;
+    private bool _isLeaderboardMenuActive = false;
 
     public GameObject bestTimeObject;
     public TMP_Text bestTime;
@@ -21,6 +26,16 @@ public class StartScreen : MonoBehaviour
         }
     }
 
+    void Start() {
+        List<Button> allButtons = GameObject.FindObjectsOfType<Button>().ToList();
+        foreach(Button button in allButtons) {
+            if(button.name != "CloseMenu") {
+                button.GetComponent<Animator>().updateMode = AnimatorUpdateMode.UnscaledTime;
+                button.GetComponent<Animator>().updateMode = AnimatorUpdateMode.Normal;
+            }
+        }
+    }
+
     public void StartGame()
     {
         AudioManager.instance.musicAudioClip = defaultMusic;
@@ -30,6 +45,10 @@ public class StartScreen : MonoBehaviour
 
     public void Settings()
     {
+        if(_isLeaderboardMenuActive) {
+            leaderboardMenuAnimator.SetTrigger("SettingsExit");
+            _isLeaderboardMenuActive = false;
+        }
         if(_isSettingsMenuActive)
         {
             settingsMenuAnimator.SetTrigger("SettingsExit");
@@ -39,6 +58,24 @@ public class StartScreen : MonoBehaviour
             settingsMenuAnimator.SetTrigger("SettingsEnter");
         }
         _isSettingsMenuActive = !_isSettingsMenuActive;
+    }
+
+    public void Leaderboard()
+    {
+        if(_isSettingsMenuActive)
+        {
+            settingsMenuAnimator.SetTrigger("SettingsExit");
+            _isSettingsMenuActive = false;
+        }
+        if(_isLeaderboardMenuActive)
+        {
+            leaderboardMenuAnimator.SetTrigger("SettingsExit");
+        }
+        else
+        {
+            leaderboardMenuAnimator.SetTrigger("SettingsEnter");
+        }
+        _isLeaderboardMenuActive = !_isLeaderboardMenuActive;
     }
 
     public void Quit()
