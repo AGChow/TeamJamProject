@@ -123,7 +123,6 @@ public class BossEvent : MonoBehaviour
                 else
                 {
 
-                Debug.Log("check health");
                 BossHitBox.SetActive(false);
                 //reset stun hitbox
                 BossWeakSpot.GetComponent<BossWeakSpot>().TurnOnHitBox();
@@ -178,7 +177,6 @@ public class BossEvent : MonoBehaviour
         canShoot = false;
         canFollow = false;
         
-        Debug.Log("KilledBoss");
         FindObjectOfType<AudioManager>().Play("BossScream");
         //destroy and make a big deal about it
         anim.SetBool("Dead", true);

@@ -89,7 +89,6 @@ public class ThrownSword : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print("Collided with " + other.name);
         if (other.CompareTag("PassThrough"))
             return;
         else if (other.CompareTag("Player"))
@@ -126,14 +125,12 @@ public class ThrownSword : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("SwordClank");
 
 
-        print("hit environment");
         if (!_isRecalling)
             StopMovement();
     }
 
     private void HandleTorchCollision(GameObject torch)
     {
-        print("hit torch");
         if (!_isRecalling)
             StopMovement();
         torch.GetComponent<Torch>().ToggleTorch();
@@ -141,7 +138,6 @@ public class ThrownSword : MonoBehaviour
 
     private void HandleEnemyCollision(GameObject enemyHit)
     {
-        print("hit enemy");
         FindObjectOfType<AudioManager>().Play("placeholder");
         FindObjectOfType<CameraShake>().ScreenShake(.2f, .5f, 1);
 

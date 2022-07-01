@@ -47,20 +47,18 @@ public class Sword : MonoBehaviour
             HandleBossHitBoxCollision(other.gameObject);
         else if (other.CompareTag("Enemy"))
         {
-
-            if (other.GetComponent<ShieldEnemy>()) {
+            HandleEnemyCollision(other.gameObject);
+            /* if (other.GetComponent<ShieldEnemy>()) {
                 ShieldEnemy _shieldEnemy = other.GetComponent<ShieldEnemy>();
                 if (_shieldEnemy.IsShielded() && _swungAtShield)
-                    print("Hit shield");
                 else
-                    print("Damaged enemy: " + other.name);
 
                 _swungAtShield = false;
             }
             else
             {
                 HandleEnemyCollision(other.gameObject);
-            }
+            } */
         }
 
         else if (other.CompareTag("Breakable"))
