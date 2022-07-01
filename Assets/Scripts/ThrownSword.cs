@@ -89,9 +89,7 @@ public class ThrownSword : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PassThrough"))
-            return;
-        else if (other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
             HandlePlayerCollision(other.GetComponent<PlayerAttack>());
         else if (other.CompareTag("Environment") || other.CompareTag("Shield"))
             HandleEnvironmentCollision(other.gameObject);

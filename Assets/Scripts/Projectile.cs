@@ -27,6 +27,9 @@ public class Projectile : MonoBehaviour
         {
             other.gameObject.GetComponent<Player>().Damage(1);
         }
+        else if(other.gameObject.CompareTag("Projectile")) {
+            return;
+        }
         Instantiate(explosionParticles, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }

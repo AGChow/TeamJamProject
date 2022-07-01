@@ -129,6 +129,7 @@ public class BossEvent : MonoBehaviour
                 //Getback up animation
                 anim.SetBool("Stunned", false);
                 anim.SetTrigger("StunnedRecover");
+                stunned = false;
                 bossPhaseManager.SetBossPhase(2);
                 break;
                 }
@@ -145,6 +146,7 @@ public class BossEvent : MonoBehaviour
                     //Getback up animation
                     anim.SetBool("Stunned", false);
                     anim.SetTrigger("StunnedRecover");
+                    stunned = false;
                     bossPhaseManager.SetBossPhase(3);
                     break;
                 }
@@ -402,7 +404,7 @@ public class BossEvent : MonoBehaviour
         canSlam = true;
         slamming = false;
         bossEyeBallAnim.OpenEye();
-
+        stunned = false;
 
         StartCoroutine(AttackShortRange());
 
@@ -412,6 +414,8 @@ public class BossEvent : MonoBehaviour
         canFollow = true;
         canSlam = false;
         canShoot = true;
+        stunned = false;
+
         bossEyeBallAnim.OpenEye();
 
     }
@@ -423,7 +427,7 @@ public class BossEvent : MonoBehaviour
 
         //rateOfShooting = .2f;
         canShoot = true;
-
+        stunned = false;
     }
     public IEnumerator AttackShortRange()
     {
