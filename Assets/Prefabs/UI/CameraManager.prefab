@@ -106,7 +106,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7770115, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -128,7 +128,6 @@ GameObject:
   - component: {fileID: 1255759673530729451}
   - component: {fileID: 1255759673530729447}
   - component: {fileID: 1255759673530729448}
-  - component: {fileID: 1255759673530729446}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -269,21 +268,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1255759673530729446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255759673530729452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1738fb7bb12922c46a9693efa93c044d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeDuration: 1
-  shakeAmount: 1
-  decreaseFactor: 1
 --- !u!1 &1255759673562152010
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +374,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7770115, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -409,6 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1255759674134843801}
   - component: {fileID: 1255759674134843802}
+  - component: {fileID: 5840354025230623585}
   m_Layer: 0
   m_Name: CameraManager
   m_TagString: Untagged
@@ -451,9 +436,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _introCam: {fileID: 1255759673855661498}
   _intro2Cam: {fileID: 1731613536}
+  _intro3Cam: {fileID: 0}
+  transition1: 0.5
+  transition2: 2.5
+  transition3: 3
   _topDownCam: {fileID: 1255759675088846650}
   _exitCam: {fileID: 4078439259221104515}
   _exitCam2: {fileID: 5187210417295290441}
+  bossRoomCameras: 0
+--- !u!114 &5840354025230623585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255759674134843803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1738fb7bb12922c46a9693efa93c044d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0.3
+  shakeAmount: 0.1
+  decreaseFactor: 1
 --- !u!1 &1255759674636055848
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +565,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7770115, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -719,7 +724,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7770115, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -790,7 +795,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7770115, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
