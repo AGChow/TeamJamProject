@@ -7,7 +7,6 @@ public class BossAnimationEvents : MonoBehaviour
     public void BossGrowl()
     {
         FindObjectOfType<AudioManager>().Play("BossGrowl");
-
     }
 
     public void BossScream()

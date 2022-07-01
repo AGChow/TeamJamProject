@@ -92,11 +92,16 @@ public class BossEvent : MonoBehaviour
     {
         //walk into room timing
         yield return new WaitForSeconds(5);
-        //roar animation and camera sweep
         GetComponentInChildren<Animator>().SetTrigger("StartIntro");
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(1);
+        FindObjectOfType<CameraShake>().ScreenShake(2f, .04f, 1f);
+        //roar animation and camera sweep
+        
+        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
+        FindObjectOfType<CameraShake>().ScreenShake(1.2f, .2f, 1f);
         AudioManager.instance.musicAudioClip = bossMusic;
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         canFollow = true;
         //player.GetComponent<PlayerMovement>()._canMove = true;
         bossPhaseManager.SetBossPhase(1);
@@ -182,6 +187,7 @@ public class BossEvent : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("BossScream");
         //destroy and make a big deal about it
         anim.SetBool("Dead", true);
+        FindObjectOfType<CameraShake>().ScreenShake(2f, .25f, 1f);
         yield return new WaitForSeconds(2f);
         FindObjectOfType<AudioManager>().Play("BossScream");
         yield return new WaitForSeconds(2f);
@@ -444,11 +450,15 @@ public class BossEvent : MonoBehaviour
         anim.SetTrigger("SlamAttack");
         yield return new WaitForSeconds(2.5f);
         //slam
+        
         currentRotSpeed = 0;
         _damageAreaParticles.SetActive(false);
 
+        yield return new WaitForSeconds(1f);
 
-        yield return new WaitForSeconds(1.8f);
+        FindObjectOfType<CameraShake>().ScreenShake(.4f, .2f, 1f);
+
+        yield return new WaitForSeconds(.8f);
         //return to idle anim automatic
         currentRotSpeed = topRotSpeed;
 
