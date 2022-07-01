@@ -47,7 +47,7 @@ public class Timer : MonoBehaviour
 
     public void StopAndRecordTime() {
         _timerGoing = false;
-        if(!PlayerPrefs.HasKey("BestTime") || PlayerPrefs.GetFloat("CurrentTime") < PlayerPrefs.GetFloat("BestTime"))
+        if(!PlayerPrefs.HasKey("BestTime") || _timeElapsed < (PlayerPrefs.GetFloat("BestTime")))
             PlayerPrefs.SetFloat("BestTime", _timeElapsed);
     }
 

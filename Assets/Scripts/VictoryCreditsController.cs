@@ -20,16 +20,14 @@ public class VictoryCreditsController : MonoBehaviour
     }
 
     void ShowScoreInput() {
-        TimeSpan _timePlaying = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("BestTime"));
+        TimeSpan _timePlaying = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("CurrentTime"));
         totalTime.text = _timePlaying.ToString("mm':'ss'.'ff");
         totalTime.gameObject.SetActive(true);
     }
 
     public void SendScore() {
         if(nameInput.text.Length > 0 && nameInput.text.Length < 6 && !nameInput.text.Contains("*")) {
-            HighScores.UploadScore(nameInput.text, (Int32)(PlayerPrefs.GetFloat("BestTime") * 100000000));
-            print(PlayerPrefs.GetFloat("BestTime") * 100000);
-            print(PlayerPrefs.GetFloat("BestTime") * 10000000);
+            HighScores.UploadScore(nameInput.text, (Int32)(PlayerPrefs.GetFloat("CurrentTime") * 1000));
             SceneManager.LoadScene("StartScreen");
         }
     }

@@ -28,8 +28,8 @@ public class DisplayHighscores : MonoBehaviour
             rNames[i].text = i + 1 + ". ";
             if (highscoreList.Length > i && highscoreList[i].score != 0 && !String.IsNullOrEmpty(highscoreList[i].username))
             {
-                TimeSpan _timePlaying = TimeSpan.FromSeconds(highscoreList[i].score / 10000000);
-                rScores[i].text = _timePlaying.ToString("mm':'ss");
+                TimeSpan _timePlaying = TimeSpan.FromMilliseconds(highscoreList[i].score);
+                rScores[i].text = _timePlaying.ToString("mm':'ss'.'ff");
                 rNames[i].text = highscoreList[i].username;
             } else {
                 rScores[i].text = String.Empty;
