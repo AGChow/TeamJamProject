@@ -30,7 +30,9 @@ public class EnemyHealth : MonoBehaviour
 
     public IEnumerator Death()
     {
+        GetComponent<Collider>().enabled = false;
         dead = true;
+        //turns off collider so player can't get hit after killing enemy
         //change to death animation
         //add death sound
         GetComponentInChildren<Animator>().SetTrigger("Death");

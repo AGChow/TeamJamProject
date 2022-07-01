@@ -23,9 +23,11 @@ public class BossRoomManager : MonoBehaviour
 
         if (AllTorchesLit() == true)
         {
-            Debug.Log("FrozeBoss");
 
             StartCoroutine(Boss.GetComponent<BossEvent>().Freeze());
+            StartCoroutine(DimLightsAfterTime());
+            StartCoroutine(DimLightsOnBoss());
+            Debug.Log("FrozeBoss");
 
         }
 
@@ -65,6 +67,8 @@ public class BossRoomManager : MonoBehaviour
 
         //turn on light and maybe lerp intensity to 1
         StartCoroutine(DimTheLightsOn());
+        StopCoroutine(DimLightsOffBoss());
+        StopCoroutine(DimLightsAfterTime());
         yield return new WaitForSeconds(1f);
         //unlock door
         StartCoroutine(Exit.GetComponent<MainDoor>().MoveDoor());
@@ -83,6 +87,37 @@ public class BossRoomManager : MonoBehaviour
             yield return null;
         }
         mainLight.GetComponent<Light>().intensity = 1;
+    }
+
+    IEnumerator DimLightsOnBoss()
+    {
+        //mainLight.SetActive(true);
+        float startTime = Time.time;
+        while (Time.time < startTime + 2)
+        {
+            mainLight.GetComponent<Light>().intensity = Mathf.Lerp(mainLight.GetComponent<Light>().intensity, .3f, (Time.time - startTime) / overTime);
+            yield return null;
+        }
+        mainLight.GetComponent<Light>().intensity = .3f;
+
+
+    }
+    public IEnumerator DimLightsOffBoss()
+    {
+        //mainLight.SetActive(true);
+        float startTime = Time.time;
+        while (Time.time < startTime + 3)
+        {
+            mainLight.GetComponent<Light>().intensity = Mathf.Lerp(mainLight.GetComponent<Light>().intensity, .3f, (Time.time - startTime) / overTime);
+            yield return null;
+        }
+        mainLight.GetComponent<Light>().intensity = .015f;
+
+    }
+    public IEnumerator DimLightsAfterTime()
+    {
+        yield return new WaitForSeconds(7);
+        StartCoroutine(DimLightsOffBoss());
     }
 }
 

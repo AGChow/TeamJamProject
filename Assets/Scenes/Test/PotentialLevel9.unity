@@ -668,10 +668,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 716173826, guid: 660a84df3cd8a924382bca1ecc81c7de, type: 3}
-      propertyPath: m_Size.y
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7218428880384991516, guid: 660a84df3cd8a924382bca1ecc81c7de, type: 3}
       propertyPath: m_Name
       value: Bat (3)
@@ -683,18 +679,6 @@ PrefabInstance:
     - target: {fileID: 8027334828627393446, guid: 660a84df3cd8a924382bca1ecc81c7de, type: 3}
       propertyPath: m_RootOrder
       value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8027334828627393446, guid: 660a84df3cd8a924382bca1ecc81c7de, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8027334828627393446, guid: 660a84df3cd8a924382bca1ecc81c7de, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8027334828627393446, guid: 660a84df3cd8a924382bca1ecc81c7de, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.24999996
       objectReference: {fileID: 0}
     - target: {fileID: 8027334828627393446, guid: 660a84df3cd8a924382bca1ecc81c7de, type: 3}
       propertyPath: m_LocalPosition.x
