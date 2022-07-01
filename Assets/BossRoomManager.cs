@@ -23,12 +23,9 @@ public class BossRoomManager : MonoBehaviour
 
         if (AllTorchesLit() == true)
         {
-
             StartCoroutine(Boss.GetComponent<BossEvent>().Freeze());
             StartCoroutine(DimLightsAfterTime());
             StartCoroutine(DimLightsOnBoss());
-            Debug.Log("FrozeBoss");
-
         }
 
     }
@@ -61,9 +58,6 @@ public class BossRoomManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         //play complete sound
         FindObjectOfType<AudioManager>().Play("PuzzleComplete");
-
-
-        //Debug.Log("You did it");
 
         //turn on light and maybe lerp intensity to 1
         StartCoroutine(DimTheLightsOn());

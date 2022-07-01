@@ -15,13 +15,10 @@ public class BossEyeball : MonoBehaviour
 
     public void OpenEye()
     {
-        Debug.Log("open");
         transform.localPosition = openPos;
     }
     public void CloseEye()
     {
-        Debug.Log("closed");
-
         transform.localPosition = closedPos;
     }
 }

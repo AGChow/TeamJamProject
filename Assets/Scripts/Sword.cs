@@ -32,9 +32,9 @@ public class Sword : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Shield"))
+        /* if (other.CompareTag("Shield"))
             _swungAtShield = true;
-        else if (other.CompareTag("Torch")) {
+        else */ if (other.CompareTag("Torch")) {
             if(!preventExtraTorchToggles) {
                 other.GetComponent<Torch>().ToggleTorch();
                 preventExtraTorchToggles = true;
@@ -91,7 +91,6 @@ public class Sword : MonoBehaviour
 
     private void HandleEnemyCollision(GameObject enemyHit)
     {
-        print("hit enemy");
         FindObjectOfType<AudioManager>().Play("placeholder");
         FindObjectOfType<CameraShake>().ScreenShake(.2f, .5f, 1);
 
@@ -101,7 +100,6 @@ public class Sword : MonoBehaviour
 
     private void HandleBreakableCollision(GameObject breakableObj)
     {
-        Debug.Log("Break");
         FindObjectOfType<AudioManager>().Play("placeholder");
 
         breakableObj.GetComponent<BreakableObject>().ObjectDestruction();

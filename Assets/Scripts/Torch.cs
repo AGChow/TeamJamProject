@@ -68,7 +68,6 @@ public class Torch : MonoBehaviour
     }
 
     public void ToggleTorch() {
-        print("Toggling");
         if(cantBeTurnedOff == true)
         {
             return;

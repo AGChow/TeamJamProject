@@ -118,7 +118,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void RecallWeapon()
     {
-        //print("recall!");
         FindObjectOfType<AudioManager>().Play("Throw");
 
         thrownWeaponObj.GetComponent<ThrownSword>().returnSpeedChange();

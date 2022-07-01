@@ -148,7 +148,6 @@ public class ThrownSword : MonoBehaviour
 
     private void HandleBreakableCollision(GameObject breakableObj)
     {
-        Debug.Log("Break");
         if (!_isRecalling)
             StopMovement();
         breakableObj.GetComponent<BreakableObject>().ObjectDestruction();

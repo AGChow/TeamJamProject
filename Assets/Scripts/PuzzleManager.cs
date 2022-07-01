@@ -22,8 +22,6 @@ public class PuzzleManager : MonoBehaviour
 
         if(AllTorchesLit() == true)
         {
-            //Debug.Log("FinishedPuzzle");
-
             StartCoroutine(FinishPuzzleEvent());
         }
     }
@@ -50,8 +48,6 @@ public class PuzzleManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         //play complete sound
         FindObjectOfType<AudioManager>().Play("PuzzleComplete");
-
-        //Debug.Log("You did it");
 
         //turn on light and maybe lerp intensity to 1
         StartCoroutine(DimTheLightsOn());
