@@ -344,6 +344,10 @@ public class BossEvent : MonoBehaviour
         //start animation charging up shooting attack
         anim.SetTrigger("StartProjectile");
         yield return new WaitForSeconds(4);
+
+        if(stunned) {
+            yield break;
+        }
         //start shooting
         shooting = true;
 

@@ -1,5 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿#pragma warning disable 0618
+
+using System.Collections;
 using UnityEngine;
 
 public class HighScores : MonoBehaviour
@@ -43,7 +44,7 @@ public class HighScores : MonoBehaviour
     IEnumerator DatabaseDownload()
     {
         //WWW www = new WWW(webURL + publicCode + "/pipe/"); //Gets the whole list
-        WWW www = new WWW(webURL + publicCode + "/pipe/0/10"); //Gets top 10
+        WWW www = new WWW(webURL + publicCode + "/pipe/0/5"); //Gets top 5
         yield return www;
 
         if (string.IsNullOrEmpty(www.error))
