@@ -39,6 +39,8 @@ public class PauseMenu : MonoBehaviour
 
     public void ResetLevel()
     {
+        if(Timer.instance != null)
+            Timer.instance.ResetToPrevious();
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

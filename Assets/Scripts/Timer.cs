@@ -7,9 +7,7 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     public static Timer instance;
-
     public TMP_Text timerText;
-
     private TimeSpan _timePlaying;
     private bool _timerGoing;
     private float _timeElapsed;
@@ -32,19 +30,19 @@ public class Timer : MonoBehaviour
 
     public void StartTimer() {
         _timerGoing = true;
-        float startTime = Time.time;
-        if(PlayerPrefs.HasKey("CurrentTime") && SceneManager.GetActiveScene().name != "StartScreen")
-            _timeElapsed = PlayerPrefs.GetFloat("CurrentTime");
-        else
-            _timeElapsed = 0f;
-            PlayerPrefs.SetFloat("CurrentTime", _timeElapsed);
-
+        CheckAndSetCurrentTime();
         StartCoroutine(UpdateTimer());
     }
 
     public void PauseTimer() {
         _timerGoing = false;
         PlayerPrefs.SetFloat("CurrentTime", _timeElapsed);
+    }
+
+    public void ResetToPrevious() {
+        _timerGoing = false;
+        CheckAndSetCurrentTime();
+        UpdateTimerText();
     }
 
     public void StopAndRecordTime() {
@@ -56,10 +54,22 @@ public class Timer : MonoBehaviour
     IEnumerator UpdateTimer() {
         while(_timerGoing) {
             _timeElapsed += Time.deltaTime;
-            _timePlaying = TimeSpan.FromSeconds(_timeElapsed);
-            timerText.text = _timePlaying.ToString("mm':'ss'.'ff");
-
+            UpdateTimerText();
             yield return null;
+        }
+    }
+
+    void UpdateTimerText() {
+        _timePlaying = TimeSpan.FromSeconds(_timeElapsed);
+        timerText.text = _timePlaying.ToString("mm':'ss'.'ff");
+    }
+
+    void CheckAndSetCurrentTime() {
+        if(PlayerPrefs.HasKey("CurrentTime") && SceneManager.GetActiveScene().name != "StartScreen")
+            _timeElapsed = PlayerPrefs.GetFloat("CurrentTime");
+        else {
+            _timeElapsed = 0f;
+            PlayerPrefs.SetFloat("CurrentTime", _timeElapsed);
         }
     }
 }
