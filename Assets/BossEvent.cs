@@ -346,6 +346,7 @@ public class BossEvent : MonoBehaviour
         yield return new WaitForSeconds(4);
 
         if(stunned) {
+            canFollow = false;
             yield break;
         }
         //start shooting
