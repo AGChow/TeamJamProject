@@ -389,6 +389,8 @@ public class BossEvent : MonoBehaviour
     }
     public IEnumerator InitPhase3()
     {
+        shooting = false;
+        slamming = false;
         yield return new WaitForSeconds(2f);
         BringDownTorches();
         CoverBack();
@@ -404,7 +406,6 @@ public class BossEvent : MonoBehaviour
         canSlam = true;
         slamming = false;
         bossEyeBallAnim.OpenEye();
-        stunned = false;
 
         StartCoroutine(AttackShortRange());
 
@@ -414,7 +415,6 @@ public class BossEvent : MonoBehaviour
         canFollow = true;
         canSlam = false;
         canShoot = true;
-        stunned = false;
 
         bossEyeBallAnim.OpenEye();
 
@@ -427,7 +427,6 @@ public class BossEvent : MonoBehaviour
 
         //rateOfShooting = .2f;
         canShoot = true;
-        stunned = false;
     }
     public IEnumerator AttackShortRange()
     {

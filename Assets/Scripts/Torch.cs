@@ -38,7 +38,7 @@ public class Torch : MonoBehaviour
             }
             //Turn the torch off
             else if(_isLit == true && value == false) {
-                if(GetComponentInChildren<TorchVampDetection>().frozenVampires.Count > 0) {
+                if(GetComponentInChildren<TorchVampDetection>() && GetComponentInChildren<TorchVampDetection>().frozenVampires.Count > 0) {
                     foreach(VampireToadAI vamp in GetComponentInChildren<TorchVampDetection>().frozenVampires) {
                         vamp.frozen = false;
                     }
