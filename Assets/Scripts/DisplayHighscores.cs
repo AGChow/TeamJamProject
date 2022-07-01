@@ -20,13 +20,13 @@ public class DisplayHighscores : MonoBehaviour
     }
     public void SetScoresToMenu(PlayerScore[] highscoreList) //Assigns proper name and score for each text value
     {
-        highscoreList = highscoreList.OrderBy( x => x.score ).ToArray();
+        highscoreList = highscoreList.OrderByDescending( x => x.score ).ToArray();
         for (int i = 0; i < rNames.Length;i ++)
         {
             rNames[i].text = i + 1 + ". ";
             if (highscoreList.Length > i && highscoreList[i].score != 0 && !String.IsNullOrEmpty(highscoreList[i].username))
             {
-                TimeSpan _timePlaying = TimeSpan.FromMilliseconds(highscoreList[i].score);
+                TimeSpan _timePlaying = TimeSpan.FromMilliseconds(highscoreList[i].score * -1);
                 rScores[i].text = _timePlaying.ToString("mm':'ss'.'ff");
                 rNames[i].text = highscoreList[i].username;
             } else {

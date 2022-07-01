@@ -11,6 +11,9 @@ public class EnemyHealth : MonoBehaviour
 
     public void takeDamage()
     {
+        if(GetComponent<VampireToadAI>() && GetComponent<VampireToadAI>().frozen)
+            return;
+
         Health = Health - 1;
         Instantiate(_hitParticles, transform.position, transform.rotation);
         //below code means this script requires a material change componenet in the object with the renderer

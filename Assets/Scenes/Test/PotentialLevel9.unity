@@ -8887,7 +8887,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8014682306562822296, guid: f95f6944ea0a3244594abacb71f05cb7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 61
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8014682306649452187, guid: f95f6944ea0a3244594abacb71f05cb7, type: 3}
       propertyPath: m_Pivot.x
