@@ -7,7 +7,7 @@ public class Sword : MonoBehaviour
     private PlayerAttack _playerAttack;
     [SerializeField]
     private Animator _playerAnimator;
-    private bool _swungAtShield = false;
+    //private bool _swungAtShield = false;
     public bool canSwing;
     private bool preventExtraTorchToggles;
 
