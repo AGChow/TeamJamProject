@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
     public IEnumerator Fall()
     {
         if(Timer.instance)
-            Timer.instance.PauseTimer();
+            Timer.instance.ResetToPrevious();
             
         _playerAnimator.SetTrigger("Fall");
         FindObjectOfType<AudioManager>().Play("PlayerFall");
