@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,7 @@ public class DisplayHighscores : MonoBehaviour
     }
     public void SetScoresToMenu(PlayerScore[] highscoreList) //Assigns proper name and score for each text value
     {
+        highscoreList = highscoreList.OrderBy( x => x.score ).ToArray();
         for (int i = 0; i < rNames.Length;i ++)
         {
             rNames[i].text = i + 1 + ". ";
