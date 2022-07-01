@@ -72,4 +72,11 @@ public class Timer : MonoBehaviour
             PlayerPrefs.SetFloat("CurrentTime", _timeElapsed);
         }
     }
+
+    public void ResetToZero() {
+        _timerGoing = false;
+        _timeElapsed = 0f;
+        PlayerPrefs.SetFloat("CurrentTime", _timeElapsed);
+        timerText.text = String.Empty;
+    }
 }
